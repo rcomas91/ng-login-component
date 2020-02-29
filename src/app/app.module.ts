@@ -9,6 +9,8 @@ import { UserListComponent } from './user-list/user-list.component';
 import { ArticleComponent } from './article/article.component';
 import { HeaderComponentComponent } from './header-component/header-component.component';
 import { FooterComponent } from './footer/footer.component';
+import { ArticuloComponent } from './articulo/articulo.component';
+import { ArticuloService } from './articulo/articulo.service';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,14 @@ import { FooterComponent } from './footer/footer.component';
     UserListComponent,
     ArticleComponent,
     HeaderComponentComponent,
-    FooterComponent
+    FooterComponent,
+    ArticuloComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ArticuloService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
