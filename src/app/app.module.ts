@@ -11,8 +11,15 @@ import { HeaderComponentComponent } from './header-component/header-component.co
 import { FooterComponent } from './footer/footer.component';
 import { ArticuloComponent } from './articulo/articulo.component';
 import { ArticuloService } from './articulo/articulo.service';
+import{RouterModule, Routes } from '@angular/router';
 
+const routes:Routes=[
+  {path:'',redirectTo:'/articulos',pathMatch:'full'},
+  {path:'articulos',component:ArticuloComponent},
+
+]
 @NgModule({
+ 
   declarations: [
     AppComponent,
     HelloWorldComponent,
@@ -25,7 +32,8 @@ import { ArticuloService } from './articulo/articulo.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [ArticuloService ],
   bootstrap: [AppComponent]
