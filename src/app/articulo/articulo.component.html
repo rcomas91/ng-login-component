@@ -1,0 +1,45 @@
+<table class="table table-bordered  table-hover  table-responsive">
+  
+
+<thead>
+    <tr>
+        <th>codigo</th>
+        <th>control</th>
+        <th>nombre</th>
+        <th>seccion</th>
+        <th>estante</th>
+        <th>casilla</th>
+        <th>cuc</th>
+        <th>cup</th>
+        <th>existen</th>
+        <th>cuenta</th>
+        <th>subcuenta</th>
+        <th>precio_cuc</th>
+        <th>precio_cup</th>
+        <th>utm_mov</th>
+
+    </tr>
+</thead>
+
+<tbody>
+    <tr *ngFor="let articulo of articulos">
+        <td>{{articulo.codigo}}</td>
+        <td>{{articulo.control}}</td>
+        <td>{{articulo.nombre}}</td>
+        <td>{{articulo.seccion}}</td>
+        <td>{{articulo.estante}}</td>
+        <td>{{articulo.casilla}}</td>
+        <td>{{articulo.cuc }}</td>
+        <td>{{articulo.cup}}</td>
+        <td>{{articulo.existen}}</td>
+        <td>{{articulo.cuenta}}</td>
+        <td>{{articulo.subcuenta}}</td>
+        <td>{{articulo.precio_cuc}}</td>
+        <td>{{articulo.precio_cup}}</td>
+        <td>{{articulo.utm_mov}}</td>
+
+    </tr>
+
+
+</tbody>
+  </table>
