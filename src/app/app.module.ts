@@ -9,9 +9,13 @@ import { ArticuloComponent } from './articulo/articulo.component';
 import { ArticuloService } from './articulo/articulo.service';
 import{RouterModule, Routes } from '@angular/router';
 import{HttpClientModule, HttpClient} from '@angular/common/http';
+import { NecesidadComponent } from './necesidad/necesidad.component';
+import { NecesidadService } from './necesidad/necesidad.service';
+
 const routes:Routes=[
   {path:'',redirectTo:'/articulos',pathMatch:'full'},
   {path:'articulos',component:ArticuloComponent},
+  {path:'necesidades',component:NecesidadComponent},
 
 ]
 @NgModule({
@@ -20,7 +24,8 @@ const routes:Routes=[
     AppComponent,
     HeaderComponentComponent,
     FooterComponent,
-    ArticuloComponent
+    ArticuloComponent,
+    NecesidadComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ const routes:Routes=[
     RouterModule.forRoot(routes),
     HttpClientModule
   ],
-  providers: [ArticuloService ],
+  providers: [ArticuloService,NecesidadService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
