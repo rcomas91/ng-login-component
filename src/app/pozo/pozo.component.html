@@ -1,0 +1,40 @@
+<div >
+    <button type="button" [routerLink]="['/pozos/form']" class="btn btn-success">Adicionar pozo</button>
+
+
+</div>
+
+<div *ngIf="pozos?.length==0" class="alert alert-info">
+    No hay registros en la base de datos!
+</div>
+<table class="table table-bordered table-hover  table-responsive"  *ngIf="pozos?.length>0">
+
+    <thead>
+        <tr>
+                <th>PozoID</th>
+            <th>NombrePozo</th>
+            <th>Campana</th>
+            <th>FechaInicio</th>
+            <th>FechaFin</th>
+            <th>editar</th>
+            <th>eliminar</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let pozo of pozos">
+            <td>{{pozo.pozoId}}</td>
+            <td>{{pozo.nombrePozo}}</td>
+            <td>{{pozo.campana}}</td>
+            <td>{{pozo.fechaInicio}}</td>
+            <td>{{pozo.fechaFin}}</td>
+            <td>    <button type="button" [routerLink]="['/pozos/form',pozo.id]" class="btn btn-primary">editar</button>
+            </td>
+            <td>    <button type="button" (click)="delete(pozo)" name="eliminar" class="btn btn-danger">eliminar</button>
+            </td>
+
+        </tr>
+    
+    
+    </tbody>
+      </table>

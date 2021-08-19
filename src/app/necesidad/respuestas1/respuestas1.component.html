@@ -1,0 +1,33 @@
+
+<div *ngIf="Respuesta?.length==0" class="alert alert-info">
+    No hay ninguna necesidad para mostrar!
+</div>
+
+<h2>Necesidades No Satisfechas</h2>
+
+<table class="table table-bordered table-hover  table-responsive"  *ngIf="Respuesta?.length>0">
+
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>pozo</th>
+            <th>articulo</th>
+            <th>fecha</th>
+            <th>cantidad</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let necesidad of Respuesta">
+            <td>{{necesidad.id}}</td>
+            <td>{{necesidad.pozo}}</td>
+            <td>{{necesidad.articulo.nombre}}</td>
+            <td>{{necesidad.fecha}}</td>
+            <td>{{necesidad.cantidad}}</td>
+            
+
+        </tr>
+    
+    
+    </tbody>
+      </table>

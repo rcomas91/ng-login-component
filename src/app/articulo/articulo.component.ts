@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Articulo } from "./articulo";
 import { ArticuloService } from './articulo.service';
-import { ARTICULOS } from 'src/app/articulo/articulo.json';
 @Component({
   selector: 'app-articulo', 
   templateUrl: './articulo.component.html'

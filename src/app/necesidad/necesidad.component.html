@@ -1,0 +1,44 @@
+<div >
+    <button type="button" [routerLink]="['/necesidades/form']" class="btn btn-success">Adicionar necesidad</button>
+
+
+</div>
+<div *ngIf="necesidades?.length==0" class="alert alert-info">
+    No hay registros en la base de datos!
+</div>
+<table class="table table-bordered table-hover  table-responsive"  *ngIf="necesidades?.length>0">
+
+    <thead>
+        <tr>
+                <th>id</th>
+            <th>pozo</th>
+            <th>articulo</th>
+            <th>fecha</th>
+            <th>cantidad</th>
+            <th>editar</th>
+            <th>eliminar</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <tr *ngFor="let necesidad of necesidades">
+            <td>{{necesidad.id}}</td>
+            <td>{{necesidad.pozo}}</td>
+            <td>{{necesidad.articulo.nombre}}</td>
+            <td>{{necesidad.fecha}}</td>
+            <td>{{necesidad.cantidad}}</td>
+            <td>    <button type="button" [routerLink]="['/necesidades/form',necesidad.id]" class="btn btn-primary">editar</button>
+            </td>
+            <td>    <button type="button" (click)="delete(necesidad)" name="eliminar" class="btn btn-danger">eliminar</button>
+            </td>
+
+        </tr>
+    
+    
+    </tbody>
+      </table>
+
+
+      <app-respuestas></app-respuestas>   
+      
+      <app-respuestas1></app-respuestas1>

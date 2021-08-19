@@ -1,5 +1,5 @@
 export class Articulo {
-
+    id:number;
     codigo:string;
     control:string;
     nombre:string;
@@ -8,6 +8,7 @@ export class Articulo {
     casilla:string;
     cuc:number;
     cup:number;
+    UM:string;
     existen:number;
     cuenta:string;
     subcuenta:string;
