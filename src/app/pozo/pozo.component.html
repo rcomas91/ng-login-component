@@ -1,4 +1,4 @@
-<div >
+<!-- <div >
     <button type="button" [routerLink]="['/pozos/form']" class="btn btn-success">Adicionar pozo</button>
 
 
@@ -37,4 +37,152 @@
     
     
     </tbody>
-      </table>
+      </table> -->
+<!-- <p>Order Page</p>
+<div>
+    <button [routerLink]="['/add-order']" class="btn btn-primary">Add Order</button>
+
+    <p *ngIf="!(orders && orders.length)" >
+       There's not BD registries.
+</p>
+    <table class="table" *ngIf="orders && orders.length" >
+    <thead>
+        <tr>
+            <th>OrderId</th>
+            <th>NoOrder</th>
+            <th>DateOrder</th>
+           <th>FoodId</th>
+            <th>Amount</th>
+            <th>ClientId</th>
+            <th>Client</th>
+
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+        <td>{{order.orderId}}</td>
+        <td>{{order.noOrder}}</td>
+        <td>{{order.dateOrder | date:'dd-MM-yyyy'}}</td>
+       <td>{{order.foodId}}</td>
+        <td>{{order.amount}}</td>
+
+
+        <td>
+            <button class="btn btn-primary" [routerLink]='["/edit-order/"+ order.orderId]'>Edit</button>
+            <button class="btn btn-danger" (click)="delete(order)">Delete</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div> -->
+
+
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!--  Columna PozoId-->
+      <ng-container matColumnDef="PozoId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          PozoId</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.pozoId }} </mat-cell>
+      </ng-container>
+      <!--  Columna NombrePozo-->
+      <ng-container matColumnDef="NombrePozo">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          NombrePozo</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.nombrePozo }} </mat-cell>
+      </ng-container>
+
+      
+      <!--  Columna Campana-->
+      <ng-container matColumnDef="Campana">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Campana</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.campana}} </mat-cell>
+      </ng-container>
+
+  <!--  Columna Campana-->
+  <ng-container matColumnDef="Ubicacion">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      Ubicacion</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.ubicacion}} </mat-cell>
+  </ng-container>
+
+
+      <!--  Columna FechaInicio-->
+      <ng-container matColumnDef="FechaInicio">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            FechaInicio</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.fechaInicio|date }} </mat-cell>
+      </ng-container>
+
+      <!--  Columna FechaFin-->
+      <ng-container matColumnDef="FechaFin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            FechaFin</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.fechaFin |date}} </mat-cell>
+  
+      </ng-container>
+          <!--  Columna Editar-->
+  
+      <ng-container matColumnDef="Editar">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Editar</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">
+          <button mat-raised-button color="primary" [routerLink]="['/pozos/form',row.pozoId]" focusable="false" >
+            Editar
+          </button>
+        </mat-cell>
+  
+  
+      </ng-container>
+
+    <!--  Columna Editar-->
+
+<ng-container matColumnDef="Borrar">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>
+    Borrar</mat-header-cell
+  >
+  <mat-cell *matCellDef="let row">
+    <button mat-raised-button color="warn" (click)="delete(row.pozoId)"focusable="false" >
+        Borrar
+        </button>
+  </mat-cell>
+
+</ng-container>
+
+
+<ng-container matColumnDef="Ver Construcción">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>
+    Ver Construcción</mat-header-cell
+  >
+  <mat-cell *matCellDef="let row">
+    <button mat-raised-button color="warn" (click)="VerConst(row.construccion.construccionId)"focusable="false" >
+      Ver Construcción
+        </button>
+  </mat-cell>
+
+</ng-container>
+      <button mat-raised-button color="warn">Warn</button>
+  
+  
+  
+      <mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        class="encabezado"
+      ></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
+  
+  <div>
+    <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent">Adicionar Pozo</button>
+    </div>
+    

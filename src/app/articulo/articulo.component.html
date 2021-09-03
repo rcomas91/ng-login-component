@@ -1,45 +1,126 @@
-<table class="table table-bordered  table-hover  table-responsive">
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort>
+ 
+    <!--  Columna id-->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> id</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
+    </ng-container>
+
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="codigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        codigo</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.codigo }} </mat-cell>
+    </ng-container>
+
+   <!--  Columna IntervaloId-->
+   <ng-container matColumnDef="intervaloId">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      intervaloId</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.intervaloId }} </mat-cell>
+  </ng-container>
+
+    
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="control">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        control</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.control }} </mat-cell>
+    </ng-container>
+    
+
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        nombre</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.nombre }} </mat-cell>
+    </ng-container>
+  <!--  Columna IntervaloId-->
+  <ng-container matColumnDef="seccion">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      seccion</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.seccion }} </mat-cell>
+  </ng-container>
+
+
+  <!--  Columna IntervaloId-->
+  <ng-container matColumnDef="estante">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      estante</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.estante }} </mat-cell>
+  </ng-container>
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="casilla">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        casilla</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.casilla }} </mat-cell>
+    </ng-container>
+
+  <!--  Columna IntervaloId-->
+  <ng-container matColumnDef="cup">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      cup</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.cup }} </mat-cell>
+  </ng-container>
+  <!--  Columna IntervaloId-->
+  <ng-container matColumnDef="existen">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      existen</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.existen }} </mat-cell>
+  </ng-container>
   
 
-<thead>
-    <tr>
-        <th>codigo</th>
-        <th>control</th>
-        <th>nombre</th>
-        <th>seccion</th>
-        <th>estante</th>
-        <th>casilla</th>
-        <th>cuc</th>
-        <th>cup</th>
-        <th>existen</th>
-        <th>cuenta</th>
-        <th>subcuenta</th>
-        <th>precio_cuc</th>
-        <th>precio_cup</th>
-        <th>utm_mov</th>
 
-    </tr>
-</thead>
-
-<tbody>
-    <tr *ngFor="let articulo of articulos">
-        <td>{{articulo.codigo}}</td>
-        <td>{{articulo.control}}</td>
-        <td>{{articulo.nombre}}</td>
-        <td>{{articulo.seccion}}</td>
-        <td>{{articulo.estante}}</td>
-        <td>{{articulo.casilla}}</td>
-        <td>{{articulo.cuc }}</td>
-        <td>{{articulo.cup}}</td>
-        <td>{{articulo.existen}}</td>
-        <td>{{articulo.cuenta}}</td>
-        <td>{{articulo.subcuenta}}</td>
-        <td>{{articulo.precio_cuc}}</td>
-        <td>{{articulo.precio_cup}}</td>
-        <td>{{articulo.utm_mov}}</td>
-
-    </tr>
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="cuenta">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        cuenta</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.cuenta }} </mat-cell>
+    </ng-container>
 
 
-</tbody>
-  </table>
+
+  <!--  Columna IntervaloId-->
+  <ng-container matColumnDef="subcuenta">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      subcuenta</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.subcuenta }} </mat-cell>
+  </ng-container>
+
+  <!--  Columna IntervaloId-->
+  <ng-container matColumnDef="precioCup">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      precioCup</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.precioCUP }} </mat-cell>
+  </ng-container>
+
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="utm_mov">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        utm_mov</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.utm_mov }} </mat-cell>
+    </ng-container>
+    <button mat-raised-button color="warn">Warn</button>
+
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      class="encabezado"
+    ></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+</div>

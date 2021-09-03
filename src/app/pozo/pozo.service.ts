@@ -9,7 +9,7 @@ import {formatDate,registerLocaleData} from '@angular/common'
 export class PozoService  {
   private UrlEndPoint:string='https://localhost:44387/api/pozos';
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
-
+  construccionId:string;
   
   constructor(private http:HttpClient) { }
 
@@ -27,7 +27,7 @@ export class PozoService  {
     return this.http.post<Pozo>(this.UrlEndPoint,Pozo,{headers:this.httpHeaders})
   }
   update(Pozo:Pozo):Observable<Pozo>{
-    return this.http.put<Pozo>(`${this.UrlEndPoint}/${Pozo.PozoId}`,Pozo,{headers:this.httpHeaders})
+    return this.http.put<Pozo>(`${this.UrlEndPoint}/${Pozo.pozoId}`,Pozo,{headers:this.httpHeaders})
   }
  
   delete(id:number):Observable<Pozo>{

@@ -1,5 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
-    <!-- Brand and toggle get grouped for better mobile display -->
+<!-- <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -10,7 +9,7 @@
       <a class="navbar-brand" href="#">SISTIA</a>
     </div>
   
-    <!-- Collect the nav links, forms, and other content for toggling -->
+  
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
        
@@ -34,5 +33,30 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
      
-    </div><!-- /.navbar-collapse -->
-  </nav>
+    </div>
+  </nav> -->
+
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+    <span>SISTIA</span>
+        <span class="example-fill-remaining-space"></span>
+        <span class="align-center"></span>
+        <span class="example-spacer"></span>
+        <button mat-button  routerLink="/winatm">Articulos en el almacen</button>
+        <button mat-button  routerLink="/pozos">Pozos</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>More</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <span>Check voicemail</span>
+      </button>
+      <button mat-menu-item>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+     </mat-toolbar-row>

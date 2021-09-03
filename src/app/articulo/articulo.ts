@@ -1,6 +1,7 @@
-export class Articulo {
-    id:number;
+export interface Articulo {
+    Id:number;
     codigo:string;
+    intervaloId:number;
     control:string;
     nombre:string;
     seccion:string;
@@ -12,7 +13,6 @@ export class Articulo {
     existen:number;
     cuenta:string;
     subcuenta:string;
-    precio_cuc:number;
-    precio_cup:number;
+    precioCup:number;
     utm_mov:string; 
 }

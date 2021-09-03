@@ -1,0 +1,71 @@
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="filtrar($event)" placeholder="buscar">
+</mat-form-field>
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+     <!--  Columna IntervaloId-->
+     <ng-container matColumnDef="codigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+          codigo</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.codigo }} </mat-cell>
+    </ng-container>
+
+
+     <!--  Columna IntervaloId-->
+     <ng-container matColumnDef="mProducto_Descrip">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            mProducto_Descrip</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.mProducto_Descrip }} </mat-cell>
+      </ng-container>
+  
+        <!--  Columna IntervaloId-->
+     <ng-container matColumnDef="ProdAlm_Um">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        ProdAlm_Um</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.prodAlm_Um }} </mat-cell>
+    </ng-container>
+
+
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="ProdAlm_Existencia">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        ProdAlm_Existencia</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.prodAlm_Existencia }} </mat-cell>
+    </ng-container>
+
+
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="mProducto_Precio">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        mProducto_Precio</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.mProducto_Precio }} </mat-cell>
+    </ng-container>
+
+
+  <!--  Columna IntervaloId-->
+  <ng-container matColumnDef="UltmMov">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      UltmMov</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.ultmMov }} </mat-cell>
+  </ng-container>
+
+
+      <mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        class="encabezado"
+      ></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
+
+  </div>
+  

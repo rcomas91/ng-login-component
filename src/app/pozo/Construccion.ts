@@ -1,3 +1,3 @@
 export interface Construccion{
-    ConstruccionId:number;
+    construccionId?:number;
 }

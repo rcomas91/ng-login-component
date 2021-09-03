@@ -1,0 +1,40 @@
+<form [formGroup]="formGroup" #ngForm="ngForm" class="form-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Intervalo Information <span *ngIf="ngForm.submitted && !formGroup.valid" class="small-font "
+          [ngClass]="{'invalid': ngForm.submitted }" style="color: red;">* required</span></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-select placeholder="Camisa" formControlName="Camisa" name="camisas">
+                <mat-option *ngFor="let camisa of camisas" [value]="camisa.mProducto_Descrip">
+                  {{camisa.mProducto_Descrip}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-select placeholder="Barrena" formControlName="Barrena" name="barrenas">
+                <mat-option *ngFor="let barrena of barrenas" [value]="barrena.mProducto_Descrip">
+                  {{barrena.mProducto_Descrip}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="full-width">
+            <input formControlName="Longitud" matInput="" placeholder="longitud">
+          </mat-form-field>
+        </div>
+   
+      
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button   (click)="save()"color="primary">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>

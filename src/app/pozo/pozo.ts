@@ -1,10 +1,11 @@
 import { Construccion } from "./Construccion";
 
 export interface Pozo {
-  PozoId: number;
-  NombrePozo: string;
-  Campana: string;
-  FechaInicio: Date;
-  FechaFin: Date;
-  Construccion: Construccion;
+  pozoId: number;
+  nombrePozo: string;
+  campana: string;
+  ubicacion:string;
+  fechaInicio: Date;
+  fechaFin: Date;
+  construccion?: Construccion;
 }

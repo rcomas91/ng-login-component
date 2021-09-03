@@ -1,0 +1,121 @@
+
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <!--  Columna IntervaloId-->
+      <ng-container matColumnDef="intervaloId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            intervaloId</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.intervaloId }} </mat-cell>
+      </ng-container>
+      <!--  Columna ConstId-->
+      <ng-container matColumnDef="construccionId">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            construccionId</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.construccionId }} </mat-cell>
+      </ng-container>
+
+      
+      <!--  Columna camisa-->
+      <ng-container matColumnDef="camisa">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            camisa</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.camisa}} </mat-cell>
+      </ng-container>
+
+
+      <!--  Columna barrena-->
+      <ng-container matColumnDef="barrena">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            barrena</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.barrena }} </mat-cell>
+      </ng-container>
+
+      <!--  Columna longitud-->
+      <ng-container matColumnDef="longitud">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            FechaFin</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.longitud}} </mat-cell>
+  
+      </ng-container>
+          <!--  Columna Editar-->
+  
+      <ng-container matColumnDef="Editar">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Editar</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">
+          <button mat-raised-button color="primary" [routerLink]="['/intervalos/form',row.intervaloId]" focusable="false" >
+            Editar
+          </button>
+        </mat-cell>
+  
+  
+      </ng-container>
+
+    <!--  Columna Editar-->
+
+<ng-container matColumnDef="Borrar">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>
+    Borrar</mat-header-cell
+  >
+  <mat-cell *matCellDef="let row">
+    <button mat-raised-button color="warn" (click)="delete(row.intervaloId)"focusable="false" >
+        Borrar
+        </button>
+  </mat-cell>
+
+</ng-container>
+
+<ng-container matColumnDef="Recursos">
+  <mat-header-cell *matHeaderCellDef mat-sort-header>
+    Recursos</mat-header-cell
+  >
+  <mat-cell *matCellDef="let row">
+    <button mat-raised-button color="accent" (click)="VerRec(row.intervaloId)" focusable="false" >
+      Recursos
+    </button>
+  </mat-cell>
+
+
+</ng-container>
+      <button mat-raised-button color="warn">Warn</button>
+  
+  
+  
+      <mat-header-row
+        *matHeaderRowDef="displayedColumns"
+        class="encabezado"
+      ></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+ 
+ 
+ 
+ 
+ 
+ 
+    </mat-table>
+  </div>
+
+    <button  [routerLink]="['/intervalos/form']"  mat-raised-button color="accent">Adicionar Intervalo</button>
+
+    <!-- *ngIf="dataSource?.data.length===3" -->
+
+  <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <!-- <mat-card-title>Shiba Inu</mat-card-title> -->
+   
+      </mat-card-header>
+      <img mat-card-image src="../../assets/images/{{cont}}.png" alt="Photo of a Shiba Inu">
+        <p></p>
+    </mat-card>
+
+
+
+  

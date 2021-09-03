@@ -12,22 +12,39 @@ import{HttpClientModule, HttpClient} from '@angular/common/http';
 import { NecesidadComponent } from './necesidad/necesidad.component';
 import { NecesidadService } from './necesidad/necesidad.service';
 import { FormComponent } from './necesidad/form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RespuestasComponent } from './necesidad/respuestas/respuestas.component';
 import { Respuestas1Component } from './necesidad/respuestas1/respuestas1.component';
 import { PozoComponent } from './pozo/pozo.component';
 import { PozoService } from './pozo/pozo.service';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatGridTile, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatRadioModule, MatSort, MatSortModule, MatTableDataSource, MatTableModule, MatToolbarModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { IntervaloComponent } from './intervalo/intervalo.component';
+import { PozoFormComponent } from './pozo/pozo-form.component';
+import { IntervaloFormComponent } from './intervalo/intervalo-form.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { WinatmComponent } from './winatm/winatm.component';
+import { MatSelectModule } from '@angular/material/select';
+
 
 const routes:Routes=[
-  {path:'',redirectTo:'/articulos',pathMatch:'full'},
+  {path:'',redirectTo:'/winatm',pathMatch:'full'},
   {path:'articulos',component:ArticuloComponent},
+  {path:'winatm',component:WinatmComponent},
   {path:'necesidades',component:NecesidadComponent},
   {path:'necesidades/form',component:FormComponent},
   {path:'necesidades/form/:id',component:FormComponent},
   {path:'Satisfechas',component:RespuestasComponent},
   {path:'NoSatisfechas',component:Respuestas1Component},
-  {path:'pozos',component:PozoComponent},
 
+  {path:'pozos',component:PozoComponent},
+  {path:'pozos/form',component:PozoFormComponent},
+  {path:'pozos/form/:id',component:PozoFormComponent},
+
+  {path:'intervalos',component:IntervaloComponent},
+  {path:'intervalos/form',component:IntervaloFormComponent},
+  {path:'intervalos/form/:id',component:IntervaloFormComponent},
 
 ]
 @NgModule({
@@ -41,14 +58,39 @@ const routes:Routes=[
     FormComponent,
     RespuestasComponent,
     Respuestas1Component,
-    PozoComponent
+    PozoComponent,
+    IntervaloComponent,
+    PozoFormComponent,
+    IntervaloFormComponent,
+    WinatmComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    MatSortModule,
+    MatGridListModule,
+    HttpClientModule,
+    MatSliderModule,
+    MatToolbarModule,
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  BrowserAnimationsModule,
+  MatInputModule,
+  MatDialogModule,
+  MatTableModule,
+  MatMenuModule,
+  MatIconModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  ReactiveFormsModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSelectModule,
+  MatPaginatorModule,
+
   ],
   providers: [ArticuloService,NecesidadService ,PozoService],
   bootstrap: [AppComponent]
