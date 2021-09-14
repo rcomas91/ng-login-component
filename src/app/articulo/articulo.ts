@@ -2,17 +2,20 @@ export interface Articulo {
     Id:number;
     codigo:string;
     intervaloId:number;
-    control:string;
+    //control:string;
     nombre:string;
-    seccion:string;
-    estante:string;
-    casilla:string;
-    cuc:number;
-    cup:number;
+    //seccion:string;
+    //estante:string;
+    //casilla:string;
+    //cuc:number;
+    //cup:number;
     UM:string;
-    existen:number;
-    cuenta:string;
-    subcuenta:string;
-    precioCup:number;
+    cantidad:number;
+    existencia:number;
+    //cuenta:string;
+    //subcuenta:string;
+    precioCUP:number;
     utm_mov:string; 
+    
+    
 }

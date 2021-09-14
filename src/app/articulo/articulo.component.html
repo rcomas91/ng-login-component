@@ -16,6 +16,15 @@
       <mat-cell *matCellDef="let row"> {{ row.codigo }} </mat-cell>
     </ng-container>
 
+       <!--  Columna IntervaloId-->
+       <ng-container matColumnDef="UM">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          UM</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.um }} </mat-cell>
+      </ng-container>
+  
+
    <!--  Columna IntervaloId-->
    <ng-container matColumnDef="intervaloId">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -25,14 +34,7 @@
   </ng-container>
 
     
-    <!--  Columna IntervaloId-->
-    <ng-container matColumnDef="control">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        control</mat-header-cell
-      >
-      <mat-cell *matCellDef="let row"> {{ row.control }} </mat-cell>
-    </ng-container>
-    
+  
 
     <!--  Columna IntervaloId-->
     <ng-container matColumnDef="nombre">
@@ -41,71 +43,40 @@
       >
       <mat-cell *matCellDef="let row"> {{ row.nombre }} </mat-cell>
     </ng-container>
-  <!--  Columna IntervaloId-->
-  <ng-container matColumnDef="seccion">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>
-      seccion</mat-header-cell
-    >
-    <mat-cell *matCellDef="let row"> {{ row.seccion }} </mat-cell>
-  </ng-container>
-
+ 
 
   <!--  Columna IntervaloId-->
-  <ng-container matColumnDef="estante">
+  <ng-container matColumnDef="cantidad">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
-      estante</mat-header-cell
+      cantidad solicitada</mat-header-cell
     >
-    <mat-cell *matCellDef="let row"> {{ row.estante }} </mat-cell>
-  </ng-container>
-    <!--  Columna IntervaloId-->
-    <ng-container matColumnDef="casilla">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        casilla</mat-header-cell
-      >
-      <mat-cell *matCellDef="let row"> {{ row.casilla }} </mat-cell>
-    </ng-container>
-
-  <!--  Columna IntervaloId-->
-  <ng-container matColumnDef="cup">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>
-      cup</mat-header-cell
-    >
-    <mat-cell *matCellDef="let row"> {{ row.cup }} </mat-cell>
-  </ng-container>
-  <!--  Columna IntervaloId-->
-  <ng-container matColumnDef="existen">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>
-      existen</mat-header-cell
-    >
-    <mat-cell *matCellDef="let row"> {{ row.existen }} </mat-cell>
+    <mat-cell *matCellDef="let row"> {{ row.cantidad }} </mat-cell>
   </ng-container>
   
 
-
+  <!--  Columna IntervaloId-->
+  <ng-container matColumnDef="existencia">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      Existen en el almacen</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row"> {{ row.existencia }} </mat-cell>
+  </ng-container>
+  
     <!--  Columna IntervaloId-->
-    <ng-container matColumnDef="cuenta">
+    <ng-container matColumnDef="existenciaFinal">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        cuenta</mat-header-cell
+        existenciaFinal</mat-header-cell
       >
-      <mat-cell *matCellDef="let row"> {{ row.cuenta }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.existencia-row.cantidad }} </mat-cell>
     </ng-container>
 
-
-
-  <!--  Columna IntervaloId-->
-  <ng-container matColumnDef="subcuenta">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>
-      subcuenta</mat-header-cell
-    >
-    <mat-cell *matCellDef="let row"> {{ row.subcuenta }} </mat-cell>
-  </ng-container>
 
   <!--  Columna IntervaloId-->
   <ng-container matColumnDef="precioCup">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       precioCup</mat-header-cell
     >
-    <mat-cell *matCellDef="let row"> {{ row.precioCUP }} </mat-cell>
+    <mat-cell *matCellDef="let row"> {{ row.precioCUP|currency }} </mat-cell>
   </ng-container>
 
     <!--  Columna IntervaloId-->
@@ -115,6 +86,17 @@
       >
       <mat-cell *matCellDef="let row"> {{ row.utm_mov }} </mat-cell>
     </ng-container>
+
+    <!--  Columna IntervaloId-->
+    <ng-container matColumnDef="precioTotal">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        precioTotal</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.precioCUP*row.cantidad |currency}} </mat-cell>
+    </ng-container>
+
+
+
     <button mat-raised-button color="warn">Warn</button>
 
     <mat-header-row
@@ -123,4 +105,18 @@
     ></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
+
+
+
+
+
 </div>
+<div>
+  <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Adicionar Recurso</button>
+  
+</div>
+
+<span >Gran Total:{{sum|currency}}</span>
+
+     
+

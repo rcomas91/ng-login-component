@@ -1,4 +1,7 @@
 
+
+
+    
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort>
 
@@ -38,11 +41,21 @@
       <!--  Columna longitud-->
       <ng-container matColumnDef="longitud">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
-            FechaFin</mat-header-cell
+            Longitud</mat-header-cell
         >
         <mat-cell *matCellDef="let row"> {{ row.longitud}} </mat-cell>
   
       </ng-container>
+
+            <!--  Columna longitud-->
+            <ng-container matColumnDef="PrecioTotal">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>
+                PrecioTotal</mat-header-cell
+              >
+              <mat-cell *matCellDef="let row"> {{ calcularMonto(row)|currency}} </mat-cell>
+        
+            </ng-container>
+      
           <!--  Columna Editar-->
   
       <ng-container matColumnDef="Editar">
@@ -102,7 +115,10 @@
     </mat-table>
   </div>
 
-    <button  [routerLink]="['/intervalos/form']"  mat-raised-button color="accent">Adicionar Intervalo</button>
+<div>    <button  [routerLink]="['/intervalos/form']"  mat-raised-button color="accent">Adicionar Intervalo</button>
+</div>
+
+<span >Gran Total:{{sum|currency}}</span>
 
     <!-- *ngIf="dataSource?.data.length===3" -->
 

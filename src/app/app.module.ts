@@ -18,7 +18,7 @@ import { Respuestas1Component } from './necesidad/respuestas1/respuestas1.compon
 import { PozoComponent } from './pozo/pozo.component';
 import { PozoService } from './pozo/pozo.service';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatGridTile, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatRadioModule, MatSort, MatSortModule, MatTableDataSource, MatTableModule, MatToolbarModule } from '@angular/material';
+import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatGridTile, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatRadioModule, MatSort, MatSortModule, MatTableDataSource, MatTableModule, MatToolbarModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { IntervaloComponent } from './intervalo/intervalo.component';
 import { PozoFormComponent } from './pozo/pozo-form.component';
@@ -26,11 +26,15 @@ import { IntervaloFormComponent } from './intervalo/intervalo-form.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { WinatmComponent } from './winatm/winatm.component';
 import { MatSelectModule } from '@angular/material/select';
+import { ArticuloFormComponent } from './articulo/articulo-form.component';
 
 
 const routes:Routes=[
   {path:'',redirectTo:'/winatm',pathMatch:'full'},
   {path:'articulos',component:ArticuloComponent},
+  {path:'articulos/form',component:ArticuloFormComponent},
+  {path:'articulos/form/:id',component:ArticuloFormComponent},
+
   {path:'winatm',component:WinatmComponent},
   {path:'necesidades',component:NecesidadComponent},
   {path:'necesidades/form',component:FormComponent},
@@ -62,7 +66,8 @@ const routes:Routes=[
     IntervaloComponent,
     PozoFormComponent,
     IntervaloFormComponent,
-    WinatmComponent
+    WinatmComponent,
+    ArticuloFormComponent
   ],
   imports: [
     FormsModule,
@@ -90,6 +95,7 @@ const routes:Routes=[
   MatNativeDateModule,
   MatSelectModule,
   MatPaginatorModule,
+  MatAutocompleteModule,
 
   ],
   providers: [ArticuloService,NecesidadService ,PozoService],
