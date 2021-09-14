@@ -84,7 +84,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         utm_mov</mat-header-cell
       >
-      <mat-cell *matCellDef="let row"> {{ row.utm_mov }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.utm_mov |date}} </mat-cell>
     </ng-container>
 
     <!--  Columna IntervaloId-->

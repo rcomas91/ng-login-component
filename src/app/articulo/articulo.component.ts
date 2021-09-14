@@ -14,7 +14,7 @@ export class ArticuloComponent implements OnInit {
   @ViewChild(MatTable,{static: true}) table: MatTable<Articulo>;
 articulos: Articulo[];  
 item:SomeModel;
-sum:number=0;
+sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
   constructor(private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
   displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov'];
   dataSource: any;
@@ -23,7 +23,7 @@ sum:number=0;
   ngOnInit(){
  
   this.renderDataTable();
-  console.log(this.intervaloService.intervaloId)
+  console.log(this.intervaloService.intervalo)
 
   }
   delete(id:number) {
@@ -48,11 +48,10 @@ sum:number=0;
       .subscribe(
           x => {
     this.dataSource = new MatTableDataSource();
-    console.log(this.intervaloService.intervaloId)
-    this.dataSource.data = x.filter(art => art.intervaloId == this.intervaloService.intervaloId)
+    console.log(this.intervaloService.intervalo)
+    this.dataSource.data = x.filter(art => art.intervaloId == this.intervaloService.intervalo.intervaloId)
             this.dataSource.data.forEach((item:Articulo)=> {
               this.sum+=item.precioCUP*item.cantidad;
-              
               
             });
       

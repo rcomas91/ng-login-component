@@ -9,7 +9,7 @@ import { Intervalo } from './intervalo';
 export class IntervaloService {
 
 
-  intervaloId:number;
+  intervalo:Intervalo;
   constructor(private http:HttpClient) { }
 
   private UrlEndPoint:string='https://localhost:44387/api/intervalos';

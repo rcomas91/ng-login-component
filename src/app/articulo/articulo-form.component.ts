@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { ArticuloService } from './articulo.service';
 import { Articulo } from './articulo';
@@ -26,7 +26,7 @@ export class ArticuloFormComponent implements OnInit {
 
     this.formGroup = this.fb.group({
       codigo:['', [Validators.required]],
-      intervaloId: [this.intervaloService.intervaloId, [Validators.required]],
+      intervaloId: [this.intervaloService.intervalo.intervaloId, [Validators.required]],
       nombre: ['', [Validators.required]],
       UM: ['', [Validators.required]],
       cantidad: ['', [Validators.required]],
@@ -57,6 +57,7 @@ export class ArticuloFormComponent implements OnInit {
       
 //this.pozoService.getCustomers().subscribe(customersDeWs => this.customers = customersDeWs, error => console.error(error));
   }
+  
 
   cargarFormulario(art: Articulo) {
     console.log(art.nombre)

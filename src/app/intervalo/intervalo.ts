@@ -6,6 +6,8 @@ export class Intervalo {
     camisa: string;
     barrena:string;
     longitud:string;
+    precioB:number;
+    precioC:number;
     recursos: Articulo[];
     precioTotal:number;
 

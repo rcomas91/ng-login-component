@@ -27,6 +27,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { WinatmComponent } from './winatm/winatm.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ArticuloFormComponent } from './articulo/articulo-form.component';
+import { ConstruccionService } from './pozo/construccion.service';
 
 
 const routes:Routes=[
@@ -98,7 +99,7 @@ const routes:Routes=[
   MatAutocompleteModule,
 
   ],
-  providers: [ArticuloService,NecesidadService ,PozoService],
+  providers: [ArticuloService,NecesidadService ,PozoService,ConstruccionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

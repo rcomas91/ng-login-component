@@ -1,5 +1,9 @@
-.mat-card-image{
+/* .mat-card-image{
     width: calc(20% + 10px)!important;
+} */
+
+.example-card{
+     width: calc(30% + 10px)!important;
 }
 span {
     margin-left:90%;

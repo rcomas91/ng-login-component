@@ -35,7 +35,7 @@ cont:number;
   }
 
   calcularMonto(int:Intervalo):number{
-    let sum=0;
+    let sum=int.precioC+int.precioB;
     int.recursos.forEach((item:Articulo)=> {
       sum+=item.precioCUP*item.cantidad;
       
@@ -78,9 +78,9 @@ cont:number;
   });
 }
 
-VerRec(intervaloId:number){
-  console.log(intervaloId)
-  this.intervaloService.intervaloId=intervaloId;
+VerRec(intervalo){
+  console.log(intervalo)
+  this.intervaloService.intervalo=intervalo;
 
   this.router.navigate(['/articulos'])
 
