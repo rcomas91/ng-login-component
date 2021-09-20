@@ -7,12 +7,19 @@ import { Articulo } from './articulo';
 import { WinatmService } from '../winatm/winatm.service';
 import { SomeModel } from '../winatm/SomeModel';
 import { IntervaloService } from '../intervalo/intervalo.service';
+import { Observable } from 'rxjs';
+import { flatMap, map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-articulo-form',
   templateUrl: './articulo-form.component.html',
+  styleUrls: ['./articulo-form.component.css']
+
 })
 export class ArticuloFormComponent implements OnInit {
+  autocompleteControl = new FormControl();
+  recursosfiltrados: Observable<SomeModel[]>;
+  recursos:string[]=['One','Two'];
 
   constructor(private intervaloService:IntervaloService,private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private articuloService: ArticuloService) { }
   modoEdicion: boolean = false;
@@ -23,6 +30,11 @@ export class ArticuloFormComponent implements OnInit {
   formGroup: FormGroup;
   intervaloId: number;
   ngOnInit() {
+    this.recursosfiltrados = this.autocompleteControl.valueChanges
+    .pipe(
+      map(value=>typeof value==='string'?value:value.mProducto_Descrip),
+      flatMap(value =>value? this._filter(value):[])
+    );
 
     this.formGroup = this.fb.group({
       codigo:['', [Validators.required]],
@@ -57,7 +69,12 @@ export class ArticuloFormComponent implements OnInit {
       
 //this.pozoService.getCustomers().subscribe(customersDeWs => this.customers = customersDeWs, error => console.error(error));
   }
-  
+  private _filter(value: string): Observable<SomeModel[]> {
+    const filterValue = value.toLowerCase();
+    
+    return this.winatmService.getSomeModelsFiltrado(filterValue);
+  }
+
 
   cargarFormulario(art: Articulo) {
     console.log(art.nombre)
@@ -76,7 +93,16 @@ export class ArticuloFormComponent implements OnInit {
   }
 
   save() {
+    this.seleccionado=this.autocompleteControl.value;
+    console.log(this.seleccionado)
+  this.formGroup.controls['codigo'].setValue(this.seleccionado.codigo)
+  this.formGroup.controls['nombre'].setValue(this.seleccionado.mProducto_Descrip)
+  this.formGroup.controls['UM'].setValue(this.seleccionado.prodAlm_Um)
+  this.formGroup.controls['precioCUP'].setValue(this.seleccionado.mProducto_Precio)
+  this.formGroup.controls['utm_mov'].setValue(this.seleccionado.ultmMov)
+  this.formGroup.controls['existencia'].setValue(this.seleccionado.prodAlm_Existencia)
     let art: Articulo = Object.assign({}, this.formGroup.value);
+ 
     console.table(art);
     if (this.modoEdicion) {
       //edit register
@@ -87,6 +113,8 @@ export class ArticuloFormComponent implements OnInit {
 
     else {
       //add register
+     
+    
       this.articuloService.create(art).
         subscribe(order => this.onSaveSuccess(),
         error => console.error(error));
@@ -108,5 +136,9 @@ export class ArticuloFormComponent implements OnInit {
     this.formGroup.controls['existencia'].setValue(this.seleccionado.prodAlm_Existencia)
     
 
+  }
+
+  mostrarNombre(recurso?:SomeModel):string|undefined{
+    return recurso? recurso.mProducto_Descrip: undefined;
   }
 }

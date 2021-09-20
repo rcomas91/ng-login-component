@@ -92,8 +92,8 @@ VerConst(construccionId:string){
 
   }
   onSaveSuccess() {
-
-    this.router.navigate(["/intervalos"]);
+    this.renderDataTable()
+    this.router.navigate(["/pozos"]);
   }
 
 

@@ -30,6 +30,7 @@ import { ArticuloFormComponent } from './articulo/articulo-form.component';
 import { ConstruccionService } from './pozo/construccion.service';
 
 
+
 const routes:Routes=[
   {path:'',redirectTo:'/winatm',pathMatch:'full'},
   {path:'articulos',component:ArticuloComponent},
