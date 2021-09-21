@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable, MatTableDataSource } from '@angular/material';
 import { IntervaloService } from '../intervalo/intervalo.service';
+import { NecesidadComponent } from '../necesidad/necesidad.component';
+import { NecesidadService } from '../necesidad/necesidad.service';
 import { SomeModel } from '../winatm/SomeModel';
 import { Articulo } from "./articulo";
 import { ArticuloService } from './articulo.service';
@@ -15,8 +17,8 @@ export class ArticuloComponent implements OnInit {
 articulos: Articulo[];  
 item:SomeModel;
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
-  constructor(private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
-  displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov'];
+  constructor(private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
+  displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov','Borrar'];
   dataSource: any;
 
 
@@ -31,6 +33,8 @@ sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.interva
 
     this.articuloService.delete(id).subscribe(articulo => this.renderDataTable(),
       error => console.error(error));
+      
+      
   }
 }
 
@@ -44,15 +48,18 @@ sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.interva
   }
 
   renderDataTable() {
+
     this.articuloService.getArticulos()
       .subscribe(
           x => {
     this.dataSource = new MatTableDataSource();
     console.log(this.intervaloService.intervalo)
     this.dataSource.data = x.filter(art => art.intervaloId == this.intervaloService.intervalo.intervaloId)
+            this.sum=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
             this.dataSource.data.forEach((item:Articulo)=> {
+         
               this.sum+=item.precioCUP*item.cantidad;
-              
+              console.log(this.sum)
             });
       
 
@@ -63,5 +70,12 @@ sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.interva
     console.log('Ocurrió un error al consultar los articulos!' + error);
   });
 }
+
+
+
+
+
+
   }
 
+  

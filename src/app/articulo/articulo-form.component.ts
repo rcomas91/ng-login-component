@@ -9,6 +9,8 @@ import { SomeModel } from '../winatm/SomeModel';
 import { IntervaloService } from '../intervalo/intervalo.service';
 import { Observable } from 'rxjs';
 import { flatMap, map, startWith } from 'rxjs/operators';
+import { Necesidad } from '../necesidad/necesidad';
+import { NecesidadService } from '../necesidad/necesidad.service';
 
 @Component({
   selector: 'app-articulo-form',
@@ -21,13 +23,15 @@ export class ArticuloFormComponent implements OnInit {
   recursosfiltrados: Observable<SomeModel[]>;
   recursos:string[]=['One','Two'];
 
-  constructor(private intervaloService:IntervaloService,private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private articuloService: ArticuloService) { }
+  constructor(private necesidadService: NecesidadService,private intervaloService:IntervaloService,private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private articuloService: ArticuloService) { }
   modoEdicion: boolean = false;
   articuloId:number;
   articulos:SomeModel[];
   seleccionado:SomeModel;
 
   formGroup: FormGroup;
+  
+  formGroup2: FormGroup;
   intervaloId: number;
   ngOnInit() {
     this.recursosfiltrados = this.autocompleteControl.valueChanges
@@ -46,6 +50,20 @@ export class ArticuloFormComponent implements OnInit {
       utm_mov: ['', [Validators.required]],
       existencia :['', [Validators.required]],
       
+
+
+
+    });
+    this.formGroup2 = this.fb.group({
+      codigo:['', [Validators.required]],
+      intervaloId: [this.intervaloService.intervalo.intervaloId, [Validators.required]],
+      nombre: ['', [Validators.required]],
+      UM: ['', [Validators.required]],
+      cantidad: ['', [Validators.required]],
+      precioCUP: ['', [Validators.required]],
+      utm_mov: ['', [Validators.required]],
+      existencia :['', [Validators.required]],
+      estado:['', [Validators.required]]
 
 
 
@@ -104,6 +122,24 @@ export class ArticuloFormComponent implements OnInit {
     let art: Articulo = Object.assign({}, this.formGroup.value);
  
     console.table(art);
+    if(art.existencia-art.cantidad<0){
+      this.formGroup2.controls['codigo'].setValue(this.seleccionado.codigo)
+    this.formGroup2.controls['nombre'].setValue(this.seleccionado.mProducto_Descrip)
+    this.formGroup2.controls['UM'].setValue(this.seleccionado.prodAlm_Um)
+    this.formGroup2.controls['precioCUP'].setValue(this.seleccionado.mProducto_Precio)
+    this.formGroup2.controls['utm_mov'].setValue(this.seleccionado.ultmMov)
+    this.formGroup2.controls['existencia'].setValue(this.seleccionado.prodAlm_Existencia)
+    this.formGroup2.controls['cantidad'].setValue(art.cantidad-art.existencia)
+  
+    this.formGroup2.controls['estado'].setValue("Esperando")
+  
+      var necesidad: Necesidad = Object.assign({}, this.formGroup2.value);
+      console.table(necesidad)
+      
+  
+    }
+
+   
     if (this.modoEdicion) {
       //edit register
       art.Id = this.articuloId;
@@ -114,10 +150,14 @@ export class ArticuloFormComponent implements OnInit {
     else {
       //add register
      
-    
+     
+   
       this.articuloService.create(art).
-        subscribe(order => this.onSaveSuccess(),
+        subscribe(art => this.onSaveSuccess(),
         error => console.error(error));
+
+      this.necesidadService.create(necesidad).subscribe(necesidad => this.onSaveSuccess(),
+      error => console.error(error));
     }
   }
   onSaveSuccess() {

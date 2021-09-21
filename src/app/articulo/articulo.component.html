@@ -99,6 +99,18 @@
 
 
 
+    <ng-container matColumnDef="Borrar">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Borrar</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row">
+        <button mat-raised-button color="warn" (click)="delete(row.id)"focusable="false" >
+            Borrar
+            </button>
+      </mat-cell>
+    
+    </ng-container>
+
     <button mat-raised-button color="warn">Warn</button>
 
     <mat-header-row
@@ -107,8 +119,6 @@
     ></mat-header-row>
     <mat-row [ngClass]="{ 'marked': (row.existencia-row.cantidad) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
-
-
 
 
 
@@ -122,3 +132,6 @@
 
      
 
+
+<h2 >Necesidades</h2>
+<app-necesidad></app-necesidad>

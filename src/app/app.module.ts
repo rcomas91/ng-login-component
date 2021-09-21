@@ -13,8 +13,7 @@ import { NecesidadComponent } from './necesidad/necesidad.component';
 import { NecesidadService } from './necesidad/necesidad.service';
 import { FormComponent } from './necesidad/form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RespuestasComponent } from './necesidad/respuestas/respuestas.component';
-import { Respuestas1Component } from './necesidad/respuestas1/respuestas1.component';
+
 import { PozoComponent } from './pozo/pozo.component';
 import { PozoService } from './pozo/pozo.service';
 import { MatSliderModule } from '@angular/material/slider';
@@ -41,8 +40,7 @@ const routes:Routes=[
   {path:'necesidades',component:NecesidadComponent},
   {path:'necesidades/form',component:FormComponent},
   {path:'necesidades/form/:id',component:FormComponent},
-  {path:'Satisfechas',component:RespuestasComponent},
-  {path:'NoSatisfechas',component:Respuestas1Component},
+
 
   {path:'pozos',component:PozoComponent},
   {path:'pozos/form',component:PozoFormComponent},
@@ -62,8 +60,7 @@ const routes:Routes=[
     ArticuloComponent,
     NecesidadComponent,
     FormComponent,
-    RespuestasComponent,
-    Respuestas1Component,
+
     PozoComponent,
     IntervaloComponent,
     PozoFormComponent,
