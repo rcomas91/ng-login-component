@@ -96,6 +96,6 @@ VerConst(construccionId:string){
     this.router.navigate(["/pozos"]);
   }
 
-
+ 
 
 }

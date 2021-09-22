@@ -6,6 +6,8 @@ import { NecesidadService } from '../necesidad/necesidad.service';
 import { SomeModel } from '../winatm/SomeModel';
 import { Articulo } from "./articulo";
 import { ArticuloService } from './articulo.service';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-articulo', 
   templateUrl: './articulo.component.html',
@@ -17,7 +19,7 @@ export class ArticuloComponent implements OnInit {
 articulos: Articulo[];  
 item:SomeModel;
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
-  constructor(private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
+  constructor(private _location:Location,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
   displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov','Editar','Borrar'];
   dataSource: any;
 
@@ -38,7 +40,9 @@ sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.interva
   }
 }
 
- 
+goBack(){
+  this._location.back();
+}
   cargarData() {
     this.articuloService.getArticulos().subscribe(
     articulosDesdesWS => this.articulos = articulosDesdesWS,

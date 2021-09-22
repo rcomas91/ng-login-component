@@ -40,7 +40,7 @@
  -->
 
  <div class="example-container mat-elevation-z8">
-    <mat-table #table [dataSource]="dataSource" matSort>
+    <mat-table #table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">
    
       <!--  Columna id-->
       <ng-container matColumnDef="id">
@@ -162,8 +162,8 @@
   
   </div>
 
-  <button mat-raised-button color="warn" (click)="exportExcel()">Exportar datos</button>
-
+  <button mat-raised-button color="primary" 
+  (click)="exporter.exportTable('xlsx', {fileName:'table'})">Export to xlsx</button>
   <!-- <div>
     <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Adicionar Recurso</button>
     

@@ -5,6 +5,7 @@ import { Articulo } from '../articulo/articulo';
 import { PozoService } from '../pozo/pozo.service';
 import { Intervalo } from './intervalo';
 import { IntervaloService } from './intervalo.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-intervalo',
@@ -16,7 +17,7 @@ export class IntervaloComponent implements OnInit {
   
 intervalos: Intervalo[];  
 cont:number;
-  constructor(private router:Router,private intervaloService:IntervaloService,public pozoService:PozoService) { }
+  constructor(private _location:Location,private router:Router,private intervaloService:IntervaloService,public pozoService:PozoService) { }
   displayedColumns = ['intervaloId','construccionId','camisa','barrena','longitud','PrecioTotal','Editar','Borrar', 'Recursos'];
   dataSource: any;
   sum:number;
@@ -87,6 +88,11 @@ VerRec(intervalo){
 
 
 }
+
+goBack(){
+  this._location.back();
+}
+
   }
 
 

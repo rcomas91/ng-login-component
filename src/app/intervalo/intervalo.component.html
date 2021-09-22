@@ -95,9 +95,7 @@
 
 
 </ng-container>
-      <button mat-raised-button color="warn">Warn</button>
-  
-  
+    
   
       <mat-header-row
         *matHeaderRowDef="displayedColumns"
@@ -112,9 +110,12 @@
  
     </mat-table>
   </div>
-
-<div>    <button  [routerLink]="['/intervalos/form']"  mat-raised-button color="accent">Adicionar Intervalo</button>
+  <div>
+  <button mat-raised-button (click)="goBack()">Volver</button>
+   <button  [routerLink]="['/intervalos/form']"  mat-raised-button color="accent">Adicionar Intervalo</button>
 </div>
+
+
 
 <span >Gran Total:{{sum|currency}}</span>
 
@@ -128,5 +129,4 @@
       <img mat-card-image src="../../assets/images/{{cont}}.png" alt="Photo of a Shiba Inu">
        
     </mat-card>
-
 

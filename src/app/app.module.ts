@@ -27,6 +27,7 @@ import { WinatmComponent } from './winatm/winatm.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ArticuloFormComponent } from './articulo/articulo-form.component';
 import { ConstruccionService } from './pozo/construccion.service';
+import { MatTableExporterModule } from 'mat-table-exporter';
 
 
 
@@ -95,6 +96,7 @@ const routes:Routes=[
   MatSelectModule,
   MatPaginatorModule,
   MatAutocompleteModule,
+  MatTableExporterModule
 
   ],
   providers: [ArticuloService,NecesidadService ,PozoService,ConstruccionService],

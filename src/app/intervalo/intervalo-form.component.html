@@ -7,7 +7,7 @@
       <mat-card-content>
         <div class="row">
           <div class="col-md-6">
-            <mat-form-field>
+            <mat-form-field [style.width.px]=400 >
               <mat-select placeholder="Camisa" name="camisas"  (selectionChange)="myChange2($event.value)">
                 <mat-option *ngFor="let camisa of camisas" [value]="camisa">
                   {{camisa.mProducto_Descrip}}
@@ -16,7 +16,7 @@
             </mat-form-field>
           </div>
           <div class="col-md-6">
-            <mat-form-field>
+            <mat-form-field [style.width.px]=400>
               <mat-select placeholder="Barrena"  name="barrenas" (selectionChange)="myChange($event.value)">
                 <mat-option *ngFor="let barrena of barrenas" [value]="barrena">
                   {{barrena.mProducto_Descrip}}

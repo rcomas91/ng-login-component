@@ -108,11 +108,5 @@ export class NecesidadComponent implements OnInit {
     this.router.navigate(["/necesidades"]);
   }
 
-  exportExcel() {
-    const workSheet = XLSX.utils.json_to_sheet(this.dataSource.data, {header:['dataprop1', 'dataprop2']});
-    const workBook: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workBook, workSheet, 'SheetName');
-    XLSX.writeFile(workBook, 'filename.xlsx');
-}
 
 }
