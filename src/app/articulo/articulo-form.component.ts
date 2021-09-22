@@ -131,7 +131,7 @@ export class ArticuloFormComponent implements OnInit {
     this.formGroup2.controls['existencia'].setValue(this.seleccionado.prodAlm_Existencia)
     this.formGroup2.controls['cantidad'].setValue(art.cantidad-art.existencia)
   
-    this.formGroup2.controls['estado'].setValue("Esperando")
+    this.formGroup2.controls['estado'].setValue("Pendiente a solicitar")
   
       var necesidad: Necesidad = Object.assign({}, this.formGroup2.value);
       console.table(necesidad)
@@ -143,6 +143,7 @@ export class ArticuloFormComponent implements OnInit {
     if (this.modoEdicion) {
       //edit register
       art.Id = this.articuloId;
+      
       this.articuloService.update(art).subscribe(art => this.onSaveSuccess(),
         error => console.error(error));
     }
@@ -150,9 +151,7 @@ export class ArticuloFormComponent implements OnInit {
     else {
       //add register
      
-     
-   
-      this.articuloService.create(art).
+        this.articuloService.create(art).
         subscribe(art => this.onSaveSuccess(),
         error => console.error(error));
 
@@ -165,18 +164,18 @@ export class ArticuloFormComponent implements OnInit {
   }
 
 
-  myChange($event){
-    console.log($event);
-    this.seleccionado=$event;
-    this.formGroup.controls['codigo'].setValue(this.seleccionado.codigo)
-    this.formGroup.controls['nombre'].setValue(this.seleccionado.mProducto_Descrip)
-    this.formGroup.controls['UM'].setValue(this.seleccionado.prodAlm_Um)
-    this.formGroup.controls['precioCUP'].setValue(this.seleccionado.mProducto_Precio)
-    this.formGroup.controls['utm_mov'].setValue(this.seleccionado.ultmMov)
-    this.formGroup.controls['existencia'].setValue(this.seleccionado.prodAlm_Existencia)
+  // myChange($event){
+  //   console.log($event);
+  //   this.seleccionado=$event;
+  //   this.formGroup.controls['codigo'].setValue(this.seleccionado.codigo)
+  //   this.formGroup.controls['nombre'].setValue(this.seleccionado.mProducto_Descrip)
+  //   this.formGroup.controls['UM'].setValue(this.seleccionado.prodAlm_Um)
+  //   this.formGroup.controls['precioCUP'].setValue(this.seleccionado.mProducto_Precio)
+  //   this.formGroup.controls['utm_mov'].setValue(this.seleccionado.ultmMov)
+  //   this.formGroup.controls['existencia'].setValue(this.seleccionado.prodAlm_Existencia)
     
 
-  }
+  // }
 
   mostrarNombre(recurso?:SomeModel):string|undefined{
     return recurso? recurso.mProducto_Descrip: undefined;

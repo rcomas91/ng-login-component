@@ -1,6 +1,6 @@
 import {Articulo} from 'src/app/articulo/articulo';
 export class Necesidad {
-    Id:number;
+    id:number;
     codigo:string;
     intervaloId:number;
     //control:string;

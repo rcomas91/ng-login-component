@@ -132,10 +132,12 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       estado</mat-header-cell
     >
-    <mat-cell *matCellDef="let row"> {{ row.estado}} </mat-cell>
+    <mat-cell *matCellDef="let row" style="cursor: pointer;" (click)="cambiarEstado(row)"> {{ row.estado}} </mat-cell>
+    
   </ng-container>
 
-  
+     
+
       <ng-container matColumnDef="Borrar">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
           Borrar</mat-header-cell
@@ -148,7 +150,6 @@
       
       </ng-container>
   
-      <button mat-raised-button color="warn">Warn</button>
   
       <mat-header-row
         *matHeaderRowDef="displayedColumns"
@@ -160,6 +161,9 @@
   
   
   </div>
+
+  <button mat-raised-button color="warn" (click)="exportExcel()">Exportar datos</button>
+
   <!-- <div>
     <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Adicionar Recurso</button>
     

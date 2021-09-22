@@ -44,7 +44,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         mProducto_Precio</mat-header-cell
       >
-      <mat-cell *matCellDef="let row"> {{ row.mProducto_Precio }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.mProducto_Precio|currency }} </mat-cell>
     </ng-container>
 
 
@@ -53,7 +53,7 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       UltmMov</mat-header-cell
     >
-    <mat-cell *matCellDef="let row"> {{ row.ultmMov }} </mat-cell>
+    <mat-cell *matCellDef="let row"> {{ row.ultmMov|date }} </mat-cell>
   </ng-container>
 
 

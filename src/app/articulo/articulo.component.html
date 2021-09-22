@@ -97,7 +97,20 @@
       <mat-cell *matCellDef="let row"> {{ row.precioCUP*row.cantidad |currency}} </mat-cell>
     </ng-container>
 
-
+          <!--  Columna Editar-->
+  
+          <ng-container matColumnDef="Editar">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                Editar</mat-header-cell
+            >
+            <mat-cell *matCellDef="let row">
+              <button mat-raised-button color="primary" [routerLink]="['/articulos/form',row.id]" focusable="false" >
+                Editar
+              </button>
+            </mat-cell>
+      
+      
+          </ng-container>
 
     <ng-container matColumnDef="Borrar">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -130,8 +143,7 @@
 
 <span >Gran Total:{{sum|currency}}</span>
 
-     
+ 
 
-
-<h2 >Necesidades</h2>
-<app-necesidad></app-necesidad>
+<!-- <h2 >Necesidades</h2>
+<app-necesidad></app-necesidad> -->

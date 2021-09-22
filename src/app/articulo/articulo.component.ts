@@ -18,7 +18,7 @@ articulos: Articulo[];
 item:SomeModel;
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
   constructor(private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
-  displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov','Borrar'];
+  displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov','Editar','Borrar'];
   dataSource: any;
 
 

@@ -26,9 +26,9 @@ export class NecesidadService  {
   create(necesidad:Necesidad):Observable<Necesidad>{
     return this.http.post<Necesidad>(this.UrlEndPoint,necesidad,{headers:this.httpHeaders})
   }
-  // update(necesidad:Necesidad):Observable<Necesidad>{
-  //   return this.http.put<Necesidad>(`${this.UrlEndPoint}/${necesidad.id}`,necesidad,{headers:this.httpHeaders})
-  // }
+   update(necesidad:Necesidad):Observable<Necesidad>{
+   return this.http.put<Necesidad>(`${this.UrlEndPoint}/${necesidad.id}`,necesidad,{headers:this.httpHeaders})
+ }
  
   delete(id:number):Observable<Necesidad>{
     return this.http.delete<Necesidad>(`${this.UrlEndPoint}/${id}`,{headers:this.httpHeaders})
