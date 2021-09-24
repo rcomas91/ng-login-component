@@ -16,6 +16,8 @@ export class PozoFormComponent implements OnInit {
   pozoId:number;
   formGroup: FormGroup;
   ConstruccionId: number;
+  ubicaciones:string[]=["Varadero Oeste","Fraile","Santa Cruz","Santa Maria","Boca de Jaruco"]
+
   ngOnInit() {
 
     this.formGroup = this.fb.group({

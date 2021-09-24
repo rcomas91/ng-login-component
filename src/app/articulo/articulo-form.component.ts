@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { flatMap, map, startWith } from 'rxjs/operators';
 import { Necesidad } from '../necesidad/necesidad';
 import { NecesidadService } from '../necesidad/necesidad.service';
+import { PozoService } from '../pozo/pozo.service';
 
 @Component({
   selector: 'app-articulo-form',
@@ -23,7 +24,7 @@ export class ArticuloFormComponent implements OnInit {
   recursosfiltrados: Observable<SomeModel[]>;
   recursos:string[]=['One','Two'];
 
-  constructor(private necesidadService: NecesidadService,private intervaloService:IntervaloService,private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private articuloService: ArticuloService) { }
+  constructor(private pozoService:PozoService,private necesidadService: NecesidadService,private intervaloService:IntervaloService,private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private articuloService: ArticuloService) { }
   modoEdicion: boolean = false;
   articuloId:number;
   articulos:SomeModel[];
@@ -34,6 +35,8 @@ export class ArticuloFormComponent implements OnInit {
   formGroup2: FormGroup;
   intervaloId: number;
   ngOnInit() {
+
+    console.log(this.pozoService.construccion.construccionId)
     this.recursosfiltrados = this.autocompleteControl.valueChanges
     .pipe(
       map(value=>typeof value==='string'?value:value.mProducto_Descrip),
@@ -63,7 +66,8 @@ export class ArticuloFormComponent implements OnInit {
       precioCUP: ['', [Validators.required]],
       utm_mov: ['', [Validators.required]],
       existencia :['', [Validators.required]],
-      estado:['', [Validators.required]]
+      estado:['', [Validators.required]],
+      nombrePozo: [this.pozoService.pozo.nombrePozo, [Validators.required]]
 
 
 

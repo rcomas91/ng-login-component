@@ -136,6 +136,16 @@
     
   </ng-container>
 
+   <!--  Columna IntervaloId-->
+   <ng-container matColumnDef="nombrePozo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      nombrePozo</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row" > {{ row.nombrePozo}} </mat-cell>
+    
+  </ng-container>
+
+
      
 
       <ng-container matColumnDef="Borrar">

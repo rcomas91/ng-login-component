@@ -33,6 +33,7 @@ export class NecesidadComponent implements OnInit {
     "precioTotal",
     "utm_mov",
     "estado",
+    "nombrePozo",
     "Borrar",
   ];
   dataSource: any;

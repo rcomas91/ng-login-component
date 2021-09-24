@@ -71,12 +71,12 @@ export class PozoComponent implements OnInit {
   });
 }
 
-VerConst(construccionId:string){
-  console.log(construccionId)
+VerConst(construccion:Construccion,pozo:Pozo){
+  console.log(construccion)
   this.router.navigate(['/intervalos'])
 
-    this.pozoService.construccionId=construccionId;
-
+    this.pozoService.construccion=construccion;
+    this.pozoService.pozo=pozo;
   }
   
 

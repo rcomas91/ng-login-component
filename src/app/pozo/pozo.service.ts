@@ -5,12 +5,13 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {formatDate,registerLocaleData} from '@angular/common'
+import { Construccion } from './Construccion';
 @Injectable()
 export class PozoService  {
   private UrlEndPoint:string='https://localhost:44387/api/pozos';
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
-  construccionId:string;
-  
+  construccion:Construccion;
+  pozo:Pozo;
   constructor(private http:HttpClient) { }
 
   

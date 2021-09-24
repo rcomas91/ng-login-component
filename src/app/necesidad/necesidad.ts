@@ -18,6 +18,7 @@ export class Necesidad {
     precioCUP:number;
     utm_mov:string; 
     estado:string;
+    nombrePozo:string;
     
 
 }

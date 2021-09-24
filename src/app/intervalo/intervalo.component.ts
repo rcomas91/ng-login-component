@@ -23,7 +23,7 @@ cont:number;
   sum:number;
   ngOnInit(){
   this.renderDataTable();
-  console.log(this.pozoService.construccionId)
+  console.log(this.pozoService.construccion.construccionId)
  
   }
   delete(intervaloId:number) {
@@ -60,7 +60,7 @@ cont:number;
       .subscribe(
           x => {
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = x.filter(inter => inter.construccionId == this.pozoService.construccionId);
+    this.dataSource.data = x.filter(inter => inter.construccionId == this.pozoService.construccion.construccionId);
     
     console.log(this.dataSource.data);
     this.cont=this.dataSource.data.length;
@@ -90,7 +90,8 @@ VerRec(intervalo){
 }
 
 goBack(){
-  this._location.back();
+ // this._location.back();
+  this.router.navigate(["/pozos"]);
 }
 
   }

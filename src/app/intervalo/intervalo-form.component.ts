@@ -31,7 +31,7 @@ export class IntervaloFormComponent implements OnInit {
     
 
     this.formGroup = this.fb.group({
-      ConstruccionId:[this.pozoService.construccionId, [Validators.required]],
+      ConstruccionId:[this.pozoService.construccion.construccionId, [Validators.required]],
       Camisa: ['', [Validators.required]],
       Barrena: ['', [Validators.required]],
       Longitud: ['', [Validators.required]],
