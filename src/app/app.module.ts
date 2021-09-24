@@ -28,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { ArticuloFormComponent } from './articulo/articulo-form.component';
 import { ConstruccionService } from './pozo/construccion.service';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -70,6 +71,10 @@ const routes:Routes=[
     ArticuloFormComponent
   ],
   imports: [
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-left',
+    }), // ToastrModule added
+    
     FormsModule,
     BrowserModule,
     AppRoutingModule,

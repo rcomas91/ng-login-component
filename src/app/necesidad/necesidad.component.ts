@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatTable, MatTableDataSource } from "@angular/material";
+import { MatSort, MatTable, MatTableDataSource } from "@angular/material";
 import { Router } from "@angular/router";
 import { IntervaloService } from "../intervalo/intervalo.service";
 import { SomeModel } from "../winatm/SomeModel";
@@ -11,6 +11,8 @@ import { NecesidadService } from "./necesidad.service";
 })
 export class NecesidadComponent implements OnInit {
   @ViewChild(MatTable, { static: true }) table: MatTable<Necesidad>;
+  @ViewChild(MatSort,{static:true}) sort: MatSort;
+
   necesidades: Necesidad[];
   necesidad: Necesidad;
   item: SomeModel;
@@ -22,8 +24,7 @@ export class NecesidadComponent implements OnInit {
     public intervaloService: IntervaloService
   ) {}
   displayedColumns = [
-    "id",
-    "intervaloId",
+  
     "codigo",
     "nombre",
     "UM",
@@ -66,6 +67,7 @@ export class NecesidadComponent implements OnInit {
         console.log(this.intervaloService.intervalo);
         // this.dataSource.data = x.filter(art => art.intervaloId == this.intervaloService.intervalo.intervaloId)
         this.dataSource.data = x;
+        this.dataSource.sort=this.sort;
 
         this.dataSource.data.forEach((item: Necesidad) => {
           // this.sum+=item.precioCUP*item.cantidad;

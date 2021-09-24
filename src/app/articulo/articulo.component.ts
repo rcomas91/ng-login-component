@@ -7,6 +7,7 @@ import { SomeModel } from '../winatm/SomeModel';
 import { Articulo } from "./articulo";
 import { ArticuloService } from './articulo.service';
 import { Location } from '@angular/common';
+import { PozoService } from '../pozo/pozo.service';
 
 @Component({
   selector: 'app-articulo', 
@@ -19,10 +20,11 @@ export class ArticuloComponent implements OnInit {
 articulos: Articulo[];  
 item:SomeModel;
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
-  constructor(private _location:Location,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
+  constructor(private _location:Location,private pozoService:PozoService,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
   displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov','Editar','Borrar'];
   dataSource: any;
 
+  title="Recursos del pozo "
 
   ngOnInit(){
  
@@ -59,6 +61,7 @@ goBack(){
     this.dataSource = new MatTableDataSource();
     console.log(this.intervaloService.intervalo)
     this.dataSource.data = x.filter(art => art.intervaloId == this.intervaloService.intervalo.intervaloId)
+
             this.sum=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
             this.dataSource.data.forEach((item:Articulo)=> {
          

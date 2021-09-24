@@ -12,6 +12,7 @@ import { flatMap, map, startWith } from 'rxjs/operators';
 import { Necesidad } from '../necesidad/necesidad';
 import { NecesidadService } from '../necesidad/necesidad.service';
 import { PozoService } from '../pozo/pozo.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-articulo-form',
@@ -24,7 +25,7 @@ export class ArticuloFormComponent implements OnInit {
   recursosfiltrados: Observable<SomeModel[]>;
   recursos:string[]=['One','Two'];
 
-  constructor(private pozoService:PozoService,private necesidadService: NecesidadService,private intervaloService:IntervaloService,private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private articuloService: ArticuloService) { }
+  constructor(private toastr:ToastrService,private pozoService:PozoService,private necesidadService: NecesidadService,private intervaloService:IntervaloService,private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private articuloService: ArticuloService) { }
   modoEdicion: boolean = false;
   articuloId:number;
   articulos:SomeModel[];
@@ -139,6 +140,7 @@ export class ArticuloFormComponent implements OnInit {
   
       var necesidad: Necesidad = Object.assign({}, this.formGroup2.value);
       console.table(necesidad)
+      this.toastr.warning('Se agregó una nueva necesidad a la tabla Necesidades!', 'Atento!');
       
   
     }

@@ -20,7 +20,7 @@ export class PozoComponent implements OnInit {
     ) {
       
      }
-
+    title="Pozos en el sistema"
      formGroup: FormGroup;
    
   displayedColumns = ['PozoId','NombrePozo','Campana','Ubicacion','FechaInicio','FechaFin','Editar','Borrar','Ver Construcción'];

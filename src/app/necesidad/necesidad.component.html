@@ -38,16 +38,20 @@
     </tbody>
       </table>
  -->
-
+<h2>Necesidades en los Pozos</h2>
  <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">
    
-      <!--  Columna id-->
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> id</mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
-      </ng-container>
   
+   <!--  Columna IntervaloId-->
+   <ng-container matColumnDef="nombrePozo">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>
+      nombrePozo</mat-header-cell
+    >
+    <mat-cell *matCellDef="let row" > {{ row.nombrePozo}} </mat-cell>
+    
+  </ng-container>
+
       <!--  Columna IntervaloId-->
       <ng-container matColumnDef="codigo">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -64,14 +68,6 @@
           <mat-cell *matCellDef="let row"> {{ row.um }} </mat-cell>
         </ng-container>
     
-  
-     <!--  Columna IntervaloId-->
-     <ng-container matColumnDef="intervaloId">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        intervaloId</mat-header-cell
-      >
-      <mat-cell *matCellDef="let row"> {{ row.intervaloId }} </mat-cell>
-    </ng-container>
   
       
     
@@ -133,15 +129,6 @@
       estado</mat-header-cell
     >
     <mat-cell *matCellDef="let row" style="cursor: pointer;" (click)="cambiarEstado(row)"> {{ row.estado}} </mat-cell>
-    
-  </ng-container>
-
-   <!--  Columna IntervaloId-->
-   <ng-container matColumnDef="nombrePozo">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>
-      nombrePozo</mat-header-cell
-    >
-    <mat-cell *matCellDef="let row" > {{ row.nombrePozo}} </mat-cell>
     
   </ng-container>
 

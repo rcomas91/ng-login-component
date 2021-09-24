@@ -17,6 +17,7 @@ export class WinatmComponent implements OnInit {
   someModels: SomeModel[];  
  
   constructor(private winatmService:WinatmService) { }
+  title="Artículos en el Almacen"
   displayedColumns = ['codigo','mProducto_Descrip','ProdAlm_Um','ProdAlm_Existencia','mProducto_Precio','UltmMov'];
   dataSource: any;
 
