@@ -35,6 +35,7 @@ export class NecesidadComponent implements OnInit {
     "utm_mov",
     "estado",
     "nombrePozo",
+    
     "Borrar",
   ];
   dataSource: any;

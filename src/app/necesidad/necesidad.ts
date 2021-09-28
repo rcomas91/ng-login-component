@@ -19,6 +19,7 @@ export class Necesidad {
     utm_mov:string; 
     estado:string;
     nombrePozo:string;
+    articuloId:number
     
 
 }

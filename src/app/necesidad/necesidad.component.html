@@ -114,6 +114,7 @@
         >
         <mat-cell *matCellDef="let row"> {{ row.utm_mov |date}} </mat-cell>
       </ng-container>
+      
   
       <!--  Columna IntervaloId-->
       <ng-container matColumnDef="precioTotal">
@@ -122,14 +123,14 @@
         >
         <mat-cell *matCellDef="let row"> {{ row.precioCUP*row.cantidad |currency}} </mat-cell>
       </ng-container>
-  
    <!--  Columna IntervaloId-->
    <ng-container matColumnDef="estado">
+    
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       estado</mat-header-cell
     >
-    <mat-cell *matCellDef="let row" style="cursor: pointer;" (click)="cambiarEstado(row)"> {{ row.estado}} </mat-cell>
-    
+    <mat-cell *matCellDef="let row" style="cursor: pointer;"  (click)="cambiarEstado(row)"> {{ row.estado}} </mat-cell>
+
   </ng-container>
 
 

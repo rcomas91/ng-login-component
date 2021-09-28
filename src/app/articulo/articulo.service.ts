@@ -25,7 +25,7 @@ export class ArticuloService  {
     return this.http.get<Articulo>(`${this.UrlEndPoint}/${id}`);
   } 
   update(Articulo:Articulo):Observable<Articulo>{
-    return this.http.put<Articulo>(`${this.UrlEndPoint}/${Articulo.Id}`,Articulo,{headers:this.httpHeaders})
+    return this.http.put<Articulo>(`${this.UrlEndPoint}/${Articulo.id}`,Articulo,{headers:this.httpHeaders})
   }
   
   create(Articulo:Articulo):Observable<Articulo>{

@@ -17,7 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PozoComponent } from './pozo/pozo.component';
 import { PozoService } from './pozo/pozo.service';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatGridTile, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatRadioModule, MatSort, MatSortModule, MatTableDataSource, MatTableModule, MatToolbarModule } from '@angular/material';
+import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatGridTile, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatRadioModule, MatSort, MatSortModule, MatTableDataSource, MatTableModule, MatToolbarModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { IntervaloComponent } from './intervalo/intervalo.component';
 import { PozoFormComponent } from './pozo/pozo-form.component';
@@ -101,7 +101,8 @@ const routes:Routes=[
   MatSelectModule,
   MatPaginatorModule,
   MatAutocompleteModule,
-  MatTableExporterModule
+  MatTableExporterModule,
+  MatChipsModule
 
   ],
   providers: [ArticuloService,NecesidadService ,PozoService,ConstruccionService],

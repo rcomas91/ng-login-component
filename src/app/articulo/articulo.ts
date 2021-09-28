@@ -1,5 +1,5 @@
 export interface Articulo {
-    Id:number;
+    id:number;
     codigo:string;
     intervaloId:number;
     //control:string;
