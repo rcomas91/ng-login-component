@@ -17,6 +17,8 @@ export class NecesidadComponent implements OnInit {
   necesidad: Necesidad;
   item: SomeModel;
   i:number=0;
+  isLoading = true;
+
   // sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
   constructor(
     private router: Router,
@@ -63,7 +65,9 @@ export class NecesidadComponent implements OnInit {
 
   renderDataTable() {
     this.necesidadService.getNecesidades().subscribe(
-      (x) => {
+      x => {
+        this.isLoading = false;
+
         this.dataSource = new MatTableDataSource();
         console.log(this.intervaloService.intervalo);
         // this.dataSource.data = x.filter(art => art.intervaloId == this.intervaloService.intervalo.intervaloId)
@@ -78,6 +82,7 @@ export class NecesidadComponent implements OnInit {
         console.log(this.dataSource.data);
       },
       (error) => {
+       this.isLoading = false;
         console.log("Ocurrió un error al consultar las necesidades!" + error);
       }
     );

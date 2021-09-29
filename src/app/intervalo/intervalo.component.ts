@@ -14,7 +14,8 @@ import { Location } from '@angular/common';
 })
 export class IntervaloComponent implements OnInit {
   @ViewChild(MatTable,{static: true}) table: MatTable<Intervalo>;
-  
+  isLoading = true;
+
 intervalos: Intervalo[];  
 cont:number;
   constructor(private _location:Location,private router:Router,private intervaloService:IntervaloService,public pozoService:PozoService) { }
@@ -60,6 +61,8 @@ cont:number;
     this.intervaloService.getIntervalos()
       .subscribe(
           x => {
+            this.isLoading = false;
+
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = x.filter(inter => inter.construccionId == this.pozoService.construccion.construccionId);
     
@@ -76,6 +79,8 @@ cont:number;
    
   },
   error => {
+    this.isLoading = false;
+
     console.log('Ocurrió un error al consultar los Intervalos!' + error);
   });
 }

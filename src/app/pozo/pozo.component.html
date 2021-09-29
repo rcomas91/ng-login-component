@@ -78,7 +78,7 @@
 </div> -->
 <h2>{{title}} </h2>
 
-<div class="example-container mat-elevation-z8">
+<div *ngIf="dataSource?.data.length>0;else noRecord" class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort>
       <!--  Columna PozoId-->
       <ng-container matColumnDef="PozoId">
@@ -184,8 +184,20 @@
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
   </div>
+  <ng-template #noRecord>
+    <div>
+      <h3 style="display: flex; justify-content: center; align-items: center">  No hay registros en la BD.</h3>
+   
+     </div>
   
   <div>
     <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent">Adicionar Pozo</button>
     </div>
  
+    <mat-card *ngIf="isLoading" 
+    style="display: flex; justify-content: center; align-items: center">
+   <mat-progress-spinner 
+     color="primary" 
+     mode="indeterminate">
+   </mat-progress-spinner>
+ </mat-card>

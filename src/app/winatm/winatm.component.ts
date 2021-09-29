@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable, MatTableDataSource } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 import { IntervaloService } from '../intervalo/intervalo.service';
 import { SomeModel } from './SomeModel';
 import { WinatmService } from './winatm.service';
@@ -16,10 +17,12 @@ export class WinatmComponent implements OnInit {
 
   someModels: SomeModel[];  
  
-  constructor(private winatmService:WinatmService) { }
+  constructor(private winatmService:WinatmService,    private toastr: ToastrService,
+    ) { }
   title="Artículos en el Almacen"
   displayedColumns = ['codigo','mProducto_Descrip','ProdAlm_Um','ProdAlm_Existencia','mProducto_Precio','UltmMov'];
   dataSource: any;
+  isLoading = true;
 
 
   
@@ -48,6 +51,8 @@ export class WinatmComponent implements OnInit {
     this.winatmService.getSomeModels()
       .subscribe(
           x => {
+            this.isLoading = false;
+
     this.dataSource = new MatTableDataSource();
     this.dataSource.data =x;
             this.dataSource.sort=this.sort;
@@ -55,7 +60,12 @@ export class WinatmComponent implements OnInit {
     console.log(this.dataSource.data);
   },
   error => {
+    this.isLoading = false
     console.log('Ocurrió un error al consultar los winatms!' + error);
+    this.toastr.error(
+      "Ocurrió un error al consultar los winatms. Revise que su API este funcionando correctamente!",
+      "Atento!"
+    );
   });
 }
   }

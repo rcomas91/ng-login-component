@@ -19,6 +19,7 @@ export class ArticuloComponent implements OnInit {
   @ViewChild(MatTable,{static: true}) table: MatTable<Articulo>;
 articulos: Articulo[];  
 item:SomeModel;
+isLoading = true;
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
   constructor(private _location:Location,private pozoService:PozoService,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
   displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov','Editar','Borrar'];
@@ -58,6 +59,7 @@ goBack(){
     this.articuloService.getArticulos()
       .subscribe(
           x => {
+            this.isLoading=false;
     this.dataSource = new MatTableDataSource();
     console.log(this.intervaloService.intervalo)
     this.dataSource.data = x.filter(art => art.intervaloId == this.intervaloService.intervalo.intervaloId)
@@ -74,6 +76,7 @@ goBack(){
 
   },
   error => {
+    this.isLoading = false;
     console.log('Ocurrió un error al consultar los articulos!' + error);
   });
 }

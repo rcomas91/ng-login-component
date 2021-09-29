@@ -71,9 +71,8 @@ const routes:Routes=[
     ArticuloFormComponent
   ],
   imports: [
-    ToastrModule.forRoot({
-      positionClass: 'toast-bottom-left',
-    }), // ToastrModule added
+    ToastrModule.forRoot(
+    ), // ToastrModule added
     
     FormsModule,
     BrowserModule,

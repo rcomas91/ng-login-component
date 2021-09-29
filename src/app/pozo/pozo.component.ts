@@ -15,6 +15,7 @@ import { PozoService } from './pozo.service';
 export class PozoComponent implements OnInit {
     @ViewChild(MatTable,{static: true}) table: MatTable<Pozo>;
   pozos: Pozo[];
+  isLoading = true;
 
   constructor(private constService:ConstruccionService,private pozoService:PozoService,  private fb: FormBuilder,  private router:Router,
     ) {
@@ -62,11 +63,13 @@ export class PozoComponent implements OnInit {
     this.pozoService.getPozos()
       .subscribe(
           x => {
+            this.isLoading = false;
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = x;
     console.log(this.dataSource.data);
   },
   error => {
+    this.isLoading = false;
     console.log('Ocurrió un error al consultar los Pozos!' + error);
   });
 }
