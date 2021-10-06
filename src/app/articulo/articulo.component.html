@@ -64,12 +64,12 @@
   </ng-container>
   
     <!--  Columna IntervaloId-->
-    <ng-container  matColumnDef="existenciaFinal">
+    <ng-container  matColumnDef="cantPedidos">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        existenciaFinal</mat-header-cell
+        cantPedidos</mat-header-cell
       >
      
-      <mat-cell   *matCellDef="let row"> {{ row.existencia-row.cantidad }} </mat-cell>
+      <mat-cell   *matCellDef="let row"> {{ cantPedidos }} </mat-cell>
    
     </ng-container>
 
@@ -131,7 +131,7 @@
       *matHeaderRowDef="displayedColumns"
       class="encabezado"
     ></mat-header-row>
-    <mat-row [ngClass]="{ 'marked': (row.existencia-row.cantidad) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-row [ngClass]="{ 'marked': (row.existencia-cantPedidos) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
 
 

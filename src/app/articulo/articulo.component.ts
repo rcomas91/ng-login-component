@@ -21,8 +21,9 @@ articulos: Articulo[];
 item:SomeModel;
 isLoading = true;
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
+  cantPedidos: number;
   constructor(private _location:Location,private pozoService:PozoService,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
-  displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','existenciaFinal','precioCup','precioTotal','utm_mov','Editar','Borrar'];
+  displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','cantPedidos','precioCup','precioTotal','utm_mov','Editar','Borrar'];
   dataSource: any;
 
   title="Recursos del pozo "
@@ -66,7 +67,7 @@ goBack(){
 
             this.sum=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
             this.dataSource.data.forEach((item:Articulo)=> {
-         
+              this.calcCantPedidosPorElem(item.codigo)
               this.sum+=item.precioCUP*item.cantidad;
               console.log(this.sum)
             });
@@ -81,6 +82,22 @@ goBack(){
   });
 }
 
+
+calcCantPedidosPorElem(codigo:string){
+  let cant=0;
+  this.articuloService.getArticulos()
+      .subscribe(
+          x => {
+    this.articulos= x.filter(art => art.codigo == codigo)
+            this.articulos.forEach((item:Articulo)=> {
+              cant+=item.cantidad;
+              console.log(cant)
+            });
+          
+            this.cantPedidos= cant;
+          })
+
+        }
 
 
 
