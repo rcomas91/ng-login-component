@@ -22,11 +22,11 @@ export class PozoFormComponent implements OnInit {
 
     this.formGroup = this.fb.group({
       NombrePozo:['', [Validators.required]],
-      Campana: ['', [Validators.required]],
+      Campana: [''],
       Ubicacion: ['', [Validators.required]],
 
-      FechaInicio: ['', [Validators.required]],
-      FechaFin: ['', [Validators.required]],
+      FechaInicio: ['' ],
+      FechaFin: ['' ],
       ConstruccionId: ['', [Validators.required]],
     });
     this.activatedRoute.params.subscribe(params => {

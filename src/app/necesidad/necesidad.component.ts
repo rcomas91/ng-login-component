@@ -29,6 +29,8 @@ export class NecesidadComponent implements OnInit {
   
     "codigo",
     "nombre",
+    "nombrePozo",
+
     "UM",
     "cantidad",
     "existencia",
@@ -36,7 +38,6 @@ export class NecesidadComponent implements OnInit {
     "precioTotal",
     "utm_mov",
     "estado",
-    "nombrePozo",
     
     "Borrar",
   ];
