@@ -3,20 +3,7 @@
 <div *ngIf="dataSource?.data.length>0;else noRecord" class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort>
 
-      <!--  Columna IntervaloId-->
-      <ng-container matColumnDef="intervaloId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-            intervaloId</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row"> {{ row.intervaloId }} </mat-cell>
-      </ng-container>
-      <!--  Columna ConstId-->
-      <ng-container matColumnDef="construccionId">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>
-            construccionId</mat-header-cell
-        >
-        <mat-cell *matCellDef="let row"> {{ row.construccionId }} </mat-cell>
-      </ng-container>
+     
 
       
       <!--  Columna camisa-->
@@ -27,6 +14,15 @@
         <mat-cell *matCellDef="let row"> {{ row.camisa}} </mat-cell>
       </ng-container>
 
+      
+      <!--  Columna precioC-->
+      <ng-container matColumnDef="precioC">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            precioCamisa</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.precioC|currency}} </mat-cell>
+      </ng-container>
+
 
       <!--  Columna barrena-->
       <ng-container matColumnDef="barrena">
@@ -34,6 +30,14 @@
             barrena</mat-header-cell
         >
         <mat-cell *matCellDef="let row"> {{ row.barrena }} </mat-cell>
+      </ng-container>
+
+      <!--  Columna barrena-->
+      <ng-container matColumnDef="precioB">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            precioBarrena</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.precioB |currency}} </mat-cell>
       </ng-container>
 
       <!--  Columna longitud-->

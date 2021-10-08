@@ -19,7 +19,7 @@ export class IntervaloComponent implements OnInit {
 intervalos: Intervalo[];  
 cont:number;
   constructor(private _location:Location,private router:Router,private intervaloService:IntervaloService,public pozoService:PozoService) { }
-  displayedColumns = ['intervaloId','construccionId','camisa','barrena','longitud','PrecioTotal','Editar','Borrar', 'Recursos'];
+  displayedColumns = ['camisa','precioC','barrena','precioB','longitud','PrecioTotal','Editar','Borrar', 'Recursos'];
   dataSource: any;
   title="Construcción del pozo "
   sum:number;

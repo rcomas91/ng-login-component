@@ -3,12 +3,7 @@
 <div *ngIf="dataSource?.data.length>0;else noRecord" class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
  
-    <!--  Columna id-->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> id</mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{ row.id }} </mat-cell>
-    </ng-container>
-
+   
     <!--  Columna IntervaloId-->
     <ng-container matColumnDef="codigo">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -64,12 +59,12 @@
   </ng-container>
   
     <!--  Columna IntervaloId-->
-    <ng-container  matColumnDef="cantPedidos">
+    <ng-container  matColumnDef="cantReal">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        cantPedidos</mat-header-cell
+        cantReal</mat-header-cell
       >
      
-      <mat-cell   *matCellDef="let row"> {{ cantPedidos }} </mat-cell>
+      <mat-cell   *matCellDef="let row"> {{ row.existencia-cantPedidos }} </mat-cell>
    
     </ng-container>
 
@@ -131,8 +126,8 @@
       *matHeaderRowDef="displayedColumns"
       class="encabezado"
     ></mat-header-row>
-    <!-- <mat-row [ngClass]="{ 'marked': (row.existencia-cantPedidos) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row> -->
-    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+     <mat-row [ngClass]="{ 'marked': (row.existencia-cantPedidos) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <!-- <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row> -->
 
   </mat-table>
 

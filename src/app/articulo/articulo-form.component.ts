@@ -137,31 +137,33 @@ export class ArticuloFormComponent implements OnInit {
     this.formGroup.controls["nombre"].setValue(
       this.seleccionado.mProducto_Descrip
     );
-    if(this.seleccionado.mProducto_Descrip.startsWith('CAMISA')|| this.seleccionado.mProducto_Descrip.startsWith('TUBERIA DE REVESTIMIENTO')|| this.seleccionado.mProducto_Descrip.startsWith('TUBERIA REVESTIMIENTO')){
+    if (
+      this.seleccionado.mProducto_Descrip.startsWith("CAMISA") ||
+      this.seleccionado.mProducto_Descrip.startsWith(
+        "TUBERIA DE REVESTIMIENTO"
+      ) ||
+      this.seleccionado.mProducto_Descrip.startsWith("TUBERIA REVESTIMIENTO")
+    ) {
       this.formGroup.controls["UM"].setValue("METROS-R3");
       this.formGroup.controls["precioCUP"].setValue(
-        this.seleccionado.mProducto_Precio/11.3
+        this.seleccionado.mProducto_Precio / 11.3
       );
-    }
-    else if(this.seleccionado.mProducto_Descrip.startsWith('TUBERIA')){
+    } else if (this.seleccionado.mProducto_Descrip.startsWith("TUBERIA")) {
       this.formGroup.controls["UM"].setValue("METROS -R2");
       this.formGroup.controls["precioCUP"].setValue(
-        this.seleccionado.mProducto_Precio/9.5
+        this.seleccionado.mProducto_Precio / 9.5
       );
-    }
-    else if(this.seleccionado.mProducto_Descrip.startsWith('CABILLA')){
+    } else if (this.seleccionado.mProducto_Descrip.startsWith("CABILLA")) {
       this.formGroup.controls["UM"].setValue("METROS-R3");
       this.formGroup.controls["precioCUP"].setValue(
-        this.seleccionado.mProducto_Precio/7.6
+        this.seleccionado.mProducto_Precio / 7.6
       );
-    }
-     
-    else{
+    } else {
       this.formGroup.controls["UM"].setValue(this.seleccionado.prodAlm_Um);
-     this.formGroup.controls["UM"].setValue(this.seleccionado.prodAlm_Um);
-     this.formGroup.controls["precioCUP"].setValue(
-       this.seleccionado.mProducto_Precio
-     );
+      this.formGroup.controls["UM"].setValue(this.seleccionado.prodAlm_Um);
+      this.formGroup.controls["precioCUP"].setValue(
+        this.seleccionado.mProducto_Precio
+      );
     }
     this.formGroup.controls["utm_mov"].setValue(this.seleccionado.ultmMov);
     this.formGroup.controls["existencia"].setValue(
@@ -189,61 +191,60 @@ export class ArticuloFormComponent implements OnInit {
     }
   }
   onSaveSuccess() {
-      
-      this.formGroup2.controls["codigo"].setValue(this.seleccionado.codigo);
-      this.formGroup2.controls["nombre"].setValue(
-        this.seleccionado.mProducto_Descrip
+    this.formGroup2.controls["codigo"].setValue(this.seleccionado.codigo);
+    this.formGroup2.controls["nombre"].setValue(
+      this.seleccionado.mProducto_Descrip
+    );
+    if (
+      this.seleccionado.mProducto_Descrip.startsWith("CAMISA") ||
+      this.seleccionado.mProducto_Descrip.startsWith(
+        "TUBERIA DE REVESTIMIENTO"
+      ) ||
+      this.seleccionado.mProducto_Descrip.startsWith("TUBERIA REVESTIMIENTO")
+    ) {
+      this.formGroup2.controls["UM"].setValue("METROS-R3");
+      this.formGroup2.controls["precioCUP"].setValue(
+        this.seleccionado.mProducto_Precio / 11.3
       );
-      if(this.seleccionado.mProducto_Descrip.startsWith('CAMISA')|| this.seleccionado.mProducto_Descrip.startsWith('TUBERIA DE REVESTIMIENTO')|| this.seleccionado.mProducto_Descrip.startsWith('TUBERIA REVESTIMIENTO')){
-        this.formGroup2.controls["UM"].setValue("METROS-R3");
-        this.formGroup2.controls["precioCUP"].setValue(
-          this.seleccionado.mProducto_Precio/11.3
-        );
-      }
-      else if(this.seleccionado.mProducto_Descrip.startsWith('TUBERIA')){
-        this.formGroup2.controls["UM"].setValue("METROS -R2");
-        this.formGroup2.controls["precioCUP"].setValue(
-          this.seleccionado.mProducto_Precio/9.5
-        );
-      }
-      else if(this.seleccionado.mProducto_Descrip.startsWith('CABILLA')){
-        this.formGroup2.controls["UM"].setValue("METROS-R3");
-        this.formGroup2.controls["precioCUP"].setValue(
-          this.seleccionado.mProducto_Precio/7.6
-        );
-      }
-       
-      else{
-        this.formGroup2.controls["UM"].setValue(this.seleccionado.prodAlm_Um);
-       this.formGroup2.controls["UM"].setValue(this.seleccionado.prodAlm_Um);
-       this.formGroup2.controls["precioCUP"].setValue(
-         this.seleccionado.mProducto_Precio
-       );
-      } 
-    
-      this.formGroup2.controls["utm_mov"].setValue(this.seleccionado.ultmMov);
-      this.formGroup2.controls["existencia"].setValue(
-        this.seleccionado.prodAlm_Existencia
+    } else if (this.seleccionado.mProducto_Descrip.startsWith("TUBERIA")) {
+      this.formGroup2.controls["UM"].setValue("METROS -R2");
+      this.formGroup2.controls["precioCUP"].setValue(
+        this.seleccionado.mProducto_Precio / 9.5
       );
-      this.formGroup2.controls["estado"].setValue("Pendiente a solicitar");
-      this.formGroup2.controls["cantidad"].setValue(this.art.cantidad)
-
-
-      console.log(this.articulosR);
-      let art: number = this.articulosR.pop().id;
-      this.formGroup2.controls["articuloId"].setValue(art);
-
-      this.necesidad = Object.assign({}, this.formGroup2.value);
-      console.table(this.necesidad);
-      this.necesidadService.create(this.necesidad).subscribe(x=>this.necesidad=x,
-        error=>console.error(error)
-      )
-      this.toastr.warning(
-        "Se agregó una nueva necesidad a la tabla Necesidades!",
-        "Atento!"
+    } else if (this.seleccionado.mProducto_Descrip.startsWith("CABILLA")) {
+      this.formGroup2.controls["UM"].setValue("METROS-R3");
+      this.formGroup2.controls["precioCUP"].setValue(
+        this.seleccionado.mProducto_Precio / 7.6
       );
-    
+    } else {
+      this.formGroup2.controls["UM"].setValue(this.seleccionado.prodAlm_Um);
+      this.formGroup2.controls["UM"].setValue(this.seleccionado.prodAlm_Um);
+      this.formGroup2.controls["precioCUP"].setValue(
+        this.seleccionado.mProducto_Precio
+      );
+    }
 
+    this.formGroup2.controls["utm_mov"].setValue(this.seleccionado.ultmMov);
+    this.formGroup2.controls["existencia"].setValue(
+      this.seleccionado.prodAlm_Existencia
+    );
+    this.formGroup2.controls["estado"].setValue("Pendiente a solicitar");
+    this.formGroup2.controls["cantidad"].setValue(this.art.cantidad);
+
+    console.log(this.articulosR);
+    let art: number = this.articulosR.pop().id;
+    this.formGroup2.controls["articuloId"].setValue(art);
+
+    this.necesidad = Object.assign({}, this.formGroup2.value);
+    console.table(this.necesidad);
+    this.necesidadService.create(this.necesidad).subscribe(
+      (x) => (this.necesidad = x),
+      (error) => console.error(error)
+    );
+    this.toastr.warning(
+      "Se agregó una nueva necesidad a la tabla Necesidades!",
+      "Atento!"
+    );
 
     this.router.navigate(["/articulos"]);
   }

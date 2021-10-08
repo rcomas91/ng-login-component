@@ -23,7 +23,7 @@ isLoading = true;
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
   cantPedidos: number;
   constructor(private _location:Location,private pozoService:PozoService,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
-  displayedColumns = ['id','intervaloId','codigo','nombre','UM','cantidad','existencia','cantPedidos','precioCup','precioTotal','utm_mov','Editar','Borrar'];
+  displayedColumns = ['intervaloId','codigo','nombre','UM','cantidad','existencia','cantReal','precioCup','precioTotal','utm_mov','Editar','Borrar'];
   dataSource: any;
 
   title="Recursos del pozo "
