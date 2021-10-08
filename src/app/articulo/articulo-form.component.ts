@@ -167,7 +167,7 @@ export class ArticuloFormComponent implements OnInit {
     }
   }
   onSaveSuccess() {
-    if (this.art.existencia - this.art.cantidad < 0) {
+   
       this.formGroup2.controls["codigo"].setValue(this.seleccionado.codigo);
       this.formGroup2.controls["nombre"].setValue(
         this.seleccionado.mProducto_Descrip
@@ -181,7 +181,7 @@ export class ArticuloFormComponent implements OnInit {
         this.seleccionado.prodAlm_Existencia
       );
       this.formGroup2.controls["estado"].setValue("Pendiente a solicitar");
-this.formGroup2.controls["cantidad"].setValue(this.art.cantidad-this.art.existencia)
+this.formGroup2.controls["cantidad"].setValue(this.art.cantidad)
 
 
       console.log(this.articulosR);
@@ -197,7 +197,7 @@ this.formGroup2.controls["cantidad"].setValue(this.art.cantidad-this.art.existen
         "Se agregó una nueva necesidad a la tabla Necesidades!",
         "Atento!"
       );
-    }
+    
 
 
     this.router.navigate(["/articulos"]);
