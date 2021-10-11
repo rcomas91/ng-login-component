@@ -176,7 +176,7 @@ export class ArticuloFormComponent implements OnInit {
     this.art = Object.assign({}, this.formGroup.value);
 
     console.table(this.art);
-    this.existe(this.art.codigo);
+    this.existe(this.art.codigo,this.pozoService.pozo.nombrePozo);
 
     if (this.modoEdicion) {
       //edit register
@@ -241,7 +241,7 @@ export class ArticuloFormComponent implements OnInit {
     this.formGroup2.controls["articuloId"].setValue(art);
     this.necesidad = Object.assign({}, this.formGroup2.value);
     console.table(this.necesidad);
-    if(this.resp==false){
+    if(this.resp==false ){
 
     this.necesidadService.create(this.necesidad).subscribe(
       (x) => (this.necesidad = x),
@@ -254,7 +254,7 @@ export class ArticuloFormComponent implements OnInit {
     }
     else{
           this.necesidad.cantidad=333;
-           this.buscarIdNec(this.art.codigo)
+           this.buscarIdNec(this.art.codigo,this.pozoService.pozo.nombrePozo)
         }
 
 
@@ -279,12 +279,12 @@ export class ArticuloFormComponent implements OnInit {
     return recurso ? recurso.mProducto_Descrip : undefined;
   }
 
-  existe(codigo:string){
-    this.articuloService.getArticulos().subscribe (
+  existe(codigo:string,nombrePozo:string){
+    this.necesidadService.getNecesidades().subscribe (
       x => {
-this.articulosR= x.filter(art => art.codigo == codigo)
+this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombrePozo)
 
-  if(this.articulosR.length>0 )
+  if(this.necesidades.length>0)
     this.resp=true;
     console.log(this.resp)
       });
@@ -292,10 +292,10 @@ this.articulosR= x.filter(art => art.codigo == codigo)
       return this.resp;
 
     }
-    buscarIdNec(codigo:string){
+    buscarIdNec(codigo:string,nombrePozo:string){
       this.necesidadService.getNecesidades().subscribe (
         x => {
-  this.necesidades= x.filter(nec => nec.codigo == codigo)
+  this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombrePozo)
           this.necid=this.necesidades[0].id;
           this.necesidad.id=this.necid
 
