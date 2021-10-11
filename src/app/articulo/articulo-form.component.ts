@@ -253,7 +253,7 @@ export class ArticuloFormComponent implements OnInit {
     );
     }
     else{
-          this.necesidad.cantidad=333;
+
            this.buscarIdNec(this.art.codigo,this.pozoService.pozo.nombrePozo)
         }
 
@@ -293,12 +293,13 @@ this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombre
 
     }
     buscarIdNec(codigo:string,nombrePozo:string){
+      let cant=0;
       this.necesidadService.getNecesidades().subscribe (
         x => {
   this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombrePozo)
           this.necid=this.necesidades[0].id;
           this.necesidad.id=this.necid
-
+          this.necesidad.cantidad+=this.necesidades[0].cantidad
           this.necesidadService.update(this.necesidad).subscribe(
             x=>this.necesidades);
         });
