@@ -29,6 +29,7 @@ export class ArticuloFormComponent implements OnInit {
   autocompleteControl = new FormControl();
   recursosfiltrados: Observable<SomeModel[]>;
   recursos: string[] = ["One", "Two"];
+  necid: number;
 
   constructor(
     private toastr: ToastrService,
@@ -45,12 +46,14 @@ export class ArticuloFormComponent implements OnInit {
   articuloId: number;
   articulos: SomeModel[];
   seleccionado: SomeModel;
+  necesidades:Necesidad[];
   articulosR: Articulo[] = [];
   formGroup: FormGroup;
   necesidad: Necesidad;
   art: Articulo;
   formGroup2: FormGroup;
   intervaloId: number;
+  resp:boolean=false;
   ngOnInit() {
     console.log(this.pozoService.construccion.construccionId);
     this.recursosfiltrados = this.autocompleteControl.valueChanges.pipe(
@@ -119,6 +122,7 @@ export class ArticuloFormComponent implements OnInit {
     var dp = new DatePipe(navigator.language);
     var format = "yyyy-MM-dd";
     this.formGroup.patchValue({
+      id:art.id,
       codigo: art.codigo,
       intervaloId: art.intervaloId,
       nombre: art.nombre,
@@ -172,6 +176,7 @@ export class ArticuloFormComponent implements OnInit {
     this.art = Object.assign({}, this.formGroup.value);
 
     console.table(this.art);
+    this.existe(this.art.codigo);
 
     if (this.modoEdicion) {
       //edit register
@@ -234,9 +239,10 @@ export class ArticuloFormComponent implements OnInit {
     console.log(this.articulosR);
     let art: number = this.articulosR.pop().id;
     this.formGroup2.controls["articuloId"].setValue(art);
-
     this.necesidad = Object.assign({}, this.formGroup2.value);
     console.table(this.necesidad);
+    if(this.resp==false){
+
     this.necesidadService.create(this.necesidad).subscribe(
       (x) => (this.necesidad = x),
       (error) => console.error(error)
@@ -245,8 +251,16 @@ export class ArticuloFormComponent implements OnInit {
       "Se agregó una nueva necesidad a la tabla Necesidades!",
       "Atento!"
     );
+    }
+    else{
+          this.necesidad.cantidad=333;
+           this.buscarIdNec(this.art.codigo)
+        }
 
-    this.router.navigate(["/articulos"]);
+
+
+
+  this.router.navigate(["/articulos"]);
   }
 
   // myChange($event){
@@ -264,4 +278,36 @@ export class ArticuloFormComponent implements OnInit {
   mostrarNombre(recurso?: SomeModel): string | undefined {
     return recurso ? recurso.mProducto_Descrip : undefined;
   }
-}
+
+  existe(codigo:string){
+    this.articuloService.getArticulos().subscribe (
+      x => {
+this.articulosR= x.filter(art => art.codigo == codigo)
+
+  if(this.articulosR.length>0 )
+    this.resp=true;
+    console.log(this.resp)
+      });
+
+      return this.resp;
+
+    }
+    buscarIdNec(codigo:string){
+      this.necesidadService.getNecesidades().subscribe (
+        x => {
+  this.necesidades= x.filter(nec => nec.codigo == codigo)
+          this.necid=this.necesidades[0].id;
+          this.necesidad.id=this.necid
+
+          this.necesidadService.update(this.necesidad).subscribe(
+            x=>this.necesidades);
+        });
+
+
+      this.toastr.warning(
+       "Se actualizó una necesidad a la tabla Necesidades!",
+       "Atento!"
+     );
+    }
+
+  }
