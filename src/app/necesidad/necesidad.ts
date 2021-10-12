@@ -16,10 +16,9 @@ export class Necesidad {
     //cuenta:string;
     //subcuenta:string;
     precioCUP:number;
-    utm_mov:string; 
+    utm_mov:string;
     estado:string;
     nombrePozo:string;
-    articuloId:number
-    
+
 
 }

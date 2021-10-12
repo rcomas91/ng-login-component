@@ -90,7 +90,6 @@ export class ArticuloFormComponent implements OnInit {
       existencia: ["", [Validators.required]],
       estado: ["", [Validators.required]],
       nombrePozo: [this.pozoService.pozo.nombrePozo, [Validators.required]],
-      articuloId: ["", [Validators.required]],
     });
     this.activatedRoute.params.subscribe((params) => {
       if (params["id"] == undefined) {
@@ -238,7 +237,6 @@ export class ArticuloFormComponent implements OnInit {
 
     console.log(this.articulosR);
     let art: number = this.articulosR.pop().id;
-    this.formGroup2.controls["articuloId"].setValue(art);
     this.necesidad = Object.assign({}, this.formGroup2.value);
     console.table(this.necesidad);
     if(this.resp==false ){
