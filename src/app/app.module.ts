@@ -54,7 +54,7 @@ const routes:Routes=[
 
 ]
 @NgModule({
- 
+
   declarations: [
     AppComponent,
     HeaderComponentComponent,
@@ -73,7 +73,7 @@ const routes:Routes=[
   imports: [
     ToastrModule.forRoot(
     ), // ToastrModule added
-    
+
     FormsModule,
     BrowserModule,
     AppRoutingModule,

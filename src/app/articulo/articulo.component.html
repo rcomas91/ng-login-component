@@ -102,14 +102,14 @@
 
           </ng-container> -->
 
-    <ng-container matColumnDef="Borrar">
+    <ng-container  matColumnDef="Borrar">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Retirar recurso
         </mat-header-cell
       >
-      <mat-cell *matCellDef="let row">
+      <mat-cell  *matCellDef="let row">
         <button mat-raised-button  color="warn" (click)="delete(row.id)"focusable="false" >
-            Retirar recurso
+            Retirar
             </button>
       </mat-cell>
 

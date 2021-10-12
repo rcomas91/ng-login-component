@@ -25,35 +25,38 @@
               </mat-select>
             </mat-form-field>
           </div>
-          
+
           <!-- <div class="col-md-6">
             <mat-form-field class="full-width">
               <input formControlName="Ubicacion" matInput="" placeholder="Ubicacion">
             </mat-form-field>
           </div> -->
         </div>
-        
-       
+
+
           <div class="col-md-6 top-padding">
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>FechaInicio</mat-label>
                     <input formControlName="FechaInicio" matInput [matDatepicker]="picker">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>                  
+                </mat-form-field>
             </div>
-     
+
                    <div class="col-md-6 top-padding">
                 <mat-form-field class="full-width" appearance="fill">
                     <mat-label>FechaFin</mat-label>
                     <input formControlName="FechaFin" matInput [matDatepicker]="picker1">
                     <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                     <mat-datepicker #picker1></mat-datepicker>
-                </mat-form-field>                  
+                </mat-form-field>
             </div>
       </mat-card-content>
       <mat-card-actions>
+        <button mat-raised-button (click)="goBack()">Cancelar</button>
+
         <button mat-raised-button (click)="save()"color="primary">Save</button>
+
       </mat-card-actions>
     </mat-card>
   </form>

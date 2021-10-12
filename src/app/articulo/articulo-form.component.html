@@ -23,8 +23,8 @@
                 </mat-select>
               </mat-form-field> -->
             </div>
-           
-        
+
+
             <div class="col-md-6">
               <mat-form-field class="full-width">
                 <input formControlName="cantidad" matInput="" placeholder="cantidad">
@@ -33,9 +33,11 @@
 
 
           </div>
-            
+
       </mat-card-content>
       <mat-card-actions>
+        <button mat-raised-button (click)="goBack()">Cancelar</button>
+
         <button mat-raised-button (click)="save()"color="primary">Save</button>
       </mat-card-actions>
     </mat-card>

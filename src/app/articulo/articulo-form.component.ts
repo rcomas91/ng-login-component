@@ -310,5 +310,9 @@ this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombre
        "Atento!"
      );
     }
+    goBack(){
+      // this._location.back();
+       this.router.navigate(["/articulos"]);
+     }
 
   }

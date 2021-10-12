@@ -19,8 +19,8 @@ export class IntervaloFormComponent implements OnInit {
   barrenas:SomeModel[];
   camisas:SomeModel[];
   constructor(private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private pozoService:PozoService,private router: Router, private fb: FormBuilder, private intervaloService: IntervaloService) { }
-  
-  
+
+
   modoEdicion: boolean = false;
   intervaloId:number;
   formGroup: FormGroup;
@@ -28,7 +28,7 @@ export class IntervaloFormComponent implements OnInit {
   Bseleccionado:SomeModel;
   Cseleccionado:SomeModel;
   ngOnInit() {
-    
+
 
     this.formGroup = this.fb.group({
       ConstruccionId:[this.pozoService.construccion.construccionId, [Validators.required]],
@@ -40,7 +40,7 @@ export class IntervaloFormComponent implements OnInit {
 
     });
 
-    
+
     this.activatedRoute.params.subscribe(params => {
       if (params["id"] == undefined) {
         return;
@@ -51,7 +51,7 @@ export class IntervaloFormComponent implements OnInit {
 
       this.intervaloService.getIntervalo(this.intervaloId)
         .subscribe(int => this.cargarFormulario(int), error => this.router.navigate(["/intervalos"]));
-       
+
 
     });
     this.winatmService.getSomeModels().pipe(map(x=>
@@ -73,13 +73,16 @@ export class IntervaloFormComponent implements OnInit {
       }
     )
     }
-  
-  
+    goBack(){
+      // this._location.back();
+       this.router.navigate(["/intervalos"]);
+     }
+
 
 
   cargarFormulario(int: Intervalo) {
     console.log(int.intervaloId)
-    
+
     this.formGroup.patchValue({
       ConstruccionId: int.construccionId,
       Camisa:int.camisa,
@@ -119,7 +122,7 @@ export class IntervaloFormComponent implements OnInit {
     console.log(this.Bseleccionado)
     this.formGroup.controls['Barrena'].setValue(this.Bseleccionado.mProducto_Descrip)
     this.formGroup.controls['PrecioB'].setValue(this.Bseleccionado.mProducto_Precio)
-    
+
 
   }
   myChange2($event){
@@ -129,8 +132,8 @@ export class IntervaloFormComponent implements OnInit {
     this.formGroup.controls['Camisa'].setValue(this.Cseleccionado.mProducto_Descrip)
 
     this.formGroup.controls['PrecioC'].setValue(this.Cseleccionado.mProducto_Precio)
-    
-    
+
+
 
   }
 }

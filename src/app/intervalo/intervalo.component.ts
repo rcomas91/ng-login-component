@@ -16,17 +16,17 @@ export class IntervaloComponent implements OnInit {
   @ViewChild(MatTable,{static: true}) table: MatTable<Intervalo>;
   isLoading = true;
 
-intervalos: Intervalo[];  
+intervalos: Intervalo[];
 cont:number;
   constructor(private _location:Location,private router:Router,private intervaloService:IntervaloService,public pozoService:PozoService) { }
   displayedColumns = ['camisa','precioC','barrena','precioB','longitud','PrecioTotal','Editar','Borrar', 'Recursos'];
   dataSource: any;
-  title="Construcción del pozo "
+  title="Intervalos del pozo "
   sum:number;
   ngOnInit(){
   this.renderDataTable();
   console.log(this.pozoService.construccion.construccionId)
- 
+
   }
   delete(intervaloId:number) {
     if (confirm("Realmente desea cancelar?")) {
@@ -41,14 +41,14 @@ cont:number;
     let sum=int.precioC+int.precioB;
     int.recursos.forEach((item:Articulo)=> {
       sum+=item.precioCUP*item.cantidad;
-      
+
     });
     int.precioTotal=sum;
       return sum;
   }
-  
-  
- 
+
+
+
   cargarData() {
     this.intervaloService.getIntervalos().subscribe(
       intervalosDesdesWS => this.intervalos = intervalosDesdesWS,
@@ -65,7 +65,7 @@ cont:number;
 
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = x.filter(inter => inter.construccionId == this.pozoService.construccion.construccionId);
-    
+
     console.log(this.dataSource.data);
     this.cont=this.dataSource.data.length;
     setTimeout(() => {
@@ -76,7 +76,7 @@ cont:number;
       console.log(this.sum)
       return this.sum;
     }, 500);
-   
+
   },
   error => {
     this.isLoading = false;
