@@ -291,13 +291,15 @@ this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombre
 
     }
     buscarIdNec(codigo:string,nombrePozo:string){
-      let cant=0;
+      let cant:number=0;
       this.necesidadService.getNecesidades().subscribe (
         x => {
   this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombrePozo)
+  debugger
           this.necid=this.necesidades[0].id;
           this.necesidad.id=this.necid
-          this.necesidad.cantidad+=this.necesidades[0].cantidad
+          cant=Number(this.necesidad.cantidad)+this.necesidades[0].cantidad
+          this.necesidad.cantidad=cant
           this.necesidadService.update(this.necesidad).subscribe(
             x=>this.necesidades);
         });
