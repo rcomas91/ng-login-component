@@ -5,6 +5,8 @@ import { IntervaloService } from "../intervalo/intervalo.service";
 import { SomeModel } from "../winatm/SomeModel";
 import { Necesidad } from "./necesidad";
 import { NecesidadService } from "./necesidad.service";
+import { Location } from '@angular/common';
+
 @Component({
   selector: "app-necesidad",
   templateUrl: "./necesidad.component.html",
@@ -21,12 +23,13 @@ export class NecesidadComponent implements OnInit {
 
   // sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
   constructor(
+    private _location:Location,
     private router: Router,
     private necesidadService: NecesidadService,
     public intervaloService: IntervaloService
   ) {}
   displayedColumns = [
-  
+
     "codigo",
     "nombre",
     "nombrePozo",
@@ -38,7 +41,7 @@ export class NecesidadComponent implements OnInit {
     "precioTotal",
     "utm_mov",
     "estado",
-    
+
     "Borrar",
   ];
   dataSource: any;
@@ -100,14 +103,14 @@ export class NecesidadComponent implements OnInit {
       "Pendiente de Fabricación",
       "Navegando",
     ];
-      
+
       nec.estado = estados[this.i];
       this.i++;
-      
+
       if(this.i==estados.length){
         this.i=0;
       }
-    
+
     this.necesidadService.update(nec).subscribe(
       (int) => this.onSaveSuccess(),
       (error) => console.error(error)
@@ -117,6 +120,10 @@ export class NecesidadComponent implements OnInit {
   onSaveSuccess() {
     this.router.navigate(["/necesidades"]);
   }
+  goBack(){
+     this._location.back();
+     //this.router.navigate(["/articulos"]);
+   }
 
 
 }

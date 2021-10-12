@@ -14,14 +14,14 @@ export class PozoService  {
   pozo:Pozo;
   constructor(private http:HttpClient) { }
 
-  
+
   getPozos():Observable< Pozo[]>{
     return this.http.get<Pozo[]>(this.UrlEndPoint)
   }
- 
+
   getPozo(id):Observable< Pozo>{
     return this.http.get<Pozo>(`${this.UrlEndPoint}/${id}`);
-  } 
+  }
 
 
   create(Pozo:Pozo):Observable<Pozo>{
@@ -30,7 +30,7 @@ export class PozoService  {
   update(Pozo:Pozo):Observable<Pozo>{
     return this.http.put<Pozo>(`${this.UrlEndPoint}/${Pozo.pozoId}`,Pozo,{headers:this.httpHeaders})
   }
- 
+
   delete(id:number):Observable<Pozo>{
     return this.http.delete<Pozo>(`${this.UrlEndPoint}/${id}`,{headers:this.httpHeaders})
   }

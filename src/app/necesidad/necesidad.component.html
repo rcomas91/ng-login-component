@@ -19,7 +19,7 @@
             <th>eliminar</th>
         </tr>
     </thead>
-    
+
     <tbody>
         <tr *ngFor="let necesidad of necesidades">
             <td>{{necesidad.id}}</td>
@@ -33,23 +33,23 @@
             </td>
 
         </tr>
-    
-    
+
+
     </tbody>
       </table>
  -->
 <h2>Necesidades en los Pozos</h2>
  <div *ngIf="dataSource?.data.length>0;else noRecord" class="example-container mat-elevation-z8">
     <mat-table  #table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">
-   
-  
+
+
    <!--  Columna IntervaloId-->
    <ng-container matColumnDef="nombrePozo">
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       nombrePozo</mat-header-cell
     >
     <mat-cell *matCellDef="let row" > {{ row.nombrePozo}} </mat-cell>
-    
+
   </ng-container>
 
       <!--  Columna IntervaloId-->
@@ -59,7 +59,7 @@
         >
         <mat-cell *matCellDef="let row"> {{ row.codigo }} </mat-cell>
       </ng-container>
-  
+
          <!--  Columna IntervaloId-->
          <ng-container matColumnDef="UM">
           <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -67,11 +67,11 @@
           >
           <mat-cell *matCellDef="let row"> {{ row.um }} </mat-cell>
         </ng-container>
-    
-  
-      
-    
-  
+
+
+
+
+
       <!--  Columna IntervaloId-->
       <ng-container matColumnDef="nombre">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -79,8 +79,8 @@
         >
         <mat-cell *matCellDef="let row"> {{ row.nombre }} </mat-cell>
       </ng-container>
-   
-  
+
+
     <!--  Columna IntervaloId-->
     <ng-container matColumnDef="cantidad">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -88,8 +88,8 @@
       >
       <mat-cell *matCellDef="let row"> {{ row.cantidad }} </mat-cell>
     </ng-container>
-    
-  
+
+
     <!--  Columna IntervaloId-->
     <ng-container matColumnDef="existencia">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -97,8 +97,8 @@
       >
       <mat-cell *matCellDef="let row"> {{ row.existencia }} </mat-cell>
     </ng-container>
-    
-  
+
+
     <!--  Columna IntervaloId-->
     <ng-container matColumnDef="precioCup">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -106,7 +106,7 @@
       >
       <mat-cell *matCellDef="let row"> {{ row.precioCUP|currency }} </mat-cell>
     </ng-container>
-  
+
       <!--  Columna IntervaloId-->
       <ng-container matColumnDef="utm_mov">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -114,8 +114,8 @@
         >
         <mat-cell *matCellDef="let row"> {{ row.utm_mov |date}} </mat-cell>
       </ng-container>
-      
-  
+
+
       <!--  Columna IntervaloId-->
       <ng-container matColumnDef="precioTotal">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -125,7 +125,7 @@
       </ng-container>
    <!--  Columna IntervaloId-->
    <ng-container matColumnDef="estado">
-    
+
     <mat-header-cell *matHeaderCellDef mat-sort-header>
       estado</mat-header-cell
     >
@@ -134,7 +134,7 @@
   </ng-container>
 
 
-     
+
 
       <ng-container matColumnDef="Borrar">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -145,42 +145,43 @@
               Borrar
               </button>
         </mat-cell>
-      
+
       </ng-container>
-  
-  
+
+
       <mat-header-row
         *matHeaderRowDef="displayedColumns"
         class="encabezado"
       ></mat-header-row>
       <mat-row [ngClass]="{ 'marked': (row.existencia-row.cantidad) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
-  
- 
+
+
   </div>
-           
+
   <ng-template #noRecord>
     <div>
       <h3 style="display: flex; justify-content: center; align-items: center">  No hay registros en la BD.</h3>
-   
+
      </div>
     </ng-template>
 
+    <button mat-raised-button (click)="goBack()">Volver</button>
 
-  <button mat-raised-button color="primary" 
+  <button mat-raised-button color="primary"
   (click)="exporter.exportTable('xlsx', {fileName:'table'})">Export to xlsx</button>
   <!-- <div>
     <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Adicionar Recurso</button>
-    
+
   </div> -->
-<!--   
+<!--
   <span >Gran Total:{{sum|currency}}</span>
-  
+
         -->
-        <mat-card *ngIf="isLoading" 
+        <mat-card *ngIf="isLoading"
         style="display: flex; justify-content: center; align-items: center">
-        <mat-progress-spinner 
-         color="primary" 
+        <mat-progress-spinner
+         color="primary"
          mode="indeterminate">
         </mat-progress-spinner>
         </mat-card>

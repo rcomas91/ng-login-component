@@ -8,6 +8,7 @@ import { Articulo } from "./articulo";
 import { ArticuloService } from './articulo.service';
 import { Location } from '@angular/common';
 import { PozoService } from '../pozo/pozo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-articulo',
@@ -20,9 +21,11 @@ export class ArticuloComponent implements OnInit {
 articulos: Articulo[];
 item:SomeModel;
 isLoading = true;
+
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
   cantPedidos: number;
-  constructor(private _location:Location,private pozoService:PozoService,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
+  constructor(    private router: Router,
+    private _location:Location,private pozoService:PozoService,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
   displayedColumns = ['codigo','nombre','UM','cantidad','existencia','cantReal','precioCup','precioTotal','utm_mov','Borrar'];
   dataSource: any;
 
@@ -45,7 +48,9 @@ sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.interva
 }
 
 goBack(){
-  this._location.back();
+  //this._location.back();
+  this.router.navigate(["/intervalos"]);
+
 }
   cargarData() {
     this.articuloService.getArticulos().subscribe(
