@@ -2,8 +2,8 @@
 
 <div *ngIf="dataSource?.data.length>0;else noRecord" class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
- 
-   
+
+
     <!--  Columna IntervaloId-->
     <ng-container matColumnDef="codigo">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -19,12 +19,12 @@
         >
         <mat-cell *matCellDef="let row"> {{ row.um }} </mat-cell>
       </ng-container>
-  
 
-   
 
-    
-  
+
+
+
+
 
     <!--  Columna IntervaloId-->
     <ng-container matColumnDef="nombre">
@@ -33,7 +33,7 @@
       >
       <mat-cell *matCellDef="let row"> {{ row.nombre }} </mat-cell>
     </ng-container>
- 
+
 
   <!--  Columna IntervaloId-->
   <ng-container matColumnDef="cantidad">
@@ -42,7 +42,7 @@
     >
     <mat-cell *matCellDef="let row"> {{ row.cantidad }} </mat-cell>
   </ng-container>
-  
+
 
   <!--  Columna IntervaloId-->
   <ng-container matColumnDef="existencia">
@@ -51,15 +51,15 @@
     >
     <mat-cell *matCellDef="let row"> {{ row.existencia }} </mat-cell>
   </ng-container>
-  
+
     <!--  Columna IntervaloId-->
     <ng-container  matColumnDef="cantReal">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         cantReal</mat-header-cell
       >
-     
+
       <mat-cell   *matCellDef="let row"> {{ row.existencia-cantPedidos }} </mat-cell>
-   
+
     </ng-container>
 
 
@@ -88,8 +88,8 @@
     </ng-container>
 
           <!--  Columna Editar-->
-  
-          <ng-container matColumnDef="Editar">
+
+          <!-- <ng-container matColumnDef="Editar">
             <mat-header-cell *matHeaderCellDef mat-sort-header>
                 Editar</mat-header-cell
             >
@@ -98,20 +98,21 @@
                 Editar
               </button>
             </mat-cell>
-      
-      
-          </ng-container>
+
+
+          </ng-container> -->
 
     <ng-container matColumnDef="Borrar">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Borrar</mat-header-cell
+        Retirar recurso
+        </mat-header-cell
       >
       <mat-cell *matCellDef="let row">
-        <button mat-raised-button color="warn" (click)="delete(row.id)"focusable="false" >
-            Borrar
+        <button mat-raised-button  color="warn" (click)="delete(row.id)"focusable="false" >
+            Retirar recurso
             </button>
       </mat-cell>
-    
+
     </ng-container>
 
     <button mat-raised-button color="warn">Warn</button>
@@ -131,22 +132,22 @@
 <ng-template #noRecord>
   <div>
     <h3 style="display: flex; justify-content: center; align-items: center">  No hay registros en la BD.</h3>
- 
+
    </div>
 </ng-template>
 <div>
   <button mat-raised-button (click)="goBack()">Volver</button>
 
-  <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Adicionar Recurso</button>
-  
+  <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Asignar Recurso</button>
+
 </div>
 
 <span >Gran Total:{{sum|currency}}</span>
 
-<mat-card *ngIf="isLoading" 
+<mat-card *ngIf="isLoading"
 style="display: flex; justify-content: center; align-items: center">
-<mat-progress-spinner 
- color="primary" 
+<mat-progress-spinner
+ color="primary"
  mode="indeterminate">
 </mat-progress-spinner>
 </mat-card>

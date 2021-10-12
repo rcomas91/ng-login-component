@@ -10,37 +10,37 @@ import { Location } from '@angular/common';
 import { PozoService } from '../pozo/pozo.service';
 
 @Component({
-  selector: 'app-articulo', 
+  selector: 'app-articulo',
   templateUrl: './articulo.component.html',
   styleUrls: ['./articulo-component.css']
 
 })
 export class ArticuloComponent implements OnInit {
   @ViewChild(MatTable,{static: true}) table: MatTable<Articulo>;
-articulos: Articulo[];  
+articulos: Articulo[];
 item:SomeModel;
 isLoading = true;
 sum:number=this.intervaloService.intervalo.precioB+this.intervaloService.intervalo.precioC;
   cantPedidos: number;
   constructor(private _location:Location,private pozoService:PozoService,private necesidadService:NecesidadService, private articuloService:ArticuloService,public intervaloService:IntervaloService) { }
-  displayedColumns = ['codigo','nombre','UM','cantidad','existencia','cantReal','precioCup','precioTotal','utm_mov','Editar','Borrar'];
+  displayedColumns = ['codigo','nombre','UM','cantidad','existencia','cantReal','precioCup','precioTotal','utm_mov','Borrar'];
   dataSource: any;
 
   title="Recursos del pozo "
 
   ngOnInit(){
- 
+
   this.renderDataTable();
   console.log(this.intervaloService.intervalo)
 
   }
   delete(id:number) {
-    if (confirm("Realmente desea cancelar?")) {
+    if (confirm("Realmente desea retirar este recurso?")) {
 
     this.articuloService.delete(id).subscribe(articulo => this.renderDataTable(),
       error => console.error(error));
-      
-      
+
+
   }
 }
 
@@ -71,7 +71,7 @@ goBack(){
               this.sum+=item.precioCUP*item.cantidad;
               console.log(this.sum)
             });
-      
+
 
     console.log(this.dataSource.data);
 
@@ -93,7 +93,7 @@ calcCantPedidosPorElem(codigo:string){
               cant+=item.cantidad;
               console.log(cant)
             });
-          
+
             this.cantPedidos= cant;
           })
 
@@ -105,4 +105,4 @@ calcCantPedidosPorElem(codigo:string){
 
   }
 
-  
+
