@@ -81,5 +81,9 @@ export class PozoFormComponent implements OnInit {
     this.router.navigate(["/pozos"]);
 
   }
+  goBack(){
+    // this._location.back();
+     this.router.navigate(["/pozos"]);
+   }
 
 }

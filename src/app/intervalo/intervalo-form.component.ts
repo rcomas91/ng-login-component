@@ -82,6 +82,8 @@ export class IntervaloFormComponent implements OnInit {
 
   cargarFormulario(int: Intervalo) {
     console.log(int.intervaloId)
+    
+   
 
     this.formGroup.patchValue({
       ConstruccionId: int.construccionId,
@@ -130,7 +132,6 @@ export class IntervaloFormComponent implements OnInit {
     this.Cseleccionado=$event;
     console.log(this.Cseleccionado)
     this.formGroup.controls['Camisa'].setValue(this.Cseleccionado.mProducto_Descrip)
-
     this.formGroup.controls['PrecioC'].setValue(this.Cseleccionado.mProducto_Precio)
 
 
