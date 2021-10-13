@@ -120,18 +120,12 @@ export class IntervaloFormComponent implements OnInit {
 
   myChange($event){
     console.log($event);
-    this.Bseleccionado=$event;
-    console.log(this.Bseleccionado)
-    this.formGroup.controls['Barrena'].setValue(this.Bseleccionado.mProducto_Descrip)
     this.formGroup.controls['PrecioB'].setValue(this.Bseleccionado.mProducto_Precio)
 
 
   }
   myChange2($event){
     console.log($event);
-    this.Cseleccionado=$event;
-    console.log(this.Cseleccionado)
-    this.formGroup.controls['Camisa'].setValue(this.Cseleccionado.mProducto_Descrip)
     this.formGroup.controls['PrecioC'].setValue(this.Cseleccionado.mProducto_Precio)
 
 
