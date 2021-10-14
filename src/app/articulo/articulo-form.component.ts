@@ -295,7 +295,7 @@ this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombre
       this.necesidadService.getNecesidades().subscribe (
         x => {
   this.necesidades= x.filter(nec => nec.codigo == codigo && nec.nombrePozo==nombrePozo)
-  debugger
+ // debugger
           this.necid=this.necesidades[0].id;
           this.necesidad.id=this.necid
           cant=Number(this.necesidad.cantidad)+this.necesidades[0].cantidad
