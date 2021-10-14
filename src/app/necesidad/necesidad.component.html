@@ -155,7 +155,10 @@
       ></mat-header-row>
       <mat-row [ngClass]="{ 'marked': (row.existencia-row.cantidad) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
+    <button mat-raised-button (click)="goBack()">Volver</button>
 
+    <button mat-raised-button color="primary"
+    (click)="exporter.exportTable('xlsx', {fileName:'table'})">Export to xlsx</button>
 
   </div>
 
@@ -166,10 +169,7 @@
      </div>
     </ng-template>
 
-    <button mat-raised-button (click)="goBack()">Volver</button>
-
-  <button mat-raised-button color="primary"
-  (click)="exporter.exportTable('xlsx', {fileName:'table'})">Export to xlsx</button>
+   
   <!-- <div>
     <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Adicionar Recurso</button>
 
