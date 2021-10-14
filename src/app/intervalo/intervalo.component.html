@@ -113,6 +113,33 @@
  
  
     </mat-table>
+
+ 
+     <!-- *ngIf="dataSource?.data.length===3" -->
+     <div class="contenedor">
+      <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <!-- <mat-card-title>Shiba Inu</mat-card-title> -->
+          </mat-card-header>
+          <img mat-card-image src="../../assets/images/{{cont}}.png" alt="Photo of a Shiba Inu">
+          <div class="texto-encima">Texto</div>
+          <div class="primario">{{dataSource.data[0].camisa}}</div>
+    
+          <div class="segundado">{{dataSource.data[1].camisa}}</div>
+    
+          <div class="centrado">{{dataSource.data[2].camisa}}</div>
+          
+          <div class="cuarto">{{dataSource.data[3].camisa}}</div>
+          
+          <div class="quinto">{{dataSource.data[4].camisa}}</div>
+    
+         
+    
+        </mat-card>
+    
+    
+      </div>
   </div>
              
   <ng-template #noRecord>
@@ -130,18 +157,7 @@
 
 <span >Gran Total:{{sum|currency}}</span>
 
-    <!-- *ngIf="dataSource?.data.length===3" -->
-    
-  <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <!-- <mat-card-title>Shiba Inu</mat-card-title> -->
-      </mat-card-header>
-      <img mat-card-image src="../../assets/images/{{cont}}.png" alt="Photo of a Shiba Inu">
-       
-    </mat-card>
-
- 
+   
     <mat-card *ngIf="isLoading" 
     style="display: flex; justify-content: center; align-items: center">
    <mat-progress-spinner 

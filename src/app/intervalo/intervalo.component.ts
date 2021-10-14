@@ -26,6 +26,7 @@ cont:number;
   ngOnInit(){
   this.renderDataTable();
   console.log(this.pozoService.construccion.construccionId)
+  
 
   }
   delete(intervaloId:number) {
