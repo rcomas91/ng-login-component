@@ -79,7 +79,7 @@ export class ArticuloComponent implements OnInit {
         nec.cantidad = cant;
         this.necesidadService.update(nec).subscribe((x) => this.necesidades);
       });
-    }, 1000);
+    }, 500);
   }
 
   goBack() {
