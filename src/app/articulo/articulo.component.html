@@ -53,12 +53,12 @@
   </ng-container>
 
     <!--  Columna IntervaloId-->
-    <ng-container  matColumnDef="cantReal">
+    <ng-container matColumnDef="cantReal">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         cantReal</mat-header-cell
       >
 
-      <mat-cell   *matCellDef="let row"> {{ row.existencia-cantPedidos }} </mat-cell>
+      <mat-cell   *matCellDef="let row"><p *ngIf="row.existencia!==null"> {{ row.existencia-cantPedidos }}</p> </mat-cell>
 
     </ng-container>
 
@@ -121,7 +121,7 @@
       *matHeaderRowDef="displayedColumns"
       class="encabezado"
     ></mat-header-row>
-     <mat-row [ngClass]="{ 'marked': (row.existencia-cantPedidos) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
+     <mat-row [ngClass]="{ 'marked': (row.existencia-cantPedidos) <0 && row.existencia}" *matRowDef="let row; columns: displayedColumns"></mat-row>
     <!-- <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row> -->
 
   </mat-table>
@@ -138,7 +138,9 @@
 <div>
   <button mat-raised-button (click)="goBack()">Volver</button>
 
-  <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Asignar Recurso</button>
+  <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Asignar Recurso del Almacen</button>
+
+  <button  [routerLink]="['/articuloPropio/form']"  mat-raised-button color="warn">Adicionar nuevo Recurso</button>
 
 </div>
 

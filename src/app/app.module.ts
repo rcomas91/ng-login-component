@@ -29,6 +29,7 @@ import { ArticuloFormComponent } from './articulo/articulo-form.component';
 import { ConstruccionService } from './pozo/construccion.service';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { ToastrModule } from 'ngx-toastr';
+import { ArticuloPropioComponent } from './articulo-propio/articulo-propio.component';
 
 
 
@@ -47,6 +48,10 @@ const routes:Routes=[
   {path:'pozos',component:PozoComponent},
   {path:'pozos/form',component:PozoFormComponent},
   {path:'pozos/form/:id',component:PozoFormComponent},
+
+  {path:'articuloPropio/form',component:ArticuloPropioComponent},
+  {path:'articuloPropio/form/:id',component:ArticuloPropioComponent},
+
 
   {path:'intervalos',component:IntervaloComponent},
   {path:'intervalos/form',component:IntervaloFormComponent},
@@ -68,7 +73,8 @@ const routes:Routes=[
     PozoFormComponent,
     IntervaloFormComponent,
     WinatmComponent,
-    ArticuloFormComponent
+    ArticuloFormComponent,
+    ArticuloPropioComponent
   ],
   imports: [
     ToastrModule.forRoot(

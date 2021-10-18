@@ -11,11 +11,11 @@ export interface Articulo {
     //cup:number;
     UM:string;
     cantidad:number;
-    existencia:number;
+    existencia?:number;
     //cuenta:string;
     //subcuenta:string;
     precioCUP:number;
-    utm_mov:string; 
+    utm_mov?:string; 
     
     
 }
