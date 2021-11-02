@@ -23,6 +23,7 @@ cont:number;
   dataSource: any;
   title="Intervalos del pozo "
   sum:number;
+  sumBarrenas:number=0;
   ngOnInit(){
   this.renderDataTable();
   console.log(this.pozoService.construccion.construccionId)
@@ -31,7 +32,7 @@ cont:number;
   }
   delete(intervaloId:number) {
     if (confirm("Realmente desea cancelar?")) {
-
+      this.sumBarrenas=0;
     this.intervaloService.delete(intervaloId).subscribe(intervalo => this.renderDataTable(),
       error => console.error(error));
   }
@@ -73,8 +74,10 @@ cont:number;
       this.sum=0;
       this.dataSource.data.forEach((item:Intervalo)=> {
       this.sum+=item.precioTotal;
+      this.sumBarrenas+=item.precioB;
       });
       console.log(this.sum)
+      console.log(this.sumBarrenas)
       return this.sum;
     }, 500);
 
@@ -100,6 +103,8 @@ goBack(){
  // this._location.back();
   this.router.navigate(["/pozos"]);
 }
+
+
 
   }
 
