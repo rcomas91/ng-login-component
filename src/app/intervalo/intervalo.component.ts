@@ -24,6 +24,7 @@ cont:number;
   title="Intervalos del pozo "
   sum:number;
   sumBarrenas:number=0;
+  sumCasingYacces=0;
   ngOnInit(){
   this.renderDataTable();
   console.log(this.pozoService.construccion.construccionId)
@@ -51,6 +52,18 @@ cont:number;
 
 
 
+  
+  calcularMontoCyA(int:Intervalo){
+    let sum=0;
+    int.recursos.forEach((item:Articulo)=> {
+      if((item.nombre.toLowerCase().indexOf('liner')!=-1)||(item.nombre.indexOf('casing')!=-1)||(item.nombre.indexOf('zapato')!=-1)||(item.nombre.indexOf('valvula')!=-1)||(item.nombre.indexOf('centralizador')!=-1)){
+      sum+=item.precioCUP*item.cantidad;
+      }
+    });
+    return sum;
+  }
+
+
   cargarData() {
     this.intervaloService.getIntervalos().subscribe(
       intervalosDesdesWS => this.intervalos = intervalosDesdesWS,
@@ -75,6 +88,7 @@ cont:number;
       this.dataSource.data.forEach((item:Intervalo)=> {
       this.sum+=item.precioTotal;
       this.sumBarrenas+=item.precioB;
+      //this.sumCasingYacces+=this.calcularMontoCyA(item)
       });
       console.log(this.sum)
       console.log(this.sumBarrenas)
