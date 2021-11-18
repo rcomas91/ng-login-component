@@ -82,8 +82,9 @@ VerConst(construccion:Construccion,pozo:Pozo){
     this.pozoService.construccion=construccion;
     this.pozoService.pozo=pozo;
     this.toastr.info(
-      "Comienza por agregar los intervalos del pozo en el botón Adicionar intervalo!",
-      "Atento!"
+      
+      'Comienza por agregar los intervalos del pozo en el botón Adicionar intervalo!',
+      'Atento!',    {closeButton		:true}
     );
   }
 
@@ -91,11 +92,13 @@ VerConst(construccion:Construccion,pozo:Pozo){
 
 
   AdicionarConst(id:number){
+ 
   this.formGroup.controls['PozoId'].setValue(id)
     let int: Construccion = Object.assign({}, this.formGroup.value);
     console.table(int);
      this.constService.create(int).subscribe(int=>this.onSaveSuccess(),error=>console.error(error));
-
+  
+     
      this.toastr.info(
       "Acaba de agregar una construcción a este pozo pulse en ver construcción para comenzar a usarla!",
       "Atento!"

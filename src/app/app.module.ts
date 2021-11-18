@@ -30,6 +30,7 @@ import { ConstruccionService } from './pozo/construccion.service';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { ToastrModule } from 'ngx-toastr';
 import { ArticuloPropioComponent } from './articulo-propio/articulo-propio.component';
+import { ServiciosComponent } from './servicios/servicios.component';
 
 
 
@@ -74,10 +75,17 @@ const routes:Routes=[
     IntervaloFormComponent,
     WinatmComponent,
     ArticuloFormComponent,
-    ArticuloPropioComponent
+    ArticuloPropioComponent,
+    ServiciosComponent
   ],
   imports: [
-    ToastrModule.forRoot(
+    ToastrModule.forRoot({
+  
+    maxOpened:0,
+    autoDismiss	:true,
+    positionClass: 'toast-bottom-right',
+    preventDuplicates: true,
+    }
     ), // ToastrModule added
 
     FormsModule,
