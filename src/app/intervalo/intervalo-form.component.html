@@ -8,8 +8,8 @@
         <div class="row">
           <div class="col-md-6">
             <mat-form-field [style.width.px]=400 >
-              <mat-select placeholder="Camisa" formControlName="Camisa"  (selectionChange)="myChange2($event.value)">
-                <mat-option *ngFor="let camisa of camisas" [value]="camisa.mProducto_Descrip">
+              <mat-select placeholder="Camisa"  [(value)]="Cseleccionado"  name="barrenas"   (selectionChange)="myChange2($event.value)">
+                <mat-option *ngFor="let camisa of camisas" [value]="camisa">
                   {{camisa.mProducto_Descrip}}
                 </mat-option>
               </mat-select>
@@ -17,8 +17,8 @@
           </div>
           <div class="col-md-6">
             <mat-form-field [style.width.px]=400>
-              <mat-select placeholder="Barrena" formControlName="Barrena" (selectionChange)="myChange($event.value)">
-                <mat-option *ngFor="let barrena of barrenas" [value]="barrena.mProducto_Descrip">
+              <mat-select placeholder="Barrena"  [(value)]="Bseleccionado"  name="barrenas"  (selectionChange)="myChange($event.value)">
+                <mat-option *ngFor="let barrena of barrenas" [value]="barrena">
                   {{barrena.mProducto_Descrip}}
                 </mat-option>
               </mat-select>
