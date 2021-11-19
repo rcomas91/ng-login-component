@@ -78,8 +78,13 @@ export class ArticuloComponent implements OnInit {
         cant = nec.cantidad - art.cantidad;
         nec.cantidad = cant;
         this.necesidadService.update(nec).subscribe((x) => this.necesidades);
+        if(nec.cantidad==0){
+          this.necesidadService.delete(nec.id).subscribe((x)=>this.necesidades)
+        }
       });
+      
     }, 500);
+   
   }
 
   goBack() {
