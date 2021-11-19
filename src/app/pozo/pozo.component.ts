@@ -84,7 +84,7 @@ VerConst(construccion:Construccion,pozo:Pozo){
     this.toastr.info(
       
       'Comienza por agregar los intervalos del pozo en el botón Adicionar intervalo!',
-      'Atento!',    {closeButton		:true}
+      'Atento!',    {closeButton		:true,tapToDismiss	:false}
     );
   }
 
@@ -101,13 +101,17 @@ VerConst(construccion:Construccion,pozo:Pozo){
      
      this.toastr.info(
       "Acaba de agregar una construcción a este pozo pulse en ver construcción para comenzar a usarla!",
-      "Atento!"
+      "Atento!",{progressBar:true,progressAnimation	:'increasing'}
     );
 
   }
   onSaveSuccess() {
-    this.renderDataTable()
-    this.router.navigate(["/pozos"]);
+    setTimeout(() => {
+      this.isLoading=true;
+      this.renderDataTable()
+      this.router.navigate(["/pozos"]);
+    }, 6000);
+
   }
 
 

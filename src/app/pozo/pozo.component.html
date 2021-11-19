@@ -158,10 +158,12 @@
     Ver Construcción</mat-header-cell
   >
   <mat-cell *matCellDef="let row">
-    <button  *ngIf="row.construccion" mat-raised-button color="warn" (click)="VerConst(row.construccion, row)"focusable="false" >
+    <button  *ngIf="row.construccion && !isLoading" mat-raised-button color="warn" (click)="VerConst(row.construccion, row)"focusable="false" >
       Ver Construcción
         </button>
-        <button  *ngIf="!(row.construccion)" mat-raised-button color="warn" (click)="AdicionarConst(row.pozoId)"focusable="false" >
+      
+     
+        <button  *ngIf="!(row.construccion) && !isLoading" mat-raised-button color="warn" (click)="AdicionarConst(row.pozoId)"focusable="false" >
           Adicionar Construcción
             </button>
   </mat-cell>

@@ -83,7 +83,6 @@ const routes:Routes=[
   
     maxOpened:0,
     autoDismiss	:true,
-    positionClass: 'toast-bottom-right',
     preventDuplicates: true,
     }
     ), // ToastrModule added
