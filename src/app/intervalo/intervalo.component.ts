@@ -113,6 +113,17 @@ VerRec(intervalo){
 
 }
 
+
+VerServ(intervalo){
+  console.log(intervalo)
+  this.intervaloService.intervalo=intervalo;
+
+  this.router.navigate(['/servicios'])
+
+
+
+}
+
 goBack(){
  // this._location.back();
   this.router.navigate(["/pozos"]);

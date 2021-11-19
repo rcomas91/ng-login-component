@@ -50,6 +50,12 @@ const routes:Routes=[
   {path:'pozos/form',component:PozoFormComponent},
   {path:'pozos/form/:id',component:PozoFormComponent},
 
+
+  
+  {path:'servicios',component:ServiciosComponent},
+ 
+
+
   {path:'articuloPropio/form',component:ArticuloPropioComponent},
   {path:'articuloPropio/form/:id',component:ArticuloPropioComponent},
 
