@@ -1,0 +1,79 @@
+<form [formGroup]="formGroup" #ngForm="ngForm" class="form-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Servicio Information <span *ngIf="ngForm.submitted && !formGroup.valid" class="small-font "
+          [ngClass]="{'invalid': ngForm.submitted }" style="color: red;">* required</span></mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6">
+            <mat-form-field class="full-width">
+              <input formControlName="Codigo" matInput="" placeholder="Codigo">
+            </mat-form-field>
+          </div>
+          
+            <div class="col-md-6">
+                <mat-form-field>
+                  <mat-select placeholder="TipoServicio" formControlName="TipoServicio">
+                    <mat-option *ngFor="let tp of TipoServicio" [value]="tp">
+                      {{tp}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+    
+          <div class="col-md-8">
+            <mat-form-field class="full-width">
+              <textarea formControlName="Descripcion" matInput="" placeholder="Descripcion"></textarea>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6">
+            <mat-form-field>
+              <mat-select placeholder="Empresa" formControlName="Empresa">
+                <mat-option *ngFor="let emp of Empresas" [value]="emp">
+                  {{emp}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- <div class="col-md-6">
+            <mat-form-field class="full-width">
+              <input formControlName="Ubicacion" matInput="" placeholder="Ubicacion">
+            </mat-form-field>
+          </div> -->
+        </div>
+
+
+          <div class="col-md-6 top-padding">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>FechaInicio</mat-label>
+                    <input formControlName="FechaInicio" matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+                   <div class="col-md-6 top-padding">
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label>FechaFin</mat-label>
+                    <input formControlName="FechaFin" matInput [matDatepicker]="picker1">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+              <mat-form-field class="full-width">
+                <input type="number" formControlName="CostoCUP" matInput="" placeholder="CostoCUP">
+              </mat-form-field>
+            </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="goBack()">Cancelar</button>
+
+        <button mat-raised-button (click)="save()"color="primary">Save</button>
+
+      </mat-card-actions>
+    </mat-card>
+  </form>

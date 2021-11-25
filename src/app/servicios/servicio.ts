@@ -1,6 +1,7 @@
 
 
 export interface Servicio {
+  codigo:string;
   servicioId: number;
   tipoServicio: string;
   descripcion: string;
@@ -8,4 +9,7 @@ export interface Servicio {
   fechaInicio?: Date;
   fechaFin?: Date;
   intervaloId?: number;
+  pozoId?: number;
+  costoCUP:number;
+
 }

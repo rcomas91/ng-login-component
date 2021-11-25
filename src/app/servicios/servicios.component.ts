@@ -4,6 +4,7 @@ import { MatTable, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConstruccionService } from '../pozo/construccion.service';
+import { PozoService } from '../pozo/pozo.service';
 import { Servicio } from './servicio';
 import { ServicioService } from './servicio.service';
 
@@ -16,11 +17,11 @@ export class ServiciosComponent implements OnInit {
   @ViewChild(MatTable,{static: true}) table: MatTable<Servicio>;
   servicios: Servicio[];
   isLoading = true;
-  constructor(private toastr: ToastrService,private constService:ConstruccionService,private servicioService:ServicioService,  private fb: FormBuilder,  private router:Router) { }
-  title="Servicios en el sistema"
+  constructor(private pozoService: PozoService,private toastr: ToastrService,private constService:ConstruccionService,private servicioService:ServicioService,  private fb: FormBuilder,  private router:Router) { }
+  title="Servicios del pozo "
   formGroup: FormGroup;
 
-displayedColumns = ['TipoServicio','Descripcion','Empresa','FechaInicio','FechaFin','Editar','Borrar'];
+displayedColumns = ['Codigo','TipoServicio','Descripcion','Empresa','FechaInicio','FechaFin','CostoCUP','Editar','Borrar'];
 dataSource: any;
 
   ngOnInit() {
@@ -33,7 +34,7 @@ dataSource: any;
   delete(servicioId:number) {
     if (confirm("Realmente desea cancelar?")) {
 
-    this.servicioService.delete(servicioId).subscribe(pozo => this.renderDataTable(),
+    this.servicioService.delete(servicioId).subscribe(serv => this.renderDataTable(),
       error => console.error(error));
   }
 }
@@ -44,13 +45,17 @@ cargarData() {
   );
 
 }
+
+
+
   renderDataTable() {
     this.servicioService.getServicios()
       .subscribe(
           x => {
             this.isLoading = false;
     this.dataSource = new MatTableDataSource();
-    this.dataSource.data = x;
+    this.dataSource.data = x.filter((serv)=>
+    serv.pozoId==this.pozoService.pozo.pozoId);
     console.log(this.dataSource.data);
   },
   error => {
@@ -58,5 +63,12 @@ cargarData() {
     console.log('Ocurrió un error al consultar los Servicios!' + error);
   });
 }
+
+
+goBack(){
+  // this._location.back();
+   this.router.navigate(["/intervalos"]);
+ }
+ 
 
 }

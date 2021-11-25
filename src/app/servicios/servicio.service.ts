@@ -2,13 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Intervalo } from '../intervalo/intervalo';
+import { Pozo } from '../pozo/pozo';
 import { Servicio } from './servicio';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicioService {
-
 
   intervalo:Intervalo;
   constructor(private http:HttpClient) { }

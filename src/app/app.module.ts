@@ -31,6 +31,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { ToastrModule } from 'ngx-toastr';
 import { ArticuloPropioComponent } from './articulo-propio/articulo-propio.component';
 import { ServiciosComponent } from './servicios/servicios.component';
+import { ServiciosFormComponent } from './servicios/servicios-form.component';
 
 
 
@@ -53,7 +54,8 @@ const routes:Routes=[
 
   
   {path:'servicios',component:ServiciosComponent},
- 
+  {path:'servicios/form',component:ServiciosFormComponent},
+  {path:'servicios/form/:id',component:ServiciosFormComponent},
 
 
   {path:'articuloPropio/form',component:ArticuloPropioComponent},
@@ -82,7 +84,8 @@ const routes:Routes=[
     WinatmComponent,
     ArticuloFormComponent,
     ArticuloPropioComponent,
-    ServiciosComponent
+    ServiciosComponent,
+    ServiciosFormComponent
   ],
   imports: [
     ToastrModule.forRoot({
