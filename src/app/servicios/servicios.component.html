@@ -14,7 +14,20 @@
       <mat-cell *matCellDef="let row"> {{ row.codigo }} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="SubCodigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+         subCodigo</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.subCodigo }} </mat-cell>
+    </ng-container>
 
+    <ng-container matColumnDef="Contingencia">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+         Contingencia</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.contingencia }} </mat-cell>
+    </ng-container>
+    
     <ng-container matColumnDef="TipoServicio">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Tipo Servicio</mat-header-cell
@@ -42,7 +55,7 @@
          <!--  Columna camisa-->
      <ng-container matColumnDef="FechaInicio">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
-            Empresa</mat-header-cell
+          FechaInicio</mat-header-cell
         >
         <mat-cell *matCellDef="let row"> {{ row.fechaInicio|date }} </mat-cell>
       </ng-container>
@@ -72,7 +85,7 @@
 
 
 
-    <ng-container matColumnDef="Editar">
+    <!-- <ng-container matColumnDef="Editar">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Editar</mat-header-cell
       >
@@ -86,13 +99,13 @@
           Editar
         </button>
       </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
     <!--  Columna Editar-->
 
     <ng-container matColumnDef="Borrar">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Borrar</mat-header-cell
+        Retirar servicio</mat-header-cell
       >
       <mat-cell *matCellDef="let row">
         <button
@@ -101,7 +114,7 @@
           (click)="delete(row.servicioId)"
           focusable="false"
         >
-          Borrar
+        Retirar
         </button>
       </mat-cell>
     </ng-container>

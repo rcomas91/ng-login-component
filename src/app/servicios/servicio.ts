@@ -2,6 +2,8 @@
 
 export interface Servicio {
   codigo:string;
+  subCodigo:string;
+  contingencia:string;
   servicioId: number;
   tipoServicio: string;
   descripcion: string;

@@ -21,7 +21,7 @@ export class ServiciosComponent implements OnInit {
   title="Servicios del pozo "
   formGroup: FormGroup;
 
-displayedColumns = ['Codigo','TipoServicio','Descripcion','Empresa','FechaInicio','FechaFin','CostoCUP','Editar','Borrar'];
+displayedColumns = ['Codigo','SubCodigo', 'Contingencia','TipoServicio','Descripcion','Empresa','FechaInicio','FechaFin','CostoCUP','Borrar'];
 dataSource: any;
 
   ngOnInit() {
