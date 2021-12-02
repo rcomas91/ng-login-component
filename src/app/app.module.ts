@@ -113,7 +113,6 @@ const routes:Routes=[
   MatDialogModule,
   MatTableModule,
   MatMenuModule,
-  MatIconModule,
   MatProgressSpinnerModule,
   MatRadioModule,
   ReactiveFormsModule,
@@ -121,6 +120,7 @@ const routes:Routes=[
   MatNativeDateModule,
   MatSelectModule,
   MatPaginatorModule,
+  MatIconModule,
   MatAutocompleteModule,
   MatTableExporterModule,
   MatChipsModule
