@@ -76,7 +76,7 @@
     </tbody>
 </table>
 </div> -->
-<h2>{{title}} </h2>
+<h2 style="display: flex; justify-content: center; align-items: center">{{title}} </h2>
 
 <div *ngIf="dataSource?.data.length>0;else noRecord" class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort>
@@ -181,6 +181,7 @@
     </mat-table>
   </div>
   <ng-template #noRecord>
+    <mat-card class="example-container mat-elevation-z8">
     <div style="display: flex; justify-content: center; align-items: center" >
       <img  class="example-card-image"
           mat-card-image
@@ -197,6 +198,7 @@
       alt="Photo of a Shiba Inu"
     />
     </div>
+  </mat-card>
   </ng-template>
   <div>
     <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent">Adicionar Pozo</button>
