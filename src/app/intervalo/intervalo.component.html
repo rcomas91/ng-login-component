@@ -59,7 +59,7 @@
 
     <ng-container matColumnDef="Editar">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Editar</mat-header-cell
+     Editar</mat-header-cell
       >
       <mat-cell *matCellDef="let row">
         <button
@@ -68,7 +68,7 @@
           [routerLink]="['/intervalos/form', row.intervaloId]"
           focusable="false"
         >
-          Editar
+        <mat-icon>edit</mat-icon>   Editar
         </button>
       </mat-cell>
     </ng-container>
@@ -77,7 +77,7 @@
 
     <ng-container matColumnDef="Borrar">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        Borrar</mat-header-cell
+       Borrar</mat-header-cell
       >
       <mat-cell *matCellDef="let row">
         <button
@@ -86,7 +86,7 @@
           (click)="delete(row.intervaloId)"
           focusable="false"
         >
-          Borrar
+        <mat-icon>delete</mat-icon> Borrar
         </button>
       </mat-cell>
     </ng-container>
@@ -102,7 +102,7 @@
           (click)="VerRec(row)"
           focusable="false"
         >
-          Recursos
+        <mat-icon> directions_subway</mat-icon>  Recursos
         </button>
       </mat-cell>
     </ng-container>
@@ -131,13 +131,13 @@
       <div class="texto-encima">Texto</div>
 
       <div *ngIf="cont == 1">
-        <div class="primario">{{ dataSource.data[0].camisa }}</div>
+        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
       </div>
 
       <div *ngIf="cont == 2">
-        <div class="primario">{{ dataSource.data[0].camisa }}</div>
+        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
 
-        <div class="segundado">{{ dataSource.data[1].camisa }}</div>
+        <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
       </div>
       <div *ngIf="cont == 3">
         <div class="primario">{{ dataSource.data[0].camisa }}</div>
@@ -194,12 +194,12 @@
 </ng-template>
 
 <div>
-  <button mat-raised-button (click)="goBack()">Volver</button>
+  <button mat-raised-button (click)="goBack()"><mat-icon>keyboard_return</mat-icon>Volver</button>
   <button [routerLink]="['/intervalos/form']" mat-raised-button color="accent">
-    Adicionar Intervalo
+    <mat-icon>library_add</mat-icon> Adicionar Intervalo
   </button>
   <button [routerLink]="['/servicios']" mat-raised-button color="primary">
-    Servicios
+    <mat-icon> departure_board</mat-icon>Servicios
   </button>
 
 </div>

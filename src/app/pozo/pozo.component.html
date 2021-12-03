@@ -131,7 +131,7 @@
         >
         <mat-cell *matCellDef="let row">
           <button mat-raised-button color="primary" [routerLink]="['/pozos/form',row.pozoId]" focusable="false" >
-            Editar
+            <mat-icon>edit</mat-icon> Editar
           </button>
         </mat-cell>
   
@@ -142,11 +142,11 @@
 
 <ng-container matColumnDef="Borrar">
   <mat-header-cell *matHeaderCellDef mat-sort-header>
-    Borrar</mat-header-cell
+  Borrar</mat-header-cell
   >
   <mat-cell *matCellDef="let row">
     <button mat-raised-button color="warn" (click)="delete(row.pozoId)"focusable="false" >
-        Borrar
+      <mat-icon>delete</mat-icon> Borrar
         </button>
   </mat-cell>
 
@@ -159,12 +159,12 @@
   >
   <mat-cell *matCellDef="let row">
     <button  *ngIf="row.construccion && !isLoading" mat-raised-button color="warn" (click)="VerConst(row.construccion, row)"focusable="false" >
-      Ver Construcción
+      <mat-icon>visibility</mat-icon> Ver Construcción
         </button>
       
      
         <button  *ngIf="!(row.construccion) && !isLoading" mat-raised-button color="warn" (click)="AdicionarConst(row.pozoId)"focusable="false" >
-          Adicionar Construcción
+          <mat-icon>add</mat-icon>Adicionar Construcción
             </button>
   </mat-cell>
 
@@ -201,7 +201,7 @@
   </mat-card>
   </ng-template>
   <div>
-    <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent">Adicionar Pozo</button>
+    <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent"><mat-icon>library_add</mat-icon> Adicionar Pozo</button>
     </div>
  
     <mat-card *ngIf="isLoading" 

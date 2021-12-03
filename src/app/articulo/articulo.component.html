@@ -109,7 +109,7 @@
       >
       <mat-cell  *matCellDef="let row">
         <button mat-raised-button  color="warn" (click)="delete(row.id)"focusable="false" >
-            Retirar
+          <mat-icon>delete_sweep</mat-icon> Retirar
             </button>
       </mat-cell>
 
@@ -136,11 +136,11 @@
    </div>
 </ng-template>
 <div>
-  <button mat-raised-button (click)="goBack()">Volver</button>
+  <button mat-raised-button (click)="goBack()"> <mat-icon>keyboard_return</mat-icon>Volver</button>
 
-  <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Asignar Recurso del Almacen</button>
+  <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent"><mat-icon>add_circle_outline</mat-icon>Asignar Recurso del Almacen</button>
 
-  <button  [routerLink]="['/articuloPropio/form']"  mat-raised-button color="warn">Adicionar nuevo Recurso</button>
+  <button  [routerLink]="['/articuloPropio/form']"  mat-raised-button color="warn"><mat-icon>library_add</mat-icon>Adicionar nuevo Recurso</button>
 
 </div>
 

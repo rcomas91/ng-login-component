@@ -114,6 +114,7 @@ const routes:Routes=[
   MatDialogModule,
   MatTableModule,
   MatMenuModule,
+  MatIconModule,  
   MatProgressSpinnerModule,
   MatRadioModule,
   ReactiveFormsModule,

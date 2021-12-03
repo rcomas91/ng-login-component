@@ -39,16 +39,13 @@
 
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-    <span>SISTIA</span>
-        <span class="example-fill-remaining-space"></span>
-        <span class="align-center"></span>
-        <span class="example-spacer"></span>
-        <button mat-button  routerLink="/winatm">Articulos en el almacen</button>
-        <button mat-button  routerLink="/pozos">Pozos</button>
-        <button mat-button  routerLink="/necesidades">Necesidades</button>
+   
+        <i >SISTIA</i>
+        <button mat-button  routerLink="/winatm"><mat-icon>local_shipping</mat-icon>  Articulos en el almacen</button>
+        <button mat-button  routerLink="/pozos"> <mat-icon >gavel</mat-icon> Pozos</button>
+        <button mat-button  routerLink="/necesidades"><mat-icon > directions_boat</mat-icon>  Necesidades</button>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>More</mat-icon>
-    </button>
+          <mat-icon>menu</mat-icon>  More    </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
         <span>Redial</span>

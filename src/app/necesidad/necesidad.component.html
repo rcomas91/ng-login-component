@@ -142,7 +142,7 @@
         >
         <mat-cell *matCellDef="let row">
           <button mat-raised-button color="warn" (click)="delete(row.id)"focusable="false" >
-              Borrar
+             <mat-icon>delete</mat-icon> Borrar
               </button>
         </mat-cell>
 
@@ -157,10 +157,10 @@
     </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="5" [showFirstLastButtons]></mat-paginator>
 
-    <button mat-raised-button (click)="goBack()">Volver</button>
+    <button mat-raised-button (click)="goBack()">     <mat-icon>keyboard_return</mat-icon>Volver</button>
 
     <button mat-raised-button color="primary"
-    (click)="exporter.exportTable('xlsx', {fileName:'Necesidades de los Pozo'})">Export to xlsx</button>
+    (click)="exporter.exportTable('xlsx', {fileName:'Necesidades de los Pozo'})"><mat-icon> import_export</mat-icon>Export to xlsx</button>
 
   </div>
 
