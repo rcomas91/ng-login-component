@@ -19,7 +19,7 @@ import { WinatmService } from '../winatm/winatm.service';
 })
 export class ArticuloPropioComponent implements OnInit {
   necid: number;
-
+  um:string[]=['jgo','metros']
   constructor(
      private toastr: ToastrService,
     private pozoService: PozoService,

@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTable, MatTableDataSource } from '@angular/material';
 import { ToastrService } from 'ngx-toastr';
-import { IntervaloService } from '../intervalo/intervalo.service';
 import { SomeModel } from './SomeModel';
 import { WinatmService } from './winatm.service';
 

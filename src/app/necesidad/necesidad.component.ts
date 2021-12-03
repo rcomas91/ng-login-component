@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatSort, MatTable, MatTableDataSource } from "@angular/material";
+import { MatPaginator, MatSort, MatTable, MatTableDataSource } from "@angular/material";
 import { Router } from "@angular/router";
 import { IntervaloService } from "../intervalo/intervalo.service";
 import { SomeModel } from "../winatm/SomeModel";
@@ -10,10 +10,12 @@ import { Location } from '@angular/common';
 @Component({
   selector: "app-necesidad",
   templateUrl: "./necesidad.component.html",
+  styleUrls: ['./necesidad.component.css']
 })
 export class NecesidadComponent implements OnInit {
   @ViewChild(MatTable, { static: true }) table: MatTable<Necesidad>;
   @ViewChild(MatSort,{static:true}) sort: MatSort;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
 
   necesidades: Necesidad[];
   necesidad: Necesidad;
@@ -77,6 +79,7 @@ export class NecesidadComponent implements OnInit {
         // this.dataSource.data = x.filter(art => art.intervaloId == this.intervaloService.intervalo.intervaloId)
         this.dataSource.data = x;
         this.dataSource.sort=this.sort;
+            this.dataSource.paginator=this.paginator;
 
         this.dataSource.data.forEach((item: Necesidad) => {
           // this.sum+=item.precioCUP*item.cantidad;
@@ -95,13 +98,14 @@ export class NecesidadComponent implements OnInit {
   cambiarEstado( nec: Necesidad) {
     console.log(nec);
     let estados = [
-      "Pendiente a solicitar",
+    
       "Pendiente de Oferta",
       "En Licitación",
       "Pendiente de contratación",
       "Pendiente de Carta de Crédito",
       "Pendiente de Fabricación",
       "Navegando",
+      "Pendiente a solicitar",
     ];
 
       nec.estado = estados[this.i];

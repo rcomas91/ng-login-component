@@ -40,7 +40,7 @@
  -->
 <h2>Necesidades en los Pozos</h2>
  <div *ngIf="dataSource?.data.length>0;else noRecord" class="example-container mat-elevation-z8">
-    <mat-table  #table [dataSource]="dataSource" matSort matTableExporter #exporter="matTableExporter">
+    <mat-table  #table [dataSource]="dataSource"  matTableExporter #exporter="matTableExporter" matSort>
 
 
    <!--  Columna IntervaloId-->
@@ -155,21 +155,33 @@
       ></mat-header-row>
       <mat-row [ngClass]="{ 'marked': (row.existencia-row.cantidad) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="5" [showFirstLastButtons]></mat-paginator>
+
     <button mat-raised-button (click)="goBack()">Volver</button>
 
     <button mat-raised-button color="primary"
-    (click)="exporter.exportTable('xlsx', {fileName:'table'})">Export to xlsx</button>
+    (click)="exporter.exportTable('xlsx', {fileName:'Necesidades de los Pozo'})">Export to xlsx</button>
 
   </div>
 
   <ng-template #noRecord>
-    <div>
-      <h3 style="display: flex; justify-content: center; align-items: center">  No hay registros en la BD.</h3>
-
-     </div>
-    </ng-template>
-
-   
+    <div style="display: flex; justify-content: center; align-items: center" >
+      <img class="example-card-image"
+          mat-card-image
+          src="../../assets/images/caca.png"
+          alt="Photo of a Shiba Inu"
+        />
+      <h3 style="margin: 50px;">
+         
+        !!!!!No hay registros en la BD!!!!!.
+      </h3>
+      <img  class="example-card-image"
+      mat-card-image
+      src="../../assets/images/mono.png"
+      alt="Photo of a Shiba Inu"
+    />
+    </div>
+  </ng-template>
   <!-- <div>
     <button  [routerLink]="['/articulos/form']"  mat-raised-button color="accent">Adicionar Recurso</button>
 

@@ -181,10 +181,22 @@
     </mat-table>
   </div>
   <ng-template #noRecord>
-    <div>
-      <h3 style="display: flex; justify-content: center; align-items: center">  No hay registros en la BD.</h3>
-   
-     </div>
+    <div style="display: flex; justify-content: center; align-items: center" >
+      <img  class="example-card-image"
+          mat-card-image
+          src="../../assets/images/caca.png"
+          alt="Photo of a Shiba Inu"
+        />
+      <h3 style="margin: 50px;">
+         
+        !!!!!No hay registros en la BD!!!!!.
+      </h3>
+      <img  class="example-card-image"
+      mat-card-image
+      src="../../assets/images/mono.png"
+      alt="Photo of a Shiba Inu"
+    />
+    </div>
   </ng-template>
   <div>
     <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent">Adicionar Pozo</button>

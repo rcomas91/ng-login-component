@@ -105,6 +105,7 @@ const routes:Routes=[
     HttpClientModule,
     MatSliderModule,
     MatToolbarModule,
+    MatIconModule,
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule,

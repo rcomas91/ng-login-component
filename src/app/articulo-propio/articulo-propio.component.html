@@ -23,8 +23,12 @@
 
               <div class="col-md-6">
                 <mat-form-field class="full-width">
-                  <input formControlName="UM" matInput="" placeholder="UM">
-                </mat-form-field>
+                <mat-select placeholder="UM" formControlName="UM">
+                  <mat-option *ngFor="let ums of um" [value]="ums">
+                    {{ums}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
               </div>
 
 

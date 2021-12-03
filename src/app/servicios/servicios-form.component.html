@@ -18,7 +18,7 @@
           
           
           <div class="col-md-6">
-            <mat-form-field [style.width.px]=400>
+            <mat-form-field [style.width.px]=600>
               <mat-select placeholder="Descripcion"   [(value)]="seleccionado"  name="servicios"   (selectionChange)="myChange($event.value)">
                 <mat-option *ngFor="let serv of Servicios" [value]="serv">
                   {{serv.costdesc}}
