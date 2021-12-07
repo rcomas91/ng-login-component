@@ -130,6 +130,13 @@
 
 
 </div>
+<mat-card *ngIf="isLoading"
+style="display: flex; justify-content: center; align-items: center">
+<mat-progress-spinner
+ color="primary"
+ mode="indeterminate">
+</mat-progress-spinner>
+</mat-card>
 
 <div>
   <button mat-raised-button (click)="goBack()"> <mat-icon>keyboard_return</mat-icon>Volver</button>
@@ -142,13 +149,7 @@
 
 <h3 >Gran Total:{{sum|currency}}</h3>
 
-<mat-card *ngIf="isLoading"
-style="display: flex; justify-content: center; align-items: center">
-<mat-progress-spinner
- color="primary"
- mode="indeterminate">
-</mat-progress-spinner>
-</mat-card>
+
 
 <!-- <h2 >Necesidades</h2>
 <app-necesidad></app-necesidad> -->

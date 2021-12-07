@@ -119,6 +119,14 @@
  
 </div>
 
+<mat-card
+  *ngIf="isLoading"
+  style="display: flex; justify-content: center; align-items: center"
+>
+  <mat-progress-spinner color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+</mat-card>
+
 <div>
   <button mat-raised-button (click)="goBack()"><mat-icon>keyboard_return</mat-icon>Volver</button>
   <button [routerLink]="['/intervalos/form']" mat-raised-button color="accent">
@@ -207,12 +215,4 @@
 
 <span></span>
 
-
-<mat-card
-  *ngIf="isLoading"
-  style="display: flex; justify-content: center; align-items: center"
->
-  <mat-progress-spinner color="primary" mode="indeterminate">
-  </mat-progress-spinner>
-</mat-card>
 

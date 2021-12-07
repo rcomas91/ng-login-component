@@ -182,15 +182,14 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
 
   </div>
- 
+  
+  <mat-card *ngIf="isLoading" 
+  style="display: flex; justify-content: center; align-items: center">
+ <mat-progress-spinner 
+   color="primary" 
+   mode="indeterminate">
+ </mat-progress-spinner>
+</mat-card>
   <div>
     <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent"><mat-icon>library_add</mat-icon> Adicionar Pozo</button>
     </div>
- 
-    <mat-card *ngIf="isLoading" 
-    style="display: flex; justify-content: center; align-items: center">
-   <mat-progress-spinner 
-     color="primary" 
-     mode="indeterminate">
-   </mat-progress-spinner>
- </mat-card>
