@@ -114,18 +114,19 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
-
- 
-</div>
-
-<mat-card
+  <mat-card
   *ngIf="isLoading"
   style="display: flex; justify-content: center; align-items: center"
 >
   <mat-progress-spinner color="primary" mode="indeterminate">
   </mat-progress-spinner>
 </mat-card>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
+
+ 
+</div>
+
+
 
 <div>
   <button mat-raised-button (click)="goBack()"><mat-icon>keyboard_return</mat-icon>Volver</button>
@@ -138,7 +139,7 @@
 
 </div>
 <span></span>
-<mat-expansion-panel>
+<mat-expansion-panel *ngIf="dataSource.data.length>0">
   <mat-expansion-panel-header>
     <mat-panel-title>
       Esquema de Perforación
