@@ -1,7 +1,7 @@
 <h2 style="display: flex; justify-content: center; align-items: center">{{ title + this.pozoService.pozo.nombrePozo }}</h2>
 
 <div
-  *ngIf="dataSource?.data.length > 0; else noRecord"
+ 
   class="example-container mat-elevation-z8"
 >
   <mat-table #table [dataSource]="dataSource" matSort>
@@ -114,8 +114,32 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
 
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
 
-  <h1>Esquema de Perforacion</h1>
+ 
+</div>
+
+<div>
+  <button mat-raised-button (click)="goBack()"><mat-icon>keyboard_return</mat-icon>Volver</button>
+  <button [routerLink]="['/intervalos/form']" mat-raised-button color="accent">
+    <mat-icon>library_add</mat-icon> Adicionar Intervalo
+  </button>
+  <button [routerLink]="['/servicios']" mat-raised-button color="primary">
+    <mat-icon> departure_board</mat-icon>Servicios
+  </button>
+
+</div>
+<span></span>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Esquema de Perforación
+    </mat-panel-title>
+    <mat-panel-description>
+     <i> Presione para ver más detalles</i>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  <span></span>
   <!-- *ngIf="dataSource?.data.length===3" -->
   <div  class="contenedor">
     <mat-card class="example-card">
@@ -128,7 +152,7 @@
         src="../../assets/images/{{ cont }}.png"
         alt="Photo of a Shiba Inu"
       />
-      <div class="texto-encima">Texto</div>
+      <div class="texto-encima"></div>
 
       <div *ngIf="cont == 1">
         <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
@@ -136,7 +160,7 @@
 
       <div *ngIf="cont == 2">
         <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
-
+        
         <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
       </div>
       <div *ngIf="cont == 3">
@@ -170,44 +194,19 @@
       </div>
     </mat-card>
   </div>
-</div>
-
-<ng-template #noRecord>
-    <mat-card class="example-container mat-elevation-z8">
-  <div style="display: flex; justify-content: center; align-items: center" >
-    <img  class="example-card-image"
-        mat-card-image
-        src="../../assets/images/caca.png"
-        alt="Photo of a Shiba Inu"
-      />
-    <h3 style="margin: 50px;">
-       
-      !!!!!No hay registros en la BD!!!!!.
-    </h3>
-    <img  class="example-card-image"
-    mat-card-image
-    src="../../assets/images/mono.png"
-    alt="Photo of a Shiba Inu"
-  />
-  </div>
-    </mat-card>
-</ng-template>
-
-<div>
-  <button mat-raised-button (click)="goBack()"><mat-icon>keyboard_return</mat-icon>Volver</button>
-  <button [routerLink]="['/intervalos/form']" mat-raised-button color="accent">
-    <mat-icon>library_add</mat-icon> Adicionar Intervalo
-  </button>
-  <button [routerLink]="['/servicios']" mat-raised-button color="primary">
-    <mat-icon> departure_board</mat-icon>Servicios
-  </button>
-
-</div>
+  
 <h3>Gran Total:{{ sum | currency }}</h3>
 
 <h3> Total Barrenas:{{ sumBarrenas | currency }}</h3>
 
 <h3> Total Casing y Accesorios:{{ sumCasingYacces | currency }}</h3>
+
+</mat-expansion-panel>
+
+
+
+<span></span>
+
 
 <mat-card
   *ngIf="isLoading"

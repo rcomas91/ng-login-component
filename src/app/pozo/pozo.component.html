@@ -78,7 +78,7 @@
 </div> -->
 <h2 style="display: flex; justify-content: center; align-items: center">{{title}} </h2>
 
-<div *ngIf="dataSource?.data.length>0;else noRecord" class="example-container mat-elevation-z8">
+<div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort>
     
       <!--  Columna NombrePozo-->
@@ -179,27 +179,10 @@
       ></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
+
   </div>
-  <ng-template #noRecord>
-    <mat-card class="example-container mat-elevation-z8">
-    <div style="display: flex; justify-content: center; align-items: center" >
-      <img  class="example-card-image"
-          mat-card-image
-          src="../../assets/images/caca.png"
-          alt="Photo of a Shiba Inu"
-        />
-      <h3 style="margin: 50px;">
-         
-        !!!!!No hay registros en la BD!!!!!.
-      </h3>
-      <img  class="example-card-image"
-      mat-card-image
-      src="../../assets/images/mono.png"
-      alt="Photo of a Shiba Inu"
-    />
-    </div>
-  </mat-card>
-  </ng-template>
+ 
   <div>
     <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent"><mat-icon>library_add</mat-icon> Adicionar Pozo</button>
     </div>

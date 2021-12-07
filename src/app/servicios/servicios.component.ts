@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatTable, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTable, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ConstruccionService } from '../pozo/construccion.service';
@@ -15,6 +15,8 @@ import { ServicioService } from './servicio.service';
 })
 export class ServiciosComponent implements OnInit {
   @ViewChild(MatTable,{static: true}) table: MatTable<Servicio>;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static:true}) sort: MatSort;
   servicios: Servicio[];
   isLoading = true;
   constructor(private pozoService: PozoService,private toastr: ToastrService,private constService:ConstruccionService,private servicioService:ServicioService,  private fb: FormBuilder,  private router:Router) { }
@@ -56,6 +58,8 @@ cargarData() {
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = x.filter((serv)=>
     serv.pozoId==this.pozoService.pozo.pozoId);
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort=this.sort;
     console.log(this.dataSource.data);
   },
   error => {

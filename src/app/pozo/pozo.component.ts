@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatPaginator, MatTable, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTable, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Construccion } from './Construccion';
@@ -15,6 +15,8 @@ import { PozoService } from './pozo.service';
 })
 export class PozoComponent implements OnInit {
     @ViewChild(MatTable,{static: true}) table: MatTable<Pozo>;
+    @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+    @ViewChild(MatSort,{static:true}) sort: MatSort;
   pozos: Pozo[];
   isLoading = true;
 
@@ -67,6 +69,8 @@ export class PozoComponent implements OnInit {
             this.isLoading = false;
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = x;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort=this.sort;
     console.log(this.dataSource.data);
   },
   error => {

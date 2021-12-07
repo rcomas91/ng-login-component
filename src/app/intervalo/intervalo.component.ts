@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatTable, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTable, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
 import { Articulo } from '../articulo/articulo';
 import { PozoService } from '../pozo/pozo.service';
@@ -15,7 +15,10 @@ import { ServicioService } from '../servicios/servicio.service';
 })
 export class IntervaloComponent implements OnInit {
   @ViewChild(MatTable,{static: true}) table: MatTable<Intervalo>;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static:true}) sort: MatSort;
   isLoading = true;
+    panelOpenState = false;
 
 intervalos: Intervalo[];
 cont:number;
@@ -29,7 +32,6 @@ cont:number;
   ngOnInit(){
   this.renderDataTable();
   console.log(this.pozoService.construccion.construccionId)
-  
 
   }
   delete(intervaloId:number) {
@@ -82,7 +84,8 @@ cont:number;
 
     this.dataSource = new MatTableDataSource();
     this.dataSource.data = x.filter(inter => inter.construccionId == this.pozoService.construccion.construccionId);
-
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort=this.sort;
     console.log(this.dataSource.data);
     this.cont=this.dataSource.data.length;
     setTimeout(() => {

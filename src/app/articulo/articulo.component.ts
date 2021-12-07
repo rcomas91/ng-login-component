@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { MatTable, MatTableDataSource } from "@angular/material";
+import { MatPaginator, MatSort, MatTable, MatTableDataSource } from "@angular/material";
 import { IntervaloService } from "../intervalo/intervalo.service";
 import { NecesidadComponent } from "../necesidad/necesidad.component";
 import { NecesidadService } from "../necesidad/necesidad.service";
@@ -18,6 +18,9 @@ import { Necesidad } from "../necesidad/necesidad";
 })
 export class ArticuloComponent implements OnInit {
   @ViewChild(MatTable, { static: true }) table: MatTable<Articulo>;
+  @ViewChild(MatPaginator,{static:true}) paginator: MatPaginator;
+  @ViewChild(MatSort,{static:true}) sort: MatSort;
+
   articulos: Articulo[];
   item: SomeModel;
   isLoading = true;
@@ -55,6 +58,7 @@ export class ArticuloComponent implements OnInit {
     this.renderDataTable();
     console.log(this.intervaloService.intervalo);
   }
+ 
   delete(id: number) {
     if (confirm("Realmente desea retirar este recurso?")) {
       this.articuloService.delete(id).subscribe(
@@ -103,10 +107,15 @@ export class ArticuloComponent implements OnInit {
         this.isLoading = false;
         this.dataSource = new MatTableDataSource();
         console.log(this.intervaloService.intervalo);
+        
         this.dataSource.data = x.filter(
           (art) =>
             art.intervaloId == this.intervaloService.intervalo.intervaloId
+            
         );
+        this.dataSource.paginator = this.paginator;
+          this.dataSource.sort=this.sort;
+        
 
         this.sum =
           this.intervaloService.intervalo.precioB +
