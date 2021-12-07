@@ -10,6 +10,8 @@
         codigo</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.codigo }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+
     </ng-container>
 
        <!--  Columna IntervaloId-->
@@ -18,6 +20,8 @@
           UM</mat-header-cell
         >
         <mat-cell *matCellDef="let row"> {{ row.um }} </mat-cell>
+        <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
       </ng-container>
 
 
@@ -32,6 +36,8 @@
         nombre</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.nombre }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+
     </ng-container>
 
 
@@ -41,6 +47,8 @@
       cantidad solicitada</mat-header-cell
     >
     <mat-cell *matCellDef="let row"> {{ row.cantidad }} </mat-cell>
+    <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+
   </ng-container>
 
 
@@ -50,6 +58,8 @@
       Existen en el almacen</mat-header-cell
     >
     <mat-cell *matCellDef="let row"> {{ row.existencia }} </mat-cell>
+    <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+
   </ng-container>
 
     <!--  Columna IntervaloId-->
@@ -59,6 +69,7 @@
       >
 
       <mat-cell   *matCellDef="let row"><p *ngIf="row.existencia!==null"> {{ row.existencia-cantPedidos }}</p> </mat-cell>
+      <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
 
     </ng-container>
 
@@ -69,6 +80,8 @@
       precioCup</mat-header-cell
     >
     <mat-cell *matCellDef="let row"> {{ row.precioCUP|currency }} </mat-cell>
+    <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
   </ng-container>
 
     <!--  Columna IntervaloId-->
@@ -77,6 +90,8 @@
         utm_mov</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.utm_mov |date}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> <h3>Gran Total:</h3> </mat-footer-cell>
+
     </ng-container>
 
     <!--  Columna IntervaloId-->
@@ -85,6 +100,8 @@
         precioTotal</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.precioCUP*row.cantidad |currency}} </mat-cell>
+      <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+
     </ng-container>
 
           <!--  Columna Editar-->
@@ -108,10 +125,12 @@
         </mat-header-cell
       >
       <mat-cell  *matCellDef="let row">
+
         <button mat-raised-button  color="warn" (click)="delete(row.id)"focusable="false" >
           <mat-icon>delete_sweep</mat-icon> Retirar
             </button>
       </mat-cell>
+        <mat-footer-cell *matFooterCellDef> <h3>{{sum|currency}}</h3> </mat-footer-cell>
 
     </ng-container>
 
@@ -123,8 +142,8 @@
     ></mat-header-row>
      <mat-row [ngClass]="{ 'marked': (row.existencia-cantPedidos) <0 && row.existencia}" *matRowDef="let row; columns: displayedColumns"></mat-row>
     <!-- <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row> -->
-
-  </mat-table>
+    <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+    </mat-table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
 
 
@@ -147,7 +166,7 @@ style="display: flex; justify-content: center; align-items: center">
 
 </div>
 
-<h3 >Gran Total:{{sum|currency}}</h3>
+<!-- <h3 >Gran Total:{{sum|currency}}</h3> -->
 
 
 

@@ -11,6 +11,8 @@
         camisa</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.camisa }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
     </ng-container>
 
     <!--  Columna precioC-->
@@ -19,6 +21,8 @@
         precioCamisa</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.precioC | currency }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
     </ng-container>
 
     <!--  Columna barrena-->
@@ -27,6 +31,8 @@
         barrena</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.barrena }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
     </ng-container>
 
     <!--  Columna barrena-->
@@ -35,6 +41,8 @@
         precioBarrena</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.precioB | currency }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
     </ng-container>
 
     <!--  Columna longitud-->
@@ -43,6 +51,8 @@
         Longitud</mat-header-cell
       >
       <mat-cell *matCellDef="let row"> {{ row.longitud }} </mat-cell>
+      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
     </ng-container>
 
     <!--  Columna longitud-->
@@ -53,6 +63,8 @@
       <mat-cell *matCellDef="let row">
         {{ calcularMonto(row) | currency }}
       </mat-cell>
+      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
     </ng-container>
 
     <!--  Columna Editar-->
@@ -71,6 +83,8 @@
         <mat-icon>edit</mat-icon>   Editar
         </button>
       </mat-cell>
+      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
+
     </ng-container>
 
     <!--  Columna Editar-->
@@ -89,6 +103,8 @@
         <mat-icon>delete</mat-icon> Borrar
         </button>
       </mat-cell>
+      <mat-footer-cell *matFooterCellDef><h3>Gran Total</h3> </mat-footer-cell>
+
     </ng-container>
 
     <ng-container matColumnDef="Recursos">
@@ -105,6 +121,8 @@
         <mat-icon> directions_subway</mat-icon>  Recursos
         </button>
       </mat-cell>
+      <mat-footer-cell *matFooterCellDef><h3>{{sum|currency}}</h3> </mat-footer-cell>
+
     </ng-container>
 
     <mat-header-row
@@ -112,6 +130,8 @@
       class="encabezado"
     ></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+
   </mat-table>
 
   <mat-card
@@ -139,7 +159,7 @@
 
 </div>
 <span></span>
-<mat-expansion-panel *ngIf="dataSource.data.length>0">
+<mat-expansion-panel *ngIf="dataSource?.data.length>0">
   <mat-expansion-panel-header>
     <mat-panel-title>
       Esquema de Perforación
@@ -151,6 +171,7 @@
   <span></span>
   <!-- *ngIf="dataSource?.data.length===3" -->
   <div  class="contenedor">
+    
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
@@ -204,7 +225,7 @@
     </mat-card>
   </div>
   
-<h3>Gran Total:{{ sum | currency }}</h3>
+<!-- <h3>Gran Total:{{ sum | currency }}</h3> -->
 
 <h3> Total Barrenas:{{ sumBarrenas | currency }}</h3>
 
