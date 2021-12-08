@@ -158,7 +158,9 @@
   </button>
 
 </div>
-<span></span>
+
+
+<div>
 <mat-expansion-panel *ngIf="dataSource?.data.length>0">
   <mat-expansion-panel-header>
     <mat-panel-title>
@@ -168,9 +170,9 @@
      <i> Presione para ver más detalles</i>
     </mat-panel-description>
   </mat-expansion-panel-header>
-  <span></span>
+
   <!-- *ngIf="dataSource?.data.length===3" -->
-  <div  class="contenedor">
+
     
     <mat-card class="example-card">
       <mat-card-header>
@@ -194,47 +196,65 @@
         <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
       </div>
       <div *ngIf="cont == 3">
-        <div class="primario">{{ dataSource.data[0].camisa }}</div>
+        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
 
-        <div class="segundado">{{ dataSource.data[1].camisa }}</div>
+        <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
 
-        <div class="centrado">{{ dataSource.data[2].camisa }}</div>
+        <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
       </div>
       <div *ngIf="cont == 4">
         
-        <div class="primario">{{ dataSource.data[0].camisa }}</div>
+        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
 
-        <div class="segundado">{{ dataSource.data[1].camisa }}</div>
+        <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
 
-        <div class="centrado">{{ dataSource.data[2].camisa }}</div>
+        <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
 
-        <div class="cuarto">{{ dataSource.data[3].camisa }}</div>
+        <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
       </div>
 
       <div *ngIf="cont == 5">
-        <div class="primario">{{ dataSource.data[0].camisa }}</div>
+        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
 
-        <div class="segundado">{{ dataSource.data[1].camisa }}</div>
+        <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
 
-        <div class="centrado">{{ dataSource.data[2].camisa }}</div>
+        <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
 
-        <div class="cuarto">{{ dataSource.data[3].camisa }}</div>
+        <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
 
-        <div class="quinto">{{ dataSource.data[4].camisa }}</div>
+        <div class="quinto"><mat-icon>filter_5</mat-icon><i>{{ dataSource.data[4].camisa }}</i></div>
       </div>
     </mat-card>
-  </div>
+
+
   
 <!-- <h3>Gran Total:{{ sum | currency }}</h3> -->
 
+</mat-expansion-panel >
+</div>
+
+<div >
+<mat-expansion-panel  *ngIf="dataSource?.data.length>0">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Estimado de gastos del Pozo
+    </mat-panel-title>
+    <mat-panel-description>
+     <i> Presione para ver más detalles</i>
+    </mat-panel-description>
+
+  </mat-expansion-panel-header>
+      
 <h3> Total Barrenas:{{ sumBarrenas | currency }}</h3>
 
 <h3> Total Casing y Accesorios:{{ sumCasingYacces | currency }}</h3>
+  <!-- *ngIf="dataSource?.data.length===3" -->
+ 
+  
+<!-- <h3>Gran Total:{{ sum | currency }}</h3> -->
+
 
 </mat-expansion-panel>
-
-
-
-<span></span>
+</div>
 
 

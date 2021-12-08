@@ -3,11 +3,16 @@
 } */
 
 .example-card{
-     width: calc(20% + 10px)!important;
+     width: calc(40% + 10px)!important;
      position: relative;
 }
+
+mat-expansion-panel{
+    width: 40% !important;
+    float: left;
+}
 span {
-    margin-left:90%;
+    margin-left:50%;
     font-size: large;
     }
 
