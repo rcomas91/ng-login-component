@@ -103,7 +103,7 @@
         <mat-icon>delete</mat-icon> Borrar
         </button>
       </mat-cell>
-      <mat-footer-cell *matFooterCellDef><h3>Gran Total</h3> </mat-footer-cell>
+      <mat-footer-cell *matFooterCellDef><h3>Gran Total:</h3> </mat-footer-cell>
 
     </ng-container>
 
@@ -160,80 +160,83 @@
 </div>
 
 
-<div>
-<mat-expansion-panel *ngIf="dataSource?.data.length>0">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Esquema de Perforación
-    </mat-panel-title>
-    <mat-panel-description>
-     <i> Presione para ver más detalles</i>
-    </mat-panel-description>
-  </mat-expansion-panel-header>
+<span></span>
+<div class="splitscreen">
+  <div class="left">
 
-  <!-- *ngIf="dataSource?.data.length===3" -->
-
+    <mat-expansion-panel *ngIf="dataSource?.data.length>0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Esquema de Perforación
+        </mat-panel-title>
+        <mat-panel-description>
+         <i> Presione para ver más detalles</i>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
     
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <!-- <mat-card-title>Shiba Inu</mat-card-title> -->
-      </mat-card-header>
-      <img
-        mat-card-image
-        src="../../assets/images/{{ cont }}.png"
-        alt="Photo of a Shiba Inu"
-      />
-      <div class="texto-encima"></div>
-
-      <div *ngIf="cont == 1">
-        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
-      </div>
-
-      <div *ngIf="cont == 2">
-        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+      <!-- *ngIf="dataSource?.data.length===3" -->
+    
         
-        <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
-      </div>
-      <div *ngIf="cont == 3">
-        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <!-- <mat-card-title>Shiba Inu</mat-card-title> -->
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../assets/images/{{ cont }}.png"
+            alt="Photo of a Shiba Inu"
+          />
+          <div class="texto-encima"></div>
+    
+          <div *ngIf="cont == 1">
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+          </div>
+    
+          <div *ngIf="cont == 2">
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+            
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+          </div>
+          <div *ngIf="cont == 3">
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+    
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+    
+            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
+          </div>
+          <div *ngIf="cont == 4">
+            
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+    
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+    
+            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
+    
+            <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
+          </div>
+    
+          <div *ngIf="cont == 5">
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+    
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+    
+            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
+    
+            <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
+    
+            <div class="quinto"><mat-icon>filter_5</mat-icon><i>{{ dataSource.data[4].camisa }}</i></div>
+          </div>
+        </mat-card>
+    
+    
+      
+    <!-- <h3>Gran Total:{{ sum | currency }}</h3> -->
+    
+    </mat-expansion-panel >  </div>
 
-        <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
-
-        <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
-      </div>
-      <div *ngIf="cont == 4">
-        
-        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
-
-        <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
-
-        <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
-
-        <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
-      </div>
-
-      <div *ngIf="cont == 5">
-        <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
-
-        <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
-
-        <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
-
-        <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
-
-        <div class="quinto"><mat-icon>filter_5</mat-icon><i>{{ dataSource.data[4].camisa }}</i></div>
-      </div>
-    </mat-card>
-
-
-  
-<!-- <h3>Gran Total:{{ sum | currency }}</h3> -->
-
-</mat-expansion-panel >
-</div>
-
-<div >
+  <div class="right">
+     
 <mat-expansion-panel  *ngIf="dataSource?.data.length>0">
   <mat-expansion-panel-header>
     <mat-panel-title>
@@ -255,6 +258,15 @@
 
 
 </mat-expansion-panel>
+
+
+  </div>
 </div>
+
+
+
+
+
+
 
 

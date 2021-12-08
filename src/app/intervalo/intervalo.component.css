@@ -8,13 +8,10 @@
 }
 
 mat-expansion-panel{
-    width: 40% !important;
-    float: left;
+    width: 98% !important;
+    
 }
-span {
-    margin-left:50%;
-    font-size: large;
-    }
+
 
     
     .texto-encima{
@@ -65,4 +62,17 @@ span {
         width: calc(5% + 10px)!important;
         position: relative;
    }
+
+   .splitscreen {
+    display:flex;
+}
+.splitscreen .left {
+    flex: 1;
+    margin-top: 20px;
+}
+.splitscreen .right {
+    flex: 1;
+    margin-top: 20px;
+
+}
    
