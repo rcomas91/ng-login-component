@@ -8,11 +8,11 @@
       </button>
       <a class="navbar-brand" href="#">SISTIA</a>
     </div>
-  
-  
+
+
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-       
+
         <li class="dropdown nav-item">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opciones <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -22,7 +22,7 @@
 
             <li class="nav-item" ><a class="nav-link" routerLink="/Satisfechas">Necesidades Satisfechas</a></li>
             <li class="nav-item" ><a class="nav-link" routerLink="/NoSatisfechas">Necesidades No Satisfechas</a></li>
-    
+
           </ul>
         </li>
       </ul>
@@ -32,14 +32,14 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
-     
+
     </div>
   </nav> -->
 
 
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-   
+
         <i >SISTIA</i>
         <button mat-button  routerLink="/winatm"><mat-icon>local_shipping</mat-icon>  Articulos en el almacen</button>
         <button mat-button  routerLink="/pozos"> <mat-icon >gavel</mat-icon> Pozos</button>
@@ -47,8 +47,8 @@
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>menu</mat-icon>  Más Operaciones    </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-   <span mat-button  routerLink="/camisa"> Adicionar camisa</span>
+      <button mat-menu-item routerLink="/camisa">
+   <span mat-button  > Adicionar camisa</span>
       </button>
       <button mat-menu-item disabled>
         <span>Check voicemail</span>
