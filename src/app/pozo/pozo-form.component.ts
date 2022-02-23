@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { DatePipe } from '@angular/common';
 import { PozoService } from './pozo.service';
 import { Pozo } from './pozo';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pozo-form',
@@ -11,20 +12,23 @@ import { Pozo } from './pozo';
 })
 export class PozoFormComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private pozoService: PozoService) { }
+  constructor(    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute, private router: Router, private fb: FormBuilder, private pozoService: PozoService) { }
   modoEdicion: boolean = false;
   pozoId:number;
   formGroup: FormGroup;
   ConstruccionId: number;
+  ubicaciones:string[]=["Varadero Oeste","Fraile","Santa Cruz","Santa Maria","Boca de Jaruco"]
+
   ngOnInit() {
 
     this.formGroup = this.fb.group({
       NombrePozo:['', [Validators.required]],
-      Campana: ['', [Validators.required]],
+      Campana: [''],
       Ubicacion: ['', [Validators.required]],
 
-      FechaInicio: ['', [Validators.required]],
-      FechaFin: ['', [Validators.required]],
+      FechaInicio: ['' ],
+      FechaFin: ['' ],
       ConstruccionId: ['', [Validators.required]],
     });
     this.activatedRoute.params.subscribe(params => {
@@ -75,6 +79,11 @@ export class PozoFormComponent implements OnInit {
   }
   onSaveSuccess() {
     this.router.navigate(["/pozos"]);
+
   }
+  goBack(){
+    // this._location.back();
+     this.router.navigate(["/pozos"]);
+   }
 
 }

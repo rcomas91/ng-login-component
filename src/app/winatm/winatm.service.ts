@@ -10,12 +10,18 @@ export class WinatmService {
 
   private httpHeaders=new HttpHeaders({'Content-Type':'application/json'})
   private UrlEndPoint:string='https://localhost:44387/api/winatm';
+
+
   constructor(private http:HttpClient) { 
 
   }
  
   getSomeModels():Observable< SomeModel[]>{
     return this.http.get<SomeModel[]>(this.UrlEndPoint);
+  } 
+  getSomeModelsFiltrado(value:string):Observable< SomeModel[]>{
+    return this.http.get<SomeModel[]>(`${this.UrlEndPoint}/recursoFiltrado/${value}`)
+
   } 
 
 

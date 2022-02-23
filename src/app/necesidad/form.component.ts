@@ -50,12 +50,12 @@ response => this.router.navigate(['/necesidades'])
 
     )
   }
-update():void{
-  this.necesidadService.update(this.necesidad).subscribe(
-    (necesidad)=>{this.router.navigate(['/necesidades'])
+// update():void{
+//   this.necesidadService.update(this.necesidad).subscribe(
+//     (necesidad)=>{this.router.navigate(['/necesidades'])
 
-})
-  }
+// })
+//   }
 
   compararArticulos(o1:String,o2:String){
     if(o1===undefined && o2===undefined){

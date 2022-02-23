@@ -20,4 +20,16 @@ export class ArticuloService  {
   delete(id:number):Observable<Articulo>{
     return this.http.delete<Articulo>(`${this.UrlEndPoint}/${id}`,{headers:this.httpHeaders})
   }
+
+  getArticulo(id):Observable< Articulo>{
+    return this.http.get<Articulo>(`${this.UrlEndPoint}/${id}`);
+  } 
+  update(Articulo:Articulo):Observable<Articulo>{
+    return this.http.put<Articulo>(`${this.UrlEndPoint}/${Articulo.id}`,Articulo,{headers:this.httpHeaders})
+  }
+
+  
+  create(Articulo:Articulo):Observable<Articulo>{
+    return this.http.post<Articulo>(this.UrlEndPoint,Articulo,{headers:this.httpHeaders})
+  }
 }

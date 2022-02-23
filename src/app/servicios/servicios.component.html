@@ -1,0 +1,166 @@
+<h2 style="display: flex; justify-content: center; align-items: center">{{ title + this.pozoService.pozo.nombrePozo }}</h2>
+
+<div
+ 
+  class="example-container mat-elevation-z8"
+>
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <!--  Columna camisa-->
+
+    <ng-container matColumnDef="Codigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+         Codigo</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.codigo }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="SubCodigo">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+         subCodigo</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.subCodigo }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Contingencia">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+         Contingencia</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.contingencia }} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="TipoServicio">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Tipo Servicio</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row"> {{ row.tipoServicio }} </mat-cell>
+    </ng-container>
+
+     <!--  Columna camisa-->
+     <ng-container matColumnDef="Descripcion">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Descripcion</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.descripcion }} </mat-cell>
+      </ng-container>
+
+
+       <!--  Columna camisa-->
+     <ng-container matColumnDef="Empresa">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Empresa</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.empresa }} </mat-cell>
+      </ng-container>
+
+         <!--  Columna camisa-->
+     <ng-container matColumnDef="FechaInicio">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+          FechaInicio</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.fechaInicio|date }} </mat-cell>
+      </ng-container>
+
+
+      <!--  Columna camisa-->
+      <ng-container matColumnDef="FechaFin">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>
+            FechaFin</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row"> {{ row.fechaFin |date }} </mat-cell>
+      </ng-container>
+
+         <!--  Columna camisa-->
+         <ng-container matColumnDef="CostoCUP">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            CostoCUP</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row"> {{ row.costoCUP |currency }} </mat-cell>
+        </ng-container>
+  
+        
+
+
+
+
+
+
+
+    <!-- <ng-container matColumnDef="Editar">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Editar</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row">
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="['/intervalos/form', row.intervaloId]"
+          focusable="false"
+        >
+          Editar
+        </button>
+      </mat-cell>
+    </ng-container> -->
+
+    <!--  Columna Editar-->
+
+    <ng-container matColumnDef="Borrar">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Retirar servicio</mat-header-cell
+      >
+
+ 
+      <mat-cell *matCellDef="let row">
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="delete(row.servicioId)"
+          focusable="false"
+        >    <mat-icon>delete_sweep</mat-icon> 
+        Retirar
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Recursos">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Recursos</mat-header-cell
+      >
+      <mat-cell *matCellDef="let row">
+        <button
+          mat-raised-button
+          color="accent"
+          (click)="VerRec(row)"
+          focusable="false"
+        >
+          Recursos
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row
+      *matHeaderRowDef="displayedColumns"
+      class="encabezado"
+    ></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-card *ngIf="isLoading" 
+  style="display: flex; justify-content: center; align-items: center">
+ <mat-progress-spinner 
+   color="primary" 
+   mode="indeterminate">
+ </mat-progress-spinner>
+</mat-card>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
+
+</div>
+
+<div>
+  <button mat-raised-button (click)="goBack()"><mat-icon>keyboard_return</mat-icon>Volver</button>
+  
+  <button [routerLink]="['/servicios/form']" mat-raised-button color="accent"><mat-icon>library_add</mat-icon>
+    Adicionar servicios
+  </button>
+</div>
+

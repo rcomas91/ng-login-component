@@ -1,11 +1,16 @@
 import { Articulo } from "../articulo/articulo";
 
-export interface Intervalo {
+export class Intervalo {
     intervaloId: number;
-    construccionId?: string;
+    construccionId?: number;
     camisa: string;
     barrena:string;
     longitud:string;
-    articulos: Articulo[];
-  }
+    precioB:number;
+    precioC:number;
+    recursos: Articulo[];
+    precioTotal:number;
+
   
+
+}
