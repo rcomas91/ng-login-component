@@ -17,7 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PozoComponent } from './pozo/pozo.component';
 import { PozoService } from './pozo/pozo.service';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridTile, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatRadioModule, MatSort, MatSortModule, MatTableDataSource, MatTableModule, MatToolbarModule } from '@angular/material';
+import { MatAutocompleteModule, MatButtonModule, MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatExpansionModule, MatFormFieldModule, MatGridTile, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatRadioModule, MatSort, MatSortModule, MatTableDataSource, MatTableModule, MatTabsModule, MatToolbarModule } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { IntervaloComponent } from './intervalo/intervalo.component';
 import { PozoFormComponent } from './pozo/pozo-form.component';
@@ -32,6 +32,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ArticuloPropioComponent } from './articulo-propio/articulo-propio.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServiciosFormComponent } from './servicios/servicios-form.component';
+import { AdicionarCamisaComponent } from './adicionar-camisa/adicionar-camisa.component';
 
 
 
@@ -66,6 +67,8 @@ const routes:Routes=[
   {path:'intervalos/form',component:IntervaloFormComponent},
   {path:'intervalos/form/:id',component:IntervaloFormComponent},
 
+
+  { path: 'camisa', component: AdicionarCamisaComponent },
 ]
 @NgModule({
 
@@ -85,7 +88,8 @@ const routes:Routes=[
     ArticuloFormComponent,
     ArticuloPropioComponent,
     ServiciosComponent,
-    ServiciosFormComponent
+    ServiciosFormComponent,
+    AdicionarCamisaComponent
   ],
   imports: [
     ToastrModule.forRoot({
@@ -108,6 +112,7 @@ const routes:Routes=[
     MatIconModule,
   MatButtonModule,
   MatExpansionModule,
+  MatTabsModule,
   MatCardModule,
   MatFormFieldModule,
   BrowserAnimationsModule,
@@ -126,7 +131,8 @@ const routes:Routes=[
   MatIconModule,
   MatAutocompleteModule,
   MatTableExporterModule,
-  MatChipsModule
+  MatChipsModule,
+  MatCheckboxModule,
 
   ],
   providers: [ArticuloService,NecesidadService ,PozoService,ConstruccionService],

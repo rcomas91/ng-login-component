@@ -45,10 +45,10 @@
         <button mat-button  routerLink="/pozos"> <mat-icon >gavel</mat-icon> Pozos</button>
         <button mat-button  routerLink="/necesidades"><mat-icon > directions_boat</mat-icon>  Necesidades</button>
         <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>menu</mat-icon>  More    </button>
+          <mat-icon>menu</mat-icon>  Más Operaciones    </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
-        <span>Redial</span>
+   <span mat-button  routerLink="/camisa"> Adicionar camisa</span>
       </button>
       <button mat-menu-item disabled>
         <span>Check voicemail</span>
