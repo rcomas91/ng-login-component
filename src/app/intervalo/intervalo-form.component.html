@@ -1,13 +1,13 @@
 <form [formGroup]="formGroup" #ngForm="ngForm" class="form-container">
     <mat-card>
       <mat-card-header>
-        <mat-card-title>Intervalo Information <span *ngIf="ngForm.submitted && !formGroup.valid" class="small-font "
+        <mat-card-title>Información de la Sección <span *ngIf="ngForm.submitted && !formGroup.valid" class="small-font "
           [ngClass]="{'invalid': ngForm.submitted }" style="color: red;">* required</span></mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <div class="row">
           <div class="col-md-6">
-            <mat-form-field [style.width.px]=400 >
+            <mat-form-field [style.width.px]=800 >
               <mat-select placeholder="Seleccione una nueva Camisa"  [(value)]="Cseleccionado"  name="barrenas"   (selectionChange)="myChange2($event.value)">
                 <mat-option *ngFor="let camisa of camisas" [value]="camisa">
                   {{camisa.mProducto_Descrip}}
@@ -16,7 +16,7 @@
             </mat-form-field>
           </div>
           <div class="col-md-6">
-            <mat-form-field [style.width.px]=400>
+            <mat-form-field [style.width.px]=800>
               <mat-select placeholder="Seleccione una nueva Barrena"  [(value)]="Bseleccionado"  name="barrenas"  (selectionChange)="myChange($event.value)">
                 <mat-option *ngFor="let barrena of barrenas" [value]="barrena">
                   {{barrena.mProducto_Descrip}}
@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-6">
           <mat-form-field class="full-width">
-            <input formControlName="Longitud" matInput="" placeholder="longitud en metros">
+            <input type="number" formControlName="Longitud" matInput="" placeholder="longitud en metros">
           </mat-form-field>
         </div>
 
