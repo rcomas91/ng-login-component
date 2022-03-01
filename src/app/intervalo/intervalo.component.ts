@@ -23,7 +23,7 @@ export class IntervaloComponent implements OnInit {
 intervalos: Intervalo[];
 cont:number;
   constructor(private servicioService:ServicioService,private _location:Location,private router:Router,private intervaloService:IntervaloService,public pozoService:PozoService) { }
-  displayedColumns = ['camisa','precioC','barrena','precioB','longitud','PrecioTotal','Editar','Borrar', 'Recursos'];
+  displayedColumns = ['barrena','precioB','longitud','PrecioTotal','Editar','Borrar', 'Recursos'];
   dataSource: any;
   title="Secciones del pozo "
   sum:number;
@@ -44,7 +44,7 @@ cont:number;
   }
 
   calcularMonto(int:Intervalo):number{
-    let sum=int.precioC+int.precioB;
+    let sum=int.precioB;
     int.recursos.forEach((item:Articulo)=> {
       sum+=item.precioCUP*item.cantidad;
 

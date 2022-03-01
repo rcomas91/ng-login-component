@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { flatMap, map } from 'rxjs/operators';
 import { PozoService } from '../pozo/pozo.service';
 import { SomeModel } from '../winatm/SomeModel';
 import { WinatmService } from '../winatm/winatm.service';
@@ -15,7 +16,8 @@ import { IntervaloService } from './intervalo.service';
 })
 export class IntervaloFormComponent implements OnInit {
 
-
+  autocompleteControl = new FormControl();
+  recursosfiltrados: Observable<SomeModel[]>;
   barrenas:SomeModel[];
   camisas:SomeModel[];
   constructor(private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private pozoService:PozoService,private router: Router, private fb: FormBuilder, private intervaloService: IntervaloService) { }
@@ -28,7 +30,12 @@ export class IntervaloFormComponent implements OnInit {
   Bseleccionado:SomeModel;
   Cseleccionado:SomeModel;
   ngOnInit() {
-
+    this.recursosfiltrados = this.autocompleteControl.valueChanges.pipe(
+      map((value) =>
+        typeof value === "string" ? value : value.mProducto_Descrip
+      ),
+      flatMap((value) => (value ? this._filter(value) : []))
+    );
 
     this.formGroup = this.fb.group({
       ConstruccionId:[this.pozoService.construccion.construccionId, [Validators.required]],
@@ -73,30 +80,40 @@ export class IntervaloFormComponent implements OnInit {
       }
     )
     }
+    private _filter(value: string): Observable<SomeModel[]> {
+      const filterValue = value.toLowerCase();
+
+      return this.winatmService.getSomeModelsFiltrado(filterValue);
+    }
     goBack(){
       // this._location.back();
        this.router.navigate(["/intervalos"]);
      }
 
-
+     mostrarNombre(recurso?: SomeModel): string | undefined {
+      return recurso ? recurso.mProducto_Descrip : undefined;
+    }
 
   cargarFormulario(int: Intervalo) {
     console.log(int.intervaloId)
-    
-   
+
+
 
     this.formGroup.patchValue({
       ConstruccionId: int.construccionId,
-      Camisa:int.camisa,
       Barrena: int.barrena,
       Longitud:int.longitud,
       PrecioB:int.precioB,
-      PrecioC:int.precioC
     })
   }
 
   save() {
-
+    this.Bseleccionado = this.autocompleteControl.value;
+    console.log(this.Bseleccionado);
+    this.formGroup.controls["Barrena"].setValue(this.Bseleccionado.mProducto_Descrip);
+    this.formGroup.controls["PrecioB"].setValue(
+      this.Bseleccionado.mProducto_Precio
+    );
     let int: Intervalo = Object.assign({}, this.formGroup.value);
     console.table(int);
     if (this.modoEdicion) {
