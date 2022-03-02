@@ -27,8 +27,8 @@ export class ArticuloComponent implements OnInit {
   necesidades: Necesidad[];
 
   sum: number =
-    this.intervaloService.intervalo.precioB +
-    this.intervaloService.intervalo.precioC;
+    this.intervaloService.intervalo.precioB ;
+
   cantPedidos: number;
   constructor(
     private router: Router,
@@ -58,7 +58,7 @@ export class ArticuloComponent implements OnInit {
     this.renderDataTable();
     console.log(this.intervaloService.intervalo);
   }
- 
+
   delete(id: number) {
     if (confirm("Realmente desea retirar este recurso?")) {
       this.articuloService.delete(id).subscribe(
@@ -86,9 +86,9 @@ export class ArticuloComponent implements OnInit {
           this.necesidadService.delete(nec.id).subscribe((x)=>this.necesidades)
         }
       });
-      
+
     }, 500);
-   
+
   }
 
   goBack() {
@@ -107,19 +107,19 @@ export class ArticuloComponent implements OnInit {
         this.isLoading = false;
         this.dataSource = new MatTableDataSource();
         console.log(this.intervaloService.intervalo);
-        
+
         this.dataSource.data = x.filter(
           (art) =>
             art.intervaloId == this.intervaloService.intervalo.intervaloId
-            
+
         );
         this.dataSource.paginator = this.paginator;
           this.dataSource.sort=this.sort;
-        
+
 
         this.sum =
-          this.intervaloService.intervalo.precioB +
-          this.intervaloService.intervalo.precioC;
+          this.intervaloService.intervalo.precioB;
+
         this.dataSource.data.forEach((item: Articulo) => {
           this.calcCantPedidosPorElem(item.codigo);
           this.sum += item.precioCUP * item.cantidad;

@@ -6,22 +6,15 @@
       </mat-card-header>
       <mat-card-content>
         <div class="row">
+
           <div class="col-md-6">
-            <mat-form-field [style.width.px]=800 >
-              <mat-select placeholder="Seleccione una nueva Camisa"  [(value)]="Cseleccionado"  name="barrenas"   (selectionChange)="myChange2($event.value)">
-                <mat-option *ngFor="let camisa of camisas" [value]="camisa">
-                  {{camisa.mProducto_Descrip}}
+            <mat-form-field   [style.width.px]=800 class="example-full-width">
+              <input type="text" placeholder="Escribe el nombre de la barrena"  matInput [formControl]="autocompleteControl" [matAutocomplete]="auto">
+              <mat-autocomplete   #auto="matAutocomplete" [displayWith]="mostrarNombre">
+                <mat-option *ngFor="let recurso of recursosfiltrados | async" [value]="recurso">
+                  {{recurso.mProducto_Descrip}}
                 </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-md-6">
-            <mat-form-field [style.width.px]=800>
-              <mat-select placeholder="Seleccione una nueva Barrena"  [(value)]="Bseleccionado"  name="barrenas"  (selectionChange)="myChange($event.value)">
-                <mat-option *ngFor="let barrena of barrenas" [value]="barrena">
-                  {{barrena.mProducto_Descrip}}
-                </mat-option>
-              </mat-select>
+              </mat-autocomplete>
             </mat-form-field>
           </div>
         </div>
