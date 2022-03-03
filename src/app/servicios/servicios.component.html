@@ -1,7 +1,7 @@
 <h2 style="display: flex; justify-content: center; align-items: center">{{ title + this.pozoService.pozo.nombrePozo }}</h2>
 
 <div
- 
+
   class="example-container mat-elevation-z8"
 >
   <mat-table #table [dataSource]="dataSource" matSort>
@@ -27,7 +27,7 @@
       >
       <mat-cell *matCellDef="let row"> {{ row.contingencia }} </mat-cell>
     </ng-container>
-    
+
     <ng-container matColumnDef="TipoServicio">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Tipo Servicio</mat-header-cell
@@ -76,8 +76,8 @@
           >
           <mat-cell *matCellDef="let row"> {{ row.costoCUP |currency }} </mat-cell>
         </ng-container>
-  
-        
+
+
 
 
 
@@ -108,14 +108,14 @@
         Retirar servicio</mat-header-cell
       >
 
- 
+
       <mat-cell *matCellDef="let row">
         <button
           mat-raised-button
           color="warn"
           (click)="delete(row.servicioId)"
           focusable="false"
-        >    <mat-icon>delete_sweep</mat-icon> 
+        >    <mat-icon>delete_sweep</mat-icon>
         Retirar
         </button>
       </mat-cell>
@@ -144,10 +144,10 @@
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
   </mat-table>
 
-  <mat-card *ngIf="isLoading" 
+  <mat-card *ngIf="isLoading"
   style="display: flex; justify-content: center; align-items: center">
- <mat-progress-spinner 
-   color="primary" 
+ <mat-progress-spinner
+   color="primary"
    mode="indeterminate">
  </mat-progress-spinner>
 </mat-card>
@@ -158,7 +158,7 @@
 
 <div>
   <button mat-raised-button (click)="goBack()"><mat-icon>keyboard_return</mat-icon>Volver</button>
-  
+
   <button [routerLink]="['/servicios/form']" mat-raised-button color="accent"><mat-icon>library_add</mat-icon>
     Adicionar servicios
   </button>
