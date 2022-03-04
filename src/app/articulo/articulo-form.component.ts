@@ -27,8 +27,8 @@ import { ToastrModule, ToastrService } from "ngx-toastr";
 })
 export class ArticuloFormComponent implements OnInit {
   autocompleteControl = new FormControl();
-  recursosfiltrados: Observable<SomeModel[]>;
-  recursos: string[] = ["One", "Two"];
+  filteredOptions: Observable<SomeModel[]>;
+  recursos: SomeModel[]=[];
   necid: number;
 
   constructor(
@@ -56,12 +56,17 @@ export class ArticuloFormComponent implements OnInit {
   resp:boolean=false;
   ngOnInit() {
     console.log(this.pozoService.construccion.construccionId);
-    this.recursosfiltrados = this.autocompleteControl.valueChanges.pipe(
-      map((value) =>
-        typeof value === "string" ? value : value.mProducto_Descrip
-      ),
-      flatMap((value) => (value ? this._filter(value) : []))
-    );
+    this.winatmService.getSomeModels().subscribe((art) => {
+      (this.recursos = art);console.log(this.recursos)
+    });
+    this.filteredOptions = this.autocompleteControl.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => typeof value === 'string' ? value : value.name),
+        map(name => name ? this._filter(name) : this.recursos.slice())
+      );
+
+
 
     this.formGroup = this.fb.group({
       codigo: ["", [Validators.required]],
@@ -110,11 +115,16 @@ export class ArticuloFormComponent implements OnInit {
 
     //this.pozoService.getCustomers().subscribe(customersDeWs => this.customers = customersDeWs, error => console.error(error));
   }
-  private _filter(value: string): Observable<SomeModel[]> {
-    const filterValue = value.toLowerCase();
-
-    return this.winatmService.getSomeModelsFiltrado(filterValue);
+  displayFn(recurso?: SomeModel): string | undefined {
+    return recurso ? recurso.mProducto_Descrip : undefined;
   }
+
+  private _filter(name: string): SomeModel[] {
+    const filterValue = name.toLowerCase();
+
+    return this.recursos.filter(option => option.mProducto_Descrip.toLowerCase().indexOf(filterValue) === 0);
+  }
+
 
   cargarFormulario(art: Articulo) {
     console.log(art.nombre);
