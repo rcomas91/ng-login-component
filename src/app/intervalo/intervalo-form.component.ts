@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { flatMap, map } from 'rxjs/operators';
+import { flatMap, map, startWith } from 'rxjs/operators';
 import { PozoService } from '../pozo/pozo.service';
 import { SomeModel } from '../winatm/SomeModel';
 import { WinatmService } from '../winatm/winatm.service';
@@ -17,8 +17,8 @@ import { IntervaloService } from './intervalo.service';
 export class IntervaloFormComponent implements OnInit {
 
   autocompleteControl = new FormControl();
-  recursosfiltrados: Observable<SomeModel[]>;
-  barrenas:SomeModel[];
+  filteredOptions: Observable<SomeModel[]>;
+  barrenas:SomeModel[]=[];
   camisas:SomeModel[];
   constructor(private winatmService:WinatmService,private activatedRoute: ActivatedRoute, private pozoService:PozoService,private router: Router, private fb: FormBuilder, private intervaloService: IntervaloService) { }
 
@@ -30,12 +30,19 @@ export class IntervaloFormComponent implements OnInit {
   Bseleccionado:SomeModel;
   Cseleccionado:SomeModel;
   ngOnInit() {
-    this.recursosfiltrados = this.autocompleteControl.valueChanges.pipe(
-      map((value) =>
-        typeof value === "string" ? value : value.mProducto_Descrip
-      ),
-      flatMap((value) => (value ? this._filter(value) : []))
+    this.winatmService.getSomeModels().pipe(map(x=>
+      x.filter(x=>x.mProducto_Descrip.toLowerCase().indexOf('barrena')!=-1)
+    )
+    ).subscribe((art) => {
+      (this.barrenas = art);console.log(this.barrenas)
+    });
+    this.filteredOptions = this.autocompleteControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => typeof value === 'string' ? value : value.name),
+      map(name => name ? this._filter(name) : this.barrenas.slice())
     );
+
 
     this.formGroup = this.fb.group({
       ConstruccionId:[this.pozoService.construccion.construccionId, [Validators.required]],
@@ -61,14 +68,7 @@ export class IntervaloFormComponent implements OnInit {
 
 
     });
-    this.winatmService.getSomeModels().pipe(map(x=>
-      x.filter(x=>x.mProducto_Descrip.toLowerCase().indexOf('barrena')!=-1)
-    )
-    ).subscribe(
-       x=> {this.barrenas = x
-       // this.Bseleccionado=this.barrenas[0];
-       }
-    )
+
 
 
     this.winatmService.getSomeModels().pipe(map(x=>
@@ -80,19 +80,20 @@ export class IntervaloFormComponent implements OnInit {
       }
     )
     }
-    private _filter(value: string): Observable<SomeModel[]> {
-      const filterValue = value.toLowerCase();
+    displayFn(barrena?: SomeModel): string | undefined {
+      return barrena ? barrena.mProducto_Descrip : undefined;
+    }
 
-      return this.winatmService.getSomeModelsFiltrado(filterValue);
+    private _filter(name: string): SomeModel[] {
+      const filterValue = name.toLowerCase();
+
+      return this.barrenas.filter(option => option.mProducto_Descrip.toLowerCase().indexOf(filterValue) === 0);
     }
     goBack(){
       // this._location.back();
        this.router.navigate(["/intervalos"]);
      }
 
-     mostrarNombre(recurso?: SomeModel): string | undefined {
-      return recurso ? recurso.mProducto_Descrip : undefined;
-    }
 
   cargarFormulario(int: Intervalo) {
     console.log(int.intervaloId)
