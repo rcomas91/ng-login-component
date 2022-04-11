@@ -46,11 +46,8 @@ export class IntervaloFormComponent implements OnInit {
 
     this.formGroup = this.fb.group({
       ConstruccionId:[this.pozoService.construccion.construccionId, [Validators.required]],
-      Camisa: ['', [Validators.required]],
-      Barrena: ['', [Validators.required]],
+      NombreIntervalo: ['', [Validators.required]],
       Longitud: ['', [Validators.required]],
-      PrecioC:['', [Validators.required]],
-      PrecioB:['', [Validators.required]],
 
     });
 
@@ -62,7 +59,6 @@ export class IntervaloFormComponent implements OnInit {
       this.modoEdicion = true;
       console.log("editando...")
       this.intervaloId = params["id"];
-
       this.intervaloService.getIntervalo(this.intervaloId)
         .subscribe(int => this.cargarFormulario(int), error => this.router.navigate(["/intervalos"]));
 
@@ -102,19 +98,12 @@ export class IntervaloFormComponent implements OnInit {
 
     this.formGroup.patchValue({
       ConstruccionId: int.construccionId,
-      Barrena: int.barrena,
       Longitud:int.longitud,
-      PrecioB:int.precioB,
+      NombreIntervalo:int.nombreIntervalo
     })
   }
 
   save() {
-    this.Bseleccionado = this.autocompleteControl.value;
-    console.log(this.Bseleccionado);
-    this.formGroup.controls["Barrena"].setValue(this.Bseleccionado.mProducto_Descrip);
-    this.formGroup.controls["PrecioB"].setValue(
-      this.Bseleccionado.mProducto_Precio
-    );
     let int: Intervalo = Object.assign({}, this.formGroup.value);
     console.table(int);
     if (this.modoEdicion) {

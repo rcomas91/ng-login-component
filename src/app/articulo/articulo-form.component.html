@@ -13,7 +13,7 @@
                   <mat-option *ngFor="let recurso of filteredOptions | async" [value]="recurso">
                     {{recurso.mProducto_Descrip}}
                   </mat-option>
-                  <mat-option *ngIf="autocompleteControl.value!=null"style="color: red;" routerLink="/barrena" >
+                  <mat-option *ngIf="autocompleteControl.value!=null"style="color: red;" routerLink="/articuloPropio/form" >
                     --------------AÑADIR NUEVO RECURSO-------------
                   </mat-option>
                 </mat-autocomplete>

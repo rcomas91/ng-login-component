@@ -27,7 +27,7 @@ export class ArticuloComponent implements OnInit {
   necesidades: Necesidad[];
 
   sum: number =
-    this.intervaloService.intervalo.precioB ;
+    0 ;
 
   cantPedidos: number;
   constructor(
@@ -117,8 +117,6 @@ export class ArticuloComponent implements OnInit {
           this.dataSource.sort=this.sort;
 
 
-        this.sum =
-          this.intervaloService.intervalo.precioB;
 
         this.dataSource.data.forEach((item: Articulo) => {
           this.calcCantPedidosPorElem(item.codigo);

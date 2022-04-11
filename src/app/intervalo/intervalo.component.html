@@ -5,45 +5,20 @@
   class="example-container mat-elevation-z8"
 >
   <mat-table #table [dataSource]="dataSource" matSort>
-    <!--  Columna camisa-->
-    <ng-container matColumnDef="camisa">
+
+
+
+
+    <!--  Columna nombreIntervalo-->
+    <ng-container matColumnDef="nombreIntervalo">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        camisa</mat-header-cell
+        Seccion</mat-header-cell
       >
-      <mat-cell *matCellDef="let row"> {{ row.camisa }} </mat-cell>
+      <mat-cell *matCellDef="let row"> {{ row.nombreIntervalo }} </mat-cell>
       <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
 
     </ng-container>
 
-    <!--  Columna precioC-->
-    <ng-container matColumnDef="precioC">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        precioCamisa</mat-header-cell
-      >
-      <mat-cell *matCellDef="let row"> {{ row.precioC | currency }} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
-
-    </ng-container>
-
-    <!--  Columna barrena-->
-    <ng-container matColumnDef="barrena">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        barrena</mat-header-cell
-      >
-      <mat-cell *matCellDef="let row"> {{ row.barrena }} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
-
-    </ng-container>
-
-    <!--  Columna barrena-->
-    <ng-container matColumnDef="precioB">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>
-        precioBarrena</mat-header-cell
-      >
-      <mat-cell *matCellDef="let row"> {{ row.precioB | currency }} </mat-cell>
-      <mat-footer-cell *matFooterCellDef> </mat-footer-cell>
-
-    </ng-container>
 
     <!--  Columna longitud-->
     <ng-container matColumnDef="longitud">
@@ -190,54 +165,54 @@
           <div class="texto-encima"></div>
 
           <div *ngIf="cont == 1">
-            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].barrena }}</i></div>
           </div>
 
           <div *ngIf="cont == 2">
-            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].barrena }}</i></div>
 
-            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].barrena }}</i></div>
           </div>
           <div *ngIf="cont == 3">
-            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].barrena }}</i></div>
 
-            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].barrena }}</i></div>
 
-            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
+            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].barrena }}</i></div>
           </div>
           <div *ngIf="cont == 4">
 
-            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].barrena }}</i></div>
 
-            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].barrena }}</i></div>
 
-            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
+            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].barrena }}</i></div>
 
-            <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
+            <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].barrena }}</i></div>
           </div>
 
           <div *ngIf="cont == 5">
-            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].barrena }}</i></div>
 
-            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].barrena }}</i></div>
 
-            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
+            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].barrena }}</i></div>
 
-            <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
+            <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].barrena }}</i></div>
 
-            <div class="quinto"><mat-icon>filter_5</mat-icon><i>{{ dataSource.data[4].camisa }}</i></div>
+            <div class="quinto"><mat-icon>filter_5</mat-icon><i>{{ dataSource.data[4].barrena }}</i></div>
           </div>
           <div *ngIf="cont == 6">
-            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].camisa }}</i></div>
+            <div class="primario"><mat-icon>filter_1</mat-icon><i>{{ dataSource.data[0].barrena }}</i></div>
 
-            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].camisa }}</i></div>
+            <div class="segundado"><mat-icon>filter_2</mat-icon><i>{{ dataSource.data[1].barrena }}</i></div>
 
-            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].camisa }}</i></div>
+            <div class="centrado"><mat-icon>filter_3</mat-icon><i>{{ dataSource.data[2].barrena }}</i></div>
 
-            <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].camisa }}</i></div>
+            <div class="cuarto"><mat-icon>filter_4</mat-icon><i>{{ dataSource.data[3].barrena }}</i></div>
 
-            <div class="quinto"><mat-icon>filter_5</mat-icon><i>{{ dataSource.data[4].camisa }}</i></div>
-            <div class="quinto"><mat-icon>filter_6</mat-icon><i>{{ dataSource.data[5].camisa }}</i></div>
+            <div class="quinto"><mat-icon>filter_5</mat-icon><i>{{ dataSource.data[4].barrena }}</i></div>
+            <div class="quinto"><mat-icon>filter_6</mat-icon><i>{{ dataSource.data[5].barrena }}</i></div>
 
           </div>
         </mat-card>
