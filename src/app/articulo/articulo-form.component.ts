@@ -122,7 +122,7 @@ export class ArticuloFormComponent implements OnInit {
   private _filter(name: string): SomeModel[] {
     const filterValue = name.toLowerCase();
 
-    return this.recursos.filter(option => option.mProducto_Descrip.toLowerCase().indexOf(filterValue) === 0);
+    return this.recursos.filter(option => option.mProducto_Descrip.toLowerCase().includes(filterValue));
   }
 
 
