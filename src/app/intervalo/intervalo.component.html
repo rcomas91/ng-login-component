@@ -235,12 +235,39 @@
     </mat-panel-description>
 
   </mat-expansion-panel-header>
-
+  <h1>Consumibles:{{ sumBarrenas | currency }}</h1>
 <h3> Total Barrenas:{{ sumBarrenas | currency }}</h3>
-
 <h3> Total Casing y Accesorios:{{ sumCasingYacces | currency }}</h3>
+<h3> Total Barrenas:{{ sumCasingYacces | currency }}</h3>
+<h3> Total Corte de nucleo y Accesorios:{{ sumCasingYacces | currency }}</h3>
   <!-- *ngIf="dataSource?.data.length===3" -->
 
+  <h3> Total Lodos y Productos Químicos:{{ sumCasingYacces | currency }}</h3>
+  <h3> Total Diesel, Grasas, Lubricantes y Agua:{{ sumCasingYacces | currency }}</h3>
+  <h3> Total Otros Consumos:{{ sumCasingYacces | currency }}</h3>
+  <br>
+  <h1>Servicios de Perforación:{{ sumBarrenas | currency }}</h1>
+
+  <h3> Total Locación y Accesos:{{ sumCasingYacces | currency }}</h3>
+  <h3> Total Equipo Perforación :{{ sumCasingYacces | currency }}</h3>
+  <h3> Total Servicios Geológicos :{{ sumCasingYacces | currency }}</h3>
+  <br>
+
+  <h1> Logística :{{ sumCasingYacces | currency }}</h1>
+  <h3> Total Supervisión :{{ sumCasingYacces | currency }}</h3>
+  <h3> Total Misceláneas :{{ sumCasingYacces | currency }}</h3>
+  <h3> Total Otros Gastos :{{ sumCasingYacces | currency }}</h3>
+
+
+
+<br>
+<br>
+<h1>Gastos Totales de Inversión:</h1>
+<h3> Terreno :{{ sumCasingYacces | currency }}</h3>
+<h3> Obras Físicas :{{ sumCasingYacces | currency }}</h3>
+<h3> Ensayo :{{ sumCasingYacces | currency }}</h3>
+<h3> Producción :{{ sumCasingYacces | currency }}</h3>
+<h3> Desmontaje :{{ sumCasingYacces | currency }}</h3>
 
 <!-- <h3>Gran Total:{{ sum | currency }}</h3> -->
 
@@ -258,3 +285,24 @@
 
 
 
+<div class="splitscreen">
+  <div class="left">
+
+    <mat-expansion-panel *ngIf="dataSource?.data.length>0">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Esquema de Perforación
+        </mat-panel-title>
+        <mat-panel-description>
+         <i> Presione para ver más detalles</i>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <!-- *ngIf="dataSource?.data.length===3" -->
+
+
+
+
+    <!-- <h3>Gran Total:{{ sum | currency }}</h3> -->
+
+    </mat-expansion-panel >  </div>
