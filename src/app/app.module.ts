@@ -33,11 +33,13 @@ import { ArticuloPropioComponent } from './articulo-propio/articulo-propio.compo
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServiciosFormComponent } from './servicios/servicios-form.component';
 import { AdicionarCamisaComponent } from './adicionar-camisa/adicionar-camisa.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 
 const routes:Routes=[
-  {path:'',redirectTo:'/winatm',pathMatch:'full'},
+  {path:'',redirectTo:'/login',pathMatch:'full'},
   {path:'articulos',component:ArticuloComponent},
   {path:'articulos/form',component:ArticuloFormComponent},
   {path:'articulos/form/:id',component:ArticuloFormComponent},
@@ -53,7 +55,7 @@ const routes:Routes=[
   {path:'pozos/form/:id',component:PozoFormComponent},
 
 
-  
+
   {path:'servicios',component:ServiciosComponent},
   {path:'servicios/form',component:ServiciosFormComponent},
   {path:'servicios/form/:id',component:ServiciosFormComponent},
@@ -69,6 +71,10 @@ const routes:Routes=[
 
 
   { path: 'camisa', component: AdicionarCamisaComponent },
+
+  { path: "", component: AppComponent, pathMatch: "full" },
+  { path: "login", component: LoginComponent, pathMatch: "full" },
+  // { path: "register", component: RegisterComponent, pathMatch: "full" }
 ]
 @NgModule({
 
@@ -89,11 +95,14 @@ const routes:Routes=[
     ArticuloPropioComponent,
     ServiciosComponent,
     ServiciosFormComponent,
-    AdicionarCamisaComponent
+    AdicionarCamisaComponent,
+
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     ToastrModule.forRoot({
-  
+
     maxOpened:0,
     autoDismiss	:true,
     preventDuplicates: true,
@@ -120,7 +129,7 @@ const routes:Routes=[
   MatDialogModule,
   MatTableModule,
   MatMenuModule,
-  MatIconModule,  
+  MatIconModule,
   MatProgressSpinnerModule,
   MatRadioModule,
   ReactiveFormsModule,
