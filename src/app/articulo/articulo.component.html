@@ -1,4 +1,4 @@
-<h2>{{title  + this.pozoService.pozo.nombrePozo}}</h2>
+<h2 style="display: flex; justify-content: center; align-items: center"><samp>{{title  + this.pozoService.pozo.nombrePozo}}</samp></h2>
 
 <div  class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort>
@@ -140,7 +140,7 @@
       *matHeaderRowDef="displayedColumns"
       class="encabezado"
     ></mat-header-row>
-     <mat-row [ngClass]="{ 'marked': (row.existencia-cantPedidos) <0 && row.existencia}" *matRowDef="let row; columns: displayedColumns"></mat-row>
+     <mat-row [ngClass]="{ 'marked': (row.existencia-cantPedidos) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
     <!-- <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row> -->
     <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
     </mat-table>
