@@ -18,9 +18,7 @@ h1 {
   padding: 2rem 3rem;
   margin: auto;
   border-radius: 2.5rem;
-  background-color: #ecf0f3;
-  box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #ffffff;
-  color: black;
+  background-color: #ecf0f3;  color: black;
   margin-top: 10rem;
 }
 .custom-form input {

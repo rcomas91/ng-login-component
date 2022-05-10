@@ -39,7 +39,7 @@ import { RegisterComponent } from './register/register.component';
 
 
 const routes:Routes=[
-  {path:'',redirectTo:'/winatm',pathMatch:'full'},
+  {path:'',redirectTo:'/login',pathMatch:'full'},
   {path:'articulos',component:ArticuloComponent},
   {path:'articulos/form',component:ArticuloFormComponent},
   {path:'articulos/form/:id',component:ArticuloFormComponent},

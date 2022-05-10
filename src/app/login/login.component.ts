@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   login() {
     if(this.email=="rcomas@epepc.cupet.cu" && this.password=="12345678"){
       this.userService.isAutenticado=true;
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/winatm');
     }
     else{
       Swal.fire({

@@ -6,7 +6,10 @@
 html
 {
 position: relative;
-min-height: 100%;
+height:845px;
+background-image: url(../src/assets/images/logotipo.jpg);
+background-repeat: repeat;
+background-size: 10rem;
 }
 body{
 margin-bottom: 60px;
@@ -16,4 +19,16 @@ margin-bottom: 60px;
 
 .wrap{
   padding-bottom: 60px;
+  /* background-color: white;
+  border-radius: 50px; */
+}
+samp{
+
+  font-size: 200%;
+  font-weight: bold;
+  letter-spacing: 10px;
+  text-align: center;
+  text-shadow: black 6px 6px 8px;
+  text-transform: uppercase;
+
 }

@@ -38,7 +38,7 @@
     </tbody>
       </table>
  -->
-<h2 style="display: flex; justify-content: center; align-items: center">Necesidades en los Pozos</h2>
+<h2 style="display: flex; justify-content: center; align-items: center"><samp>Necesidades en los Pozos</samp></h2>
 
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
@@ -159,21 +159,21 @@
         class="encabezado"
       ></mat-header-row>
       <mat-row [ngClass]="{ 'marked': (row.existencia-row.cantidad) <0}" *matRowDef="let row; columns: displayedColumns"></mat-row>
-      
+
     </mat-table>
     <mat-card *ngIf="isLoading"
     style="display: flex; justify-content: center; align-items: center">
     <mat-progress-spinner
      color="primary"
      mode="indeterminate">
-     
+
     </mat-progress-spinner>
     </mat-card>
-  
+
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="15" [showFirstLastButtons]></mat-paginator>
 
 
-   
+
 
   </div>
 
@@ -190,5 +190,5 @@
   <span >Gran Total:{{sum|currency}}</span>
 
         -->
-      
+
 

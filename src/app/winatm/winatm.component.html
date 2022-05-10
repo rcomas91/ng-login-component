@@ -1,5 +1,5 @@
 
-<h2 style="display: flex; justify-content: center; align-items: center">{{title}}</h2>
+<h2 style="display: flex; justify-content: center; align-items: center"><samp>{{title}}</samp></h2>
 <mat-form-field>
   <mat-label>Buscar</mat-label>
   <input matInput (keyup)="filtrar($event)" placeholder="buscar">
@@ -22,7 +22,7 @@
         >
         <mat-cell *matCellDef="let row"> {{ row.mProducto_Descrip }} </mat-cell>
       </ng-container>
-  
+
         <!--  Columna IntervaloId-->
      <ng-container matColumnDef="ProdAlm_Um">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -67,10 +67,10 @@
 
 
     </mat-table>
-    <mat-card *ngIf="isLoading" 
+    <mat-card *ngIf="isLoading"
    style="display: flex; justify-content: center; align-items: center">
-  <mat-progress-spinner 
-    color="primary" 
+  <mat-progress-spinner
+    color="primary"
     mode="indeterminate">
   </mat-progress-spinner>
 </mat-card>
@@ -79,4 +79,3 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="14" [showFirstLastButtons]></mat-paginator>
 
   </div>
-  
