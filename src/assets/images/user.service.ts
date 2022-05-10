@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class UserService {
+  isAutenticado:boolean=false;
 
   constructor(private http: HttpClient) { }
 

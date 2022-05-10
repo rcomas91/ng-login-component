@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/assets/images/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  isAutenticado:boolean=false;
+  constructor(public userService:UserService){
+
+  }
 
       }
 

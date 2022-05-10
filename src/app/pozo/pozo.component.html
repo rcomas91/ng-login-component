@@ -20,7 +20,7 @@
             <th>eliminar</th>
         </tr>
     </thead>
-    
+
     <tbody>
         <tr *ngFor="let pozo of pozos">
             <td>{{pozo.pozoId}}</td>
@@ -34,8 +34,8 @@
             </td>
 
         </tr>
-    
-    
+
+
     </tbody>
       </table> -->
 <!-- <p>Order Page</p>
@@ -80,7 +80,7 @@
 
 <div class="example-container mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort>
-    
+
       <!--  Columna NombrePozo-->
       <ng-container matColumnDef="NombrePozo">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -89,7 +89,7 @@
         <mat-cell *matCellDef="let row"> {{ row.nombrePozo }} </mat-cell>
       </ng-container>
 
-      
+
       <!--  Columna Campana-->
       <ng-container matColumnDef="Campana">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
@@ -121,10 +121,10 @@
             FechaFin</mat-header-cell
         >
         <mat-cell *matCellDef="let row"> {{ row.fechaFin |date}} </mat-cell>
-  
+
       </ng-container>
           <!--  Columna Editar-->
-  
+
       <ng-container matColumnDef="Editar">
         <mat-header-cell *matHeaderCellDef mat-sort-header>
             Editar</mat-header-cell
@@ -134,8 +134,8 @@
             <mat-icon>edit</mat-icon> Editar
           </button>
         </mat-cell>
-  
-  
+
+
       </ng-container>
 
     <!--  Columna Editar-->
@@ -161,8 +161,8 @@
     <button  *ngIf="row.construccion && !isLoading" mat-raised-button color="warn" (click)="VerConst(row.construccion, row)"focusable="false" >
       <mat-icon>visibility</mat-icon> Ver Construcción
         </button>
-      
-     
+
+
         <button  *ngIf="!(row.construccion) && !isLoading" mat-raised-button color="warn" (click)="AdicionarConst(row.pozoId)"focusable="false" >
           <mat-icon>add</mat-icon>Adicionar Construcción
             </button>
@@ -170,27 +170,27 @@
 
 </ng-container>
       <button mat-raised-button color="warn">Warn</button>
-  
-  
-  
+
+
+
       <mat-header-row
         *matHeaderRowDef="displayedColumns"
         class="encabezado"
       ></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
-    <mat-card *ngIf="isLoading" 
+    <mat-card *ngIf="isLoading"
     style="display: flex; justify-content: center; align-items: center">
-   <mat-progress-spinner 
-     color="primary" 
+   <mat-progress-spinner
+     color="primary"
      mode="indeterminate">
    </mat-progress-spinner>
   </mat-card>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" [pageSize]="10" [showFirstLastButtons]></mat-paginator>
 
   </div>
-  
- 
+
+
   <div>
     <button  [routerLink]="['/pozos/form']"  mat-raised-button color="accent"><mat-icon>library_add</mat-icon> Adicionar Pozo</button>
     </div>

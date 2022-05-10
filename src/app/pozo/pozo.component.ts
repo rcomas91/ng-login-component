@@ -7,6 +7,7 @@ import { Construccion } from './Construccion';
 import { ConstruccionService } from './construccion.service';
 import { Pozo } from './pozo';
 import { PozoService } from './pozo.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-pozo',
@@ -86,7 +87,7 @@ VerConst(construccion:Construccion,pozo:Pozo){
     this.pozoService.construccion=construccion;
     this.pozoService.pozo=pozo;
     this.toastr.info(
-      
+
       'Comienza por agregar los intervalos del pozo en el botón Adicionar intervalo!',
       'Atento!',    {closeButton		:true,tapToDismiss	:false}
     );
@@ -96,17 +97,36 @@ VerConst(construccion:Construccion,pozo:Pozo){
 
 
   AdicionarConst(id:number){
- 
+
   this.formGroup.controls['PozoId'].setValue(id)
     let int: Construccion = Object.assign({}, this.formGroup.value);
     console.table(int);
      this.constService.create(int).subscribe(int=>this.onSaveSuccess(),error=>console.error(error));
-  
-     
-     this.toastr.info(
-      "Acaba de agregar una construcción a este pozo pulse en ver construcción para comenzar a usarla!",
-      "Atento!",{progressBar:true,progressAnimation	:'increasing'}
-    );
+     let timerInterval
+     Swal.fire({
+       title: 'Cargando!',
+       html: 'La construcción estara lista en <b></b> milliseconds.',
+       timer: 2000,
+       allowOutsideClick: false,
+              timerProgressBar: true,
+              imageUrl: '../../assets/images/pozo.jpg',
+
+       didOpen: () => {
+         Swal.showLoading()
+         const b = Swal.getHtmlContainer().querySelector('b')
+         timerInterval = setInterval(() => {
+           b.textContent = Swal.getTimerLeft()
+         }, 100)
+       },
+       willClose: () => {
+         clearInterval(timerInterval)
+       }
+     }).then((result) => {
+       /* Read more about handling dismissals below */
+       if (result.dismiss === Swal.DismissReason.timer) {
+         console.log('I was closed by the timer')
+       }
+     })
 
   }
   onSaveSuccess() {
