@@ -83,12 +83,11 @@ export class PozoComponent implements OnInit {
 VerConst(construccion:Construccion,pozo:Pozo){
   console.log(construccion)
   this.router.navigate(['/intervalos'])
-
     this.pozoService.construccion=construccion;
     this.pozoService.pozo=pozo;
     this.toastr.info(
 
-      'Comienza por agregar los intervalos del pozo en el botón Adicionar intervalo!',
+      'Comienza por agregar las secciones del pozo en el botón Adicionar Sección!',
       'Atento!',    {closeButton		:true,tapToDismiss	:false}
     );
   }
@@ -105,8 +104,8 @@ VerConst(construccion:Construccion,pozo:Pozo){
      let timerInterval
      Swal.fire({
        title: 'Cargando!',
-       html: 'La construcción estara lista en <b></b> milliseconds.',
-       timer: 2000,
+       html: 'La construcción estará lista en <b></b> milliseconds.',
+       timer: 5000,
        allowOutsideClick: false,
               timerProgressBar: true,
               imageUrl: '../../assets/images/pozo.jpg',
