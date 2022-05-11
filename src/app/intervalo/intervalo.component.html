@@ -291,7 +291,7 @@
     <mat-expansion-panel *ngIf="dataSource?.data.length>0">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          Esquema de Perforación
+          Distribución de los Costos de Perforación
         </mat-panel-title>
         <mat-panel-description>
          <i> Presione para ver más detalles</i>
@@ -300,7 +300,17 @@
 
       <!-- *ngIf="dataSource?.data.length===3" -->
 
-
+      <div>
+        <div style="display: block">
+          <canvas baseChart
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType">
+          </canvas>
+        </div>
+      </div>
 
 
     <!-- <h3>Gran Total:{{ sum | currency }}</h3> -->

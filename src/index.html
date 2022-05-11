@@ -20,7 +20,10 @@
   </div>
 
 </body>
+<script src="node_modules/chart.js/src/chart.js"></script>
+
 <script>
+
  document.onkeydown = function(){
   switch (event.keyCode){
         case 116 : //F5 button
@@ -28,7 +31,7 @@
             event.keyCode = 0;
             return false;
         case 82 : //R button
-            if (event.ctrlKey){ 
+            if (event.ctrlKey){
                 event.returnValue = false;
                 event.keyCode = 0;
                 return false;

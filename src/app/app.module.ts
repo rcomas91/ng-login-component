@@ -35,6 +35,8 @@ import { ServiciosFormComponent } from './servicios/servicios-form.component';
 import { AdicionarCamisaComponent } from './adicionar-camisa/adicionar-camisa.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ChartsModule, ThemeService } from 'ng2-charts';
+
 
 
 
@@ -123,6 +125,7 @@ const routes:Routes=[
   MatExpansionModule,
   MatTabsModule,
   MatCardModule,
+  ChartsModule,
   MatFormFieldModule,
   BrowserAnimationsModule,
   MatInputModule,
@@ -144,7 +147,7 @@ const routes:Routes=[
   MatCheckboxModule,
 
   ],
-  providers: [ArticuloService,NecesidadService ,PozoService,ConstruccionService],
+  providers: [ThemeService,ArticuloService,NecesidadService ,PozoService,ConstruccionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
