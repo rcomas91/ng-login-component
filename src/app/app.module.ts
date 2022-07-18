@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,11 +32,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { ArticuloPropioComponent } from './articulo-propio/articulo-propio.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { ServiciosFormComponent } from './servicios/servicios-form.component';
-import { AdicionarCamisaComponent } from './adicionar-camisa/adicionar-camisa.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ChartsModule, ThemeService } from 'ng2-charts';
-
+import { NgCamisaComponentComponent } from './ng-camisa-component/ng-camisa-component.component';
+import { LazyElementsModule,LazyElementsLoaderService } from '@angular-extensions/elements';
 
 
 
@@ -72,15 +72,17 @@ const routes:Routes=[
   {path:'intervalos/form/:id',component:IntervaloFormComponent},
 
 
-  { path: 'camisa', component: AdicionarCamisaComponent },
+  { path: 'camisa', component: NgCamisaComponentComponent },
 
   { path: "", component: AppComponent, pathMatch: "full" },
   { path: "login", component: LoginComponent, pathMatch: "full" },
   // { path: "register", component: RegisterComponent, pathMatch: "full" }
 ]
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 
-  declarations: [
+    declarations: [
+
     AppComponent,
     HeaderComponentComponent,
     FooterComponent,
@@ -97,12 +99,20 @@ const routes:Routes=[
     ArticuloPropioComponent,
     ServiciosComponent,
     ServiciosFormComponent,
-    AdicionarCamisaComponent,
 
+    NgCamisaComponentComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+
   ],
   imports: [
+
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+
+    LazyElementsModule,
+
     ToastrModule.forRoot({
 
     maxOpened:0,
@@ -111,13 +121,11 @@ const routes:Routes=[
     }
     ), // ToastrModule added
 
-    FormsModule,
-    BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(routes),
     MatSortModule,
     MatGridListModule,
-    HttpClientModule,
+
     MatSliderModule,
     MatToolbarModule,
     MatIconModule,
@@ -147,7 +155,8 @@ const routes:Routes=[
   MatCheckboxModule,
 
   ],
-  providers: [ThemeService,ArticuloService,NecesidadService ,PozoService,ConstruccionService],
+  exports: [RouterModule],
+  providers: [ThemeService,ArticuloService,NecesidadService ,PozoService,LazyElementsLoaderService,ConstruccionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
