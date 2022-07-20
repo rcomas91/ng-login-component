@@ -12,18 +12,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 import {MatGridListModule} from '@angular/material/grid-list';
-import { WinatmComponent } from './winatm/winatm.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { ToastrModule } from 'ngx-toastr';
-import { WinatmService } from './winatm/winatm.service';
 import { createCustomElement } from '@angular/elements';
+import { LoginComponent } from './login/login.component';
+import { UserService } from './login/user.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
 
     declarations: [
-   WinatmComponent,
+
+   LoginComponent,
 
 
   ],
@@ -32,7 +34,6 @@ import { createCustomElement } from '@angular/elements';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-
 
     ToastrModule.forRoot({
 
@@ -74,14 +75,14 @@ import { createCustomElement } from '@angular/elements';
   MatCheckboxModule,
 
   ],
-  entryComponents:[WinatmComponent],
-  providers: [WinatmService],
+  entryComponents:[LoginComponent],
+  providers: [UserService],
   bootstrap: []
 })
 export class AppModule {
   constructor(private injector: Injector) {
-    const ngBusquedaElement = createCustomElement(WinatmComponent, { injector:this.injector });
-    customElements.define('ng-busqueda-almacen', ngBusquedaElement);
+    const ngLoginElement = createCustomElement(LoginComponent, { injector:this.injector });
+    customElements.define('ng-login-component', ngLoginElement);
   }
 
 
